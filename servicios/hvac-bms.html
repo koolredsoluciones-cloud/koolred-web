@@ -8,7 +8,7 @@
   <style>
     :root{
       --bg:#ffffff; --card:#f6f8fc; --text:#1c2b4a; --muted:#55627a;
-      --brand:#d2182a; --line:#dbe2f0;
+      --brand:#d2182a; --brand-blue:#152354; --line:#dbe2f0;
       --max:1100px;
     }
     *{box-sizing:border-box}
@@ -33,9 +33,9 @@
     .dropdown:hover .submenu,
     .dropdown:focus-within .submenu{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;letter-spacing:.2px;transition:transform .2s ease, box-shadow .2s ease, filter .2s ease, background .2s ease}
-    .btn.primary{background:var(--brand);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(210,24,42,.15)}
-    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,24,42,.22);filter:brightness(1.08)}
-    .btn:focus-visible{outline:2px solid rgba(210,24,42,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(210,24,42,.18)}
+    .btn.primary{background:var(--brand-blue);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(21,35,84,.18)}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,35,84,.24);filter:brightness(1.08)}
+    .btn:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(21,35,84,.18)}
     .btn:active{transform:translateY(0);filter:brightness(0.97)}
     .nav-actions{display:flex;align-items:center;gap:10px}
     .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:700;font-size:12px;letter-spacing:.2px;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
