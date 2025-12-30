@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KoolRed Soluciones | Sitio en mantenimiento</title>
+  <meta name="description" content="KoolRed Soluciones se encuentra en mantenimiento. Muy pronto estaremos de regreso con información actualizada." />
+  <style>
+    :root{
+      --bg:#ffffff; --text:#1c2b4a; --muted:#55627a; --brand:#d2182a; --line:#dbe2f0;
+      --max:900px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+    header{border-bottom:1px solid var(--line);background:#fff}
+    .brand{display:flex;align-items:center;gap:14px;padding:16px 0}
+    .brand img{height:70px;width:auto;display:block}
+    main{min-height:70vh;display:flex;align-items:center}
+    .card{border:1px solid var(--line);border-radius:18px;padding:28px;background:#f6f8fc}
+    h1{margin:0 0 8px;font-size:34px;line-height:1.15}
+    p{margin:0;color:var(--muted);line-height:1.6}
+    .divider{height:1px;background:var(--line);margin:18px 0}
+    .contact{display:flex;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--muted)}
+    .contact b{color:var(--text)}
+    .note{margin-top:10px;font-size:13px;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
+    @media (max-width:700px){
+      h1{font-size:28px}
+      .brand img{height:60px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <img src="assets/LOGO%20.png" alt="KoolRed Soluciones" />
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card">
+        <h1>Sitio en mantenimiento</h1>
+        <p>
+          Estamos realizando ajustes para mejorar la experiencia y la información técnica del sitio.
+          Muy pronto estaremos de regreso.
+        </p>
+        <div class="divider"></div>
+        <p>Si necesitas información inmediata, contáctanos:</p>
+        <div class="contact">
+          <span><b>Correo:</b> direccion.general@koolredsoluciones.com</span>
+          <span><b>Tel/WhatsApp:</b> +57 315 494 0908</span>
+        </div>
+        <div class="note">Horario de atención: Lun–Vie 8:00–17:30, Sab 8:00-14:00</div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> KoolRed Soluciones SAS. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

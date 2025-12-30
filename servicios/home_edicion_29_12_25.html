@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KoolRed Soluciones | Ingeniería eléctrica, automatización y control corporativo</title>
+  <meta name="description" content="KoolRed Soluciones diseña, integra y mantiene sistemas eléctricos, automatización, HVAC/BMS y tecnología crítica con cumplimiento RETIE/NTC para clientes corporativos, comerciales e industriales." />
+  <style>
+    :root{
+      --bg:#ffffff; --card:#f6f8fc; --text:#1c2b4a; --muted:#55627a;
+      --brand:#d2182a; --line:#dbe2f0;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10;transition:all .3s ease}
+    header.scrolled{padding:6px 0;border-bottom-color:rgba(0,0,0,.06);box-shadow:0 10px 30px rgba(0,0,0,.06);background:rgba(255,255,255,.96)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:18px;transition:padding .3s ease}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
+    .logo img{height:66px;width:auto;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.08))}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block}
+    .links{display:flex;gap:18px;flex-wrap:wrap;position:relative}
+    .links a{display:block;color:var(--text);font-weight:700;font-size:14px;letter-spacing:.2px;position:relative;transition:color .2s ease}
+    .links a:hover{color:var(--brand)}
+    .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:3px;background:var(--brand);border-radius:999px;box-shadow:0 4px 12px rgba(210,24,42,.25)}
+    .dropdown{position:relative}
+    .dropdown::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px;}
+    .submenu{position:absolute;top:calc(100% + 10px);left:0;display:flex;flex-direction:column;gap:8px;min-width:230px;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s ease, transform .2s ease;transition-delay:.12s;z-index:15}
+    .submenu a{font-weight:600;color:var(--text);padding:6px 6px;border-radius:8px}
+    .submenu a:hover{background:rgba(0,0,0,.03);color:var(--brand)}
+    .dropdown:hover .submenu,
+    .dropdown:focus-within .submenu{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;letter-spacing:.2px;transition:transform .2s ease, box-shadow .2s ease, filter .2s ease}
+    .btn.primary{background:var(--brand);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(210,24,42,.15)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.08);filter:brightness(1.01)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:700;font-size:12px;letter-spacing:.2px;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+    .lang-btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.06);background:rgba(0,0,0,.03)}
+    .lang-btn:focus-visible{outline:2px solid rgba(210,24,42,.55);outline-offset:2px}
+    .lang-icon{width:16px;height:16px;display:inline-flex}
+    #google_translate_element{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+    .hero{padding:64px 0 26px}
+    .herogrid{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center}
+    .kicker{color:var(--brand);font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:12px}
+    h1{margin:10px 0 10px;font-size:40px;line-height:1.05}
+    p{margin:0;color:var(--muted);line-height:1.6}
+    .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .slider{padding:22px 0 6px}
+    .slider-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .slider-head h2{margin:0;font-size:20px}
+    .slider-shell{position:relative;overflow:hidden;border-radius:18px}
+    .slider-track{display:flex;transition:transform .5s ease}
+    .slide{min-width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+    .slide-media{border-radius:12px;overflow:hidden;background:rgba(0,0,0,.08);min-height:220px}
+    .slide-media video{width:100%;height:100%;object-fit:cover;display:block}
+    .slide-body b{font-size:18px}
+    .slide-body p{margin-top:6px}
+    .slider-actions{display:flex;gap:8px}
+    .slider-btn{width:36px;height:36px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:800;cursor:pointer;display:grid;place-items:center;transition:transform .2s ease, box-shadow .2s ease}
+    .slider-btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.08)}
+    .slider-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+    .slider-dot{width:8px;height:8px;border-radius:999px;border:0;background:var(--line);cursor:pointer}
+    .slider-dot.active{background:var(--brand)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .stat b{font-size:20px}
+    .section{padding:26px 0}
+    .title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:12px}
+    .title h2{margin:0;font-size:22px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .svc h3{margin:0 0 6px;font-size:16px}
+    .svc p{font-size:14px}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:12px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    form{display:grid;gap:10px}
+    input,textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
+    .small{font-size:12px;color:var(--muted)}
+    @media (max-width:900px){
+      .herogrid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      h1{font-size:34px}
+    }
+    @media (max-width:900px){
+      .slide{grid-template-columns:1fr}
+      .slide-media{min-height:180px}
+    }
+
+    /* Animaciones de entrada controladas por JS */
+    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    /* Respeto a usuarios con reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      header, nav, .btn, .card, .fade-in{transition:none !important;animation:none !important;transform:none !important}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="#inicio">
+          <img src="assets/LOGO%20.png" alt="KoolRed Soluciones" />
+        </a>
+        <div class="links">
+          <a href="#inicio">Inicio</a>
+          <div class="dropdown">
+            <a href="#servicios">Servicios</a>
+            <div class="submenu">
+              <a href="servicios/adecuaciones-electricas.html">Adecuaciones eléctricas</a>
+              <a href="servicios/hvac-bms.html">HVAC / BMS</a>
+              <a href="servicios/revision-tecnica.html">Revisión técnica</a>
+              <a href="servicios/automatizacion.html">Automatización</a>
+              <a href="servicios/mantenimiento.html">Mantenimiento</a>
+            </div>
+          </div>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#nosotros">Industria</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn primary" href="#contacto">Hablar con un ingeniero</a>
+          <button class="lang-btn" type="button" aria-label="Cambiar idioma ES/EN" translate="no">
+            <span class="lang-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20"></path>
+                <path d="M12 2a15 15 0 0 1 0 20"></path>
+                <path d="M12 2a15 15 0 0 0 0 20"></path>
+              </svg>
+            </span>
+            <span class="lang-label">ES/EN</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="slider fade-in" aria-label="Servicios en video">
+      <div class="wrap">
+        <div class="slider-head">
+          <h2>Portafolio de servicios</h2>
+          <div class="slider-actions">
+            <button class="slider-btn prev" type="button" aria-label="Anterior">&#8249;</button>
+            <button class="slider-btn next" type="button" aria-label="Siguiente">&#8250;</button>
+          </div>
+        </div>
+        <div class="slider-shell">
+          <div class="slider-track">
+            <article class="slide">
+              <div class="slide-media">
+                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/Adecuaciones%20electricas.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="slide-body">
+                <b>Adecuaciones eléctricas</b>
+                <p>Intervenciones en tableros, canalizaciones y puesta a tierra con cumplimiento NTC 2050/RETIE.</p>
+                <div style="height:10px"></div>
+                <a class="btn primary" href="servicios/adecuaciones-electricas.html">Ver adecuaciones</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div class="slide-media">
+                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/hvac-bms.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="slide-body">
+                <b>HVAC / BMS</b>
+                <p>Diagnóstico, ajuste de control e integración BMS para confort estable y eficiencia.</p>
+                <div style="height:10px"></div>
+                <a class="btn primary" href="servicios/hvac-bms.html">Ver HVAC / BMS</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div class="slide-media">
+                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/revision-tecnica.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="slide-body">
+                <b>Revisión técnica</b>
+                <p>Auditoría de ingeniería y control de cantidades con informes para consorcios.</p>
+                <div style="height:10px"></div>
+                <a class="btn primary" href="servicios/revision-tecnica.html">Solicitar auditoría</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div class="slide-media">
+                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/Dise%C3%B1o%20el%C3%A9ctrico%20y%20automatizaci%C3%B3n%20profesional%20seg%C3%BAn%20norma%20RETIE%20%20NTC%20%C2%B7%20BMS%20%C2%B7%20Baja%20tensi%C3%B3n.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="slide-body">
+                <b>Automatización</b>
+                <p>Integración PLC/HMI, datos y alarmas para estabilidad de procesos y mejora medible.</p>
+                <div style="height:10px"></div>
+                <a class="btn primary" href="servicios/automatizacion.html">Ver automatización</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div class="slide-media">
+                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/mantenimiento.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="slide-body">
+                <b>Mantenimiento</b>
+                <p>Plan preventivo y correctivo con trazabilidad y soporte para activos críticos.</p>
+                <div style="height:10px"></div>
+                <a class="btn primary" href="servicios/mantenimiento.html">Plan de mantenimiento</a>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="slider-dots" aria-label="Navegación de servicios">
+          <button class="slider-dot active" type="button" aria-label="Adecuaciones eléctricas" data-index="0"></button>
+          <button class="slider-dot" type="button" aria-label="HVAC / BMS" data-index="1"></button>
+          <button class="slider-dot" type="button" aria-label="Revisión técnica" data-index="2"></button>
+          <button class="slider-dot" type="button" aria-label="Automatización" data-index="3"></button>
+          <button class="slider-dot" type="button" aria-label="Mantenimiento" data-index="4"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero fade-in">
+      <div class="wrap">
+        <div class="herogrid">
+          <div>
+            <div class="kicker">Ingeniería · Instalación · Automatización</div>
+            <h1>Ejecución eléctrica y automatización crítica para operaciones corporativas.</h1>
+            <p>
+              Diseñamos, construimos e integramos sistemas eléctricos, automatización y control (BMS/HVAC),
+              redes y baja tensión. Aseguramos continuidad operativa, cumplimiento normativo y trazabilidad en sitios
+              corporativos, comerciales e industriales.
+            </p>
+            <div class="cta">
+              <a class="btn primary" href="#contacto">Solicitar propuesta</a>
+              <a class="btn" href="#servicios">Explorar servicios</a>
+              <a class="btn" href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+            </div>
+            <p class="small" style="margin-top:10px;">* Personaliza el número de WhatsApp y ajusta los textos a tu portafolio.</p>
+          </div>
+
+          <div class="card">
+            <div class="pill">Enfoque corporativo <span class="dot" style="width:8px;height:8px"></span></div>
+            <div style="height:12px"></div>
+            <div class="stats">
+              <div class="card stat">
+                <b>RETIE / NTC</b>
+                <div class="small">Cumplimiento normativo, memorias y planos ejecutivos.</div>
+              </div>
+              <div class="card stat">
+                <b>Proyectos integrales</b>
+                <div class="small">Diseño, control, baja tensión y distribución eléctrica coordinada.</div>
+              </div>
+              <div class="card stat">
+                <b>Calidad</b>
+                <div class="small">Pruebas, comisionamiento y entrega documentada.</div>
+              </div>
+              <div class="card stat">
+                <b>Soporte</b>
+                <div class="small">Soporte 24/7, mantenimiento preventivo y mejoras continuas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="servicios">
+      <div class="wrap">
+        <div class="title">
+          <h2>Servicios</h2>
+          <span class="small">Selecciona 3–6 servicios clave para no saturar.</span>
+        </div>
+        <div class="grid">
+          <div class="card svc fade-in">
+            <h3>Instalaciones eléctricas</h3>
+            <p>Tableros, circuitos, canalizaciones, puestas a tierra e iluminación con cálculos, coordinación y puesta en servicio.</p>
+          </div>
+          <div class="card svc fade-in">
+            <h3>Automatización y control</h3>
+            <p>PLC/HMI, lógica de control, integración de datos, monitoreo centralizado y optimización de procesos.</p>
+          </div>
+          <div class="card svc fade-in">
+            <h3>HVAC / BMS</h3>
+            <p>Levantamiento, diagnóstico, mantenimiento preventivo y mejoras de control para confort, eficiencia y alarmas.</p>
+          </div>
+          <div class="card svc fade-in">
+            <h3>Baja tensión</h3>
+            <p>CCTV, redes, control de acceso, intercom y canalización estructurada con continuidad y soporte.</p>
+          </div>
+          <div class="card svc fade-in">
+            <h3>Energía solar (On-grid)</h3>
+            <p>Evaluación técnica, dimensionamiento, trámites y montaje con análisis de retorno y normativa vigente.</p>
+          </div>
+          <div class="card svc fade-in">
+            <h3>Revisión de calidad y cantidades</h3>
+            <p>Auditoría técnica, verificación de obra, cubicaciones y control de programación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="proyectos">
+      <div class="wrap">
+        <div class="title">
+          <h2>Experiencia</h2>
+          <span class="small">Presenta 4–8 proyectos reales (ideal con fotos y métricas).</span>
+        </div>
+        <div class="grid">
+          <div class="card fade-in">
+            <b>Edificio corporativo - Retrofit eléctrico y BMS</b>
+            <p class="small">Renovación de tableros, control HVAC y monitoreo centralizado; reducción de fallas y consumo.</p>
+          </div>
+          <div class="card fade-in">
+            <b>Planta logística - Automatización de procesos</b>
+            <p class="small">Integración PLC/HMI con trazabilidad, alarmas y disminución de tiempos muertos.</p>
+          </div>
+          <div class="card fade-in">
+            <b>Red de oficinas - Seguridad y conectividad</b>
+            <p class="small">CCTV, control de acceso y red estructurada con soporte 24/7 y redundancia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="nosotros">
+      <div class="wrap">
+        <div class="split">
+          <div class="card">
+            <h2 style="margin:0 0 8px">Nosotros</h2>
+            <p>
+              En KoolRed operamos con disciplina de ingeniería: alcance claro, documentación completa,
+              estándares RETIE/NTC, supervisión en campo y ejecución ordenada. Entregamos soluciones confiables,
+              escalables y fáciles de mantener.
+            </p>
+            <div style="height:10px"></div>
+            <div class="pill">Cobertura: Bogotá y proyectos nacionales</div>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">Diferenciales</h3>
+            <ul class="small" style="margin:0;padding-left:18px;line-height:1.7">
+              <li>Equipo técnico con experiencia en obra</li>
+              <li>Levantamientos, memorias y planos claros</li>
+              <li>Control de calidad, pruebas y entregables verificables</li>
+              <li>Soporte postventa, mantenimiento y mejora continua</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="contacto">
+      <div class="wrap">
+        <div class="split">
+          <div class="card">
+            <h2 style="margin:0 0 8px">Contacto</h2>
+            <p>Cuéntanos tu proyecto; respondemos con una ruta de trabajo, tiempos y cotización detallada.</p>
+            <div style="height:10px"></div>
+            <p class="small">
+              <b>Correo:</b> contacto@koolredsoluciones.com<br/>
+              <b>Tel/WhatsApp:</b> +57 XXX XXX XXXX
+              <br/>Disponibilidad: Lun–Vie 8:00–17:30
+            </p>
+          </div>
+          <div class="card">
+            <form onsubmit="sendWhatsApp(event)">
+              <input id="name" placeholder="Nombre" required />
+              <input id="company" placeholder="Empresa (opcional)" />
+              <input id="phone" placeholder="Teléfono / WhatsApp" required />
+              <textarea id="msg" placeholder="Describe tu necesidad (alcance, ciudad, fecha, etc.)" required></textarea>
+              <button class="btn primary" type="submit">Enviar por WhatsApp</button>
+              <div class="small">* Esto abre WhatsApp con el mensaje listo.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> KoolRed Soluciones. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <div id="google_translate_element" aria-hidden="true"></div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function sendWhatsApp(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const company = document.getElementById("company").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const msg = document.getElementById("msg").value.trim();
+
+      const to = "57XXXXXXXXXX";
+
+      const text =
+`Hola, soy ${name}${company ? " de " + company : ""}.
+Mi contacto: ${phone}
+
+Necesidad / proyecto:
+${msg}`;
+
+      const url = "https://wa.me/" + to + "?text=" + encodeURIComponent(text);
+      window.open(url, "_blank");
+    }
+
+    // Header compacto al hacer scroll
+    const header = document.querySelector("header");
+    const nav = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY > 10;
+      header.classList.toggle("scrolled", scrolled);
+      if(scrolled){
+        nav.style.padding = "8px 0";
+      }else{
+        nav.style.padding = "14px 0";
+      }
+    });
+
+    // Animación de entrada con IntersectionObserver
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(!prefersReduced){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.15});
+
+      document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+    }else{
+      document.querySelectorAll(".fade-in").forEach(el => el.classList.add("visible"));
+    }
+
+    // Slider de servicios en video
+    const slider = document.querySelector(".slider");
+    if(slider){
+      const track = slider.querySelector(".slider-track");
+      const slides = Array.from(slider.querySelectorAll(".slide"));
+      const prevBtn = slider.querySelector(".slider-btn.prev");
+      const nextBtn = slider.querySelector(".slider-btn.next");
+      const dots = Array.from(slider.querySelectorAll(".slider-dot"));
+      let index = 0;
+      let autoTimer;
+
+      const playActiveVideo = () => {
+        slides.forEach((slide, i) => {
+          const video = slide.querySelector("video");
+          if(!video){return;}
+          if(prefersReduced){
+            video.pause();
+            video.currentTime = 0;
+            return;
+          }
+          if(i === index){
+            video.play().catch(() => {});
+          }else{
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      };
+
+      const setSlide = (i) => {
+        index = (i + slides.length) % slides.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, di) => dot.classList.toggle("active", di === index));
+        playActiveVideo();
+      };
+
+      const stopAuto = () => {
+        if(autoTimer){
+          clearInterval(autoTimer);
+        }
+      };
+
+      const startAuto = () => {
+        if(prefersReduced){return;}
+        stopAuto();
+        autoTimer = setInterval(() => setSlide(index + 1), 6000);
+      };
+
+      if(prevBtn){
+        prevBtn.addEventListener("click", () => {
+          setSlide(index - 1);
+          startAuto();
+        });
+      }
+
+      if(nextBtn){
+        nextBtn.addEventListener("click", () => {
+          setSlide(index + 1);
+          startAuto();
+        });
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const target = parseInt(dot.getAttribute("data-index") || "0", 10);
+          setSlide(target);
+          startAuto();
+        });
+      });
+
+      slider.addEventListener("mouseenter", stopAuto);
+      slider.addEventListener("mouseleave", startAuto);
+      slider.addEventListener("focusin", stopAuto);
+      slider.addEventListener("focusout", startAuto);
+
+      setSlide(0);
+      startAuto();
+    }
+
+    // Scrollspy sencillo para menú activo
+    const sections = Array.from(document.querySelectorAll("main section[id]"));
+    const links = Array.from(document.querySelectorAll(".links a"));
+
+    const setActiveLink = () => {
+      const scrollPos = window.scrollY + 120;
+      let currentId = sections[0].id;
+      for(const section of sections){
+        if(section.offsetTop <= scrollPos){
+          currentId = section.id;
+        }
+      }
+      links.forEach(link => {
+        const href = link.getAttribute("href").replace("#", "");
+        link.classList.toggle("active", href === currentId);
+      });
+    };
+
+    document.addEventListener("scroll", setActiveLink, {passive:true});
+    window.addEventListener("load", setActiveLink);
+
+    // Traducción automática ES/EN
+    const LANG_KEY = "koolred_lang";
+    const langBtn = document.querySelector(".lang-btn");
+
+    const applyLang = (lang) => {
+      const select = document.querySelector(".goog-te-combo");
+      if(!select){return false;}
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+      return true;
+    };
+
+    const toggleLang = () => {
+      const current = localStorage.getItem(LANG_KEY) || "es";
+      const next = current === "en" ? "es" : "en";
+      localStorage.setItem(LANG_KEY, next);
+      if(!applyLang(next)){
+        setTimeout(() => applyLang(next), 600);
+      }
+    };
+
+    if(langBtn){
+      langBtn.addEventListener("click", toggleLang);
+    }
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "es",
+        includedLanguages: "es,en",
+        autoDisplay: false
+      }, "google_translate_element");
+
+      const saved = localStorage.getItem(LANG_KEY);
+      if(saved && saved !== "es"){
+        setTimeout(() => applyLang(saved), 600);
+      }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
