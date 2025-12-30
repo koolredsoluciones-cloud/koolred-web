@@ -54,6 +54,8 @@
     .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+    .media-frame{border-radius:16px;overflow:hidden;background:#0b1220;aspect-ratio:16 / 9}
+    .media-frame video{width:100%;height:100%;object-fit:cover;display:block}
     .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     .stat b{font-size:20px}
     .section{padding:26px 0}
@@ -146,6 +148,13 @@
 
           <div class="card fade-in">
             <div class="pill">Revisión técnica <span class="dot" style="width:8px;height:8px"></span></div>
+            <div style="height:12px"></div>
+            <div class="media-frame" aria-label="Video de interventoria tecnica">
+              <video autoplay muted loop playsinline preload="metadata" poster="../assets/LOGO%20.png" aria-label="Interventoria tecnica en obra">
+                <source src="../assets/interventoria.mp4" type="video/mp4" />
+                Tu navegador no soporta video HTML5.
+              </video>
+            </div>
             <div style="height:12px"></div>
             <div class="stats">
               <div class="card stat">
