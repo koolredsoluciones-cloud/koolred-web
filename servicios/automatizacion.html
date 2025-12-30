@@ -33,9 +33,12 @@
     .dropdown:hover .submenu,
     .dropdown:focus-within .submenu{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;letter-spacing:.2px;transition:transform .2s ease, box-shadow .2s ease, filter .2s ease, background .2s ease}
-    .btn.primary{background:var(--brand-blue);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(21,35,84,.18)}
-    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,35,84,.24);filter:brightness(1.08)}
-    .btn:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(21,35,84,.18)}
+    .btn.primary{background:var(--brand);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(210,24,42,.18)}
+    .btn.secondary{background:var(--brand-blue);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(21,35,84,.18)}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,24,42,.22);filter:brightness(1.08)}
+    .btn.secondary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,35,84,.24);filter:brightness(1.08)}
+    .btn.primary:focus-visible{outline:2px solid rgba(210,24,42,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(210,24,42,.18)}
+    .btn.secondary:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(21,35,84,.18)}
     .btn:active{transform:translateY(0);filter:brightness(0.97)}
     .nav-actions{display:flex;align-items:center;gap:10px}
     .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:700;font-size:12px;letter-spacing:.2px;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
@@ -134,9 +137,9 @@
               sin promesas complejas ni paradas innecesarias. Entregamos control estable y mejoras medibles.
             </p>
             <div class="cta">
-              <a class="btn primary" href="#contacto">Solicitar propuesta</a>
-              <a class="btn" href="../index.html#proyectos">Ver casos</a>
-              <a class="btn" href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn secondary" href="#contacto">Solicitar propuesta</a>
+              <a class="btn secondary" href="../index.html#proyectos">Ver casos</a>
+              <a class="btn secondary" href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
             </div>
             <p class="small" style="margin-top:10px;">Optimización con riesgos controlados y entrega documentada.</p>
           </div>
@@ -269,7 +272,7 @@
               <input id="company" placeholder="Empresa (opcional)" />
               <input id="phone" placeholder="Teléfono / WhatsApp" required />
               <textarea id="msg" placeholder="Describe tu necesidad (alcance, ciudad, fecha, etc.)" required></textarea>
-              <button class="btn primary" type="submit">Enviar por WhatsApp</button>
+              <button class="btn secondary" type="submit">Enviar por WhatsApp</button>
               <div class="small">* Esto abre WhatsApp con el mensaje listo.</div>
             </form>
           </div>
