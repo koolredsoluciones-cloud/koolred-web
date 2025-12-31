@@ -15,11 +15,11 @@
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10;transition:all .3s ease}
+    header{position:sticky;top:0;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.12);z-index:10;transition:all .3s ease}
     header.scrolled{padding:6px 0;border-bottom-color:rgba(0,0,0,.06);box-shadow:0 10px 30px rgba(0,0,0,.06);background:rgba(255,255,255,.96)}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:18px;transition:padding .3s ease}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:18px;transition:padding .3s ease}
     .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
-    .logo img{height:66px;width:auto;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.08))}
+    .logo img{height:52px;width:auto;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.08))}
     .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block}
     .links{display:flex;gap:18px;flex-wrap:wrap;position:relative}
     .links a{display:block;color:var(--text);font-weight:700;font-size:14px;letter-spacing:.2px;position:relative;transition:color .2s ease}
@@ -32,13 +32,21 @@
     .submenu a:hover{background:rgba(0,0,0,.03);color:var(--brand)}
     .dropdown:hover .submenu,
     .dropdown:focus-within .submenu{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700;letter-spacing:.2px;transition:transform .2s ease, box-shadow .2s ease, filter .2s ease}
-    .btn.primary{background:var(--brand);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(210,24,42,.18)}
-    .btn.secondary{background:var(--brand-blue);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(21,35,84,.18)}
-    .btn.primary:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(210,24,42,.22);filter:brightness(1.06)}
-    .btn.secondary:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(21,35,84,.24);filter:brightness(1.06)}
-    .btn.primary:focus-visible{outline:2px solid rgba(210,24,42,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(210,24,42,.18)}
-    .btn.secondary:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(21,35,84,.18)}
+            .btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 18px;border-radius:12px;border:1px solid rgba(21,35,84,.22);background:transparent;color:var(--text);font-weight:700;letter-spacing:.2px;line-height:1.1;transform:translateZ(0);transition:transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s cubic-bezier(.16,1,.3,1), filter .18s ease, border-color .18s ease, background .18s ease}
+    .btn::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(var(--btn-border-angle,120deg), var(--btn-border-1, transparent), var(--btn-border-2, transparent));-webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);mask-composite:exclude;opacity:var(--btn-border-opacity,0);transition:opacity .18s ease, background .18s ease;pointer-events:none}
+    .btn.secondary{padding-right:34px}
+    .btn.secondary::after{content:"\2192";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.7;transition:transform .18s ease, opacity .18s ease;pointer-events:none}
+    .btn.primary{--btn-border-angle:140deg;--btn-border-1:rgba(255,58,74,.35);--btn-border-2:rgba(178,18,34,.75);--btn-border-opacity:.35;background:var(--brand);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(210,24,42,.2), 0 0 0 1px rgba(210,24,42,.25)}
+    .btn.secondary{--btn-border-angle:150deg;--btn-border-1:rgba(74,124,207,.5);--btn-border-2:rgba(15,26,64,.85);--btn-border-opacity:.35;background:linear-gradient(160deg, rgba(30,58,122,.98), rgba(15,26,64,.98));color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(21,35,84,.22), 0 0 0 1px rgba(21,35,84,.24)}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.03)}
+    .btn.primary:hover{box-shadow:0 16px 34px rgba(210,24,42,.28), 0 0 0 1px rgba(255,58,74,.5), 0 0 26px rgba(210,24,42,.25);--btn-border-opacity:.85;--btn-border-angle:210deg}
+    .btn.secondary:hover{box-shadow:0 18px 36px rgba(21,35,84,.28), 0 0 0 1px rgba(74,124,207,.55), 0 0 28px rgba(21,35,84,.25);--btn-border-opacity:.9;--btn-border-angle:210deg}
+    .btn.secondary:hover::after{transform:translate(3px,-50%);opacity:1}
+    .btn:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(21,35,84,.18);--btn-border-opacity:1}
+    .btn.primary:focus-visible{outline-color:rgba(210,24,42,.6);box-shadow:0 0 0 3px rgba(210,24,42,.2), 0 0 0 1px rgba(255,58,74,.4)}
+    .btn.secondary:focus-visible{outline-color:rgba(74,124,207,.6);box-shadow:0 0 0 3px rgba(21,35,84,.2), 0 0 0 1px rgba(74,124,207,.45)}
+    .btn:active{transform:translateY(0);filter:brightness(.98)}
+
     .nav-actions{display:flex;align-items:center;gap:10px}
     .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:700;font-size:12px;letter-spacing:.2px;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
     .lang-btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.06);background:rgba(0,0,0,.03)}
@@ -67,6 +75,134 @@
     .slider-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
     .slider-dot{width:8px;height:8px;border-radius:999px;border:0;background:var(--line);cursor:pointer}
     .slider-dot.active{background:var(--brand)}
+    .slider{position:relative}
+    .slider-separator{
+      width:calc(100% - 36px);
+      max-width:var(--max);
+      height:1px;
+      margin:18px auto;
+      background:linear-gradient(90deg, transparent, rgba(21,35,84,.18), transparent);
+    }
+    .slider .slide-media{
+      position:relative;
+      box-shadow:0 10px 22px rgba(21,35,84,.12);
+      transition:box-shadow .35s ease;
+    }
+    .slider .slide-media video{transition:transform .4s ease}
+    .slider .slide:hover .slide-media{box-shadow:0 16px 30px rgba(21,35,84,.18)}
+    .slider .slide:hover .slide-media video{transform:scale(1.02)}
+    .slider--a .slider-shell{background:linear-gradient(180deg, rgba(21,35,84,.06), rgba(21,35,84,.02))}
+    .slider--a .slider-shell::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:radial-gradient(rgba(21,35,84,.2) 0.6px, transparent 0.6px);
+      background-size:18px 18px;
+      opacity:.12;
+      pointer-events:none;
+    }
+    .slider--a .slider-track{position:relative;z-index:1}
+    .slider--a .slide{
+      background:linear-gradient(160deg, rgba(255,255,255,.96), rgba(241,245,252,.9));
+      border:1px solid rgba(21,35,84,.16);
+      box-shadow:0 18px 34px rgba(21,35,84,.1);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
+      transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    .slider--a .slide:hover{
+      transform:translateY(-3px);
+      box-shadow:0 24px 46px rgba(21,35,84,.14);
+      border-color:rgba(21,35,84,.3);
+    }
+    .slider--a .slide-body{
+      position:relative;
+      padding:14px 16px;
+      border-radius:14px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(21,35,84,.18);
+      box-shadow:0 10px 20px rgba(21,35,84,.08);
+    }
+    .slider--a .slide-body::before{
+      content:attr(data-label);
+      display:block;
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(21,35,84,.62);
+      margin-bottom:6px;
+    }
+    .slider--a .slide-body::after{
+      content:"";
+      position:absolute;
+      left:14px;
+      right:14px;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(21,35,84,.45), transparent);
+      opacity:.7;
+    }
+    .slider--a .slider-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      border:1px solid rgba(21,35,84,.2);
+      background:rgba(21,35,84,.16);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .slider--a .slider-dot.active{
+      background:var(--brand-blue);
+      box-shadow:0 0 0 2px rgba(21,35,84,.18), 0 8px 16px rgba(21,35,84,.2);
+      transform:scale(1.1);
+    }
+    .slider--b .slider-shell{background:linear-gradient(180deg, rgba(21,35,84,.03), rgba(21,35,84,.01))}
+    .slider--b .slider-shell::before{content:none}
+    .slider--b .slide{
+      background:#ffffff;
+      border:1px solid rgba(21,35,84,.12);
+      box-shadow:0 12px 24px rgba(21,35,84,.08);
+      transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .slider--b .slide:hover{
+      transform:translateY(-2px);
+      box-shadow:0 20px 36px rgba(21,35,84,.12);
+      border-color:rgba(21,35,84,.2);
+    }
+    .slider--b .slide-body{
+      position:relative;
+      padding:6px 2px 2px;
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity .35s ease, transform .35s ease;
+    }
+    .slider--b .slide-body::before{
+      content:attr(data-kicker);
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(21,35,84,.7);
+      margin-bottom:6px;
+    }
+    .slider--b .slide.is-active .slide-body{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .slider--b .slider-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:rgba(21,35,84,.18);
+      transition:width .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .slider--b .slider-dot.active{
+      width:22px;
+      background:var(--brand-blue);
+      box-shadow:0 0 0 3px rgba(21,35,84,.14), 0 8px 18px rgba(21,35,84,.22);
+    }
+    .slider .slider-dot:focus-visible,
+    .slider .slider-btn:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px}
+
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
     .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -101,9 +237,17 @@
 
     /* Respeto a usuarios con reducción de movimiento */
     @media (prefers-reduced-motion: reduce) {
-      header, nav, .btn, .card, .fade-in{transition:none !important;animation:none !important;transform:none !important}
+      header, nav, .btn, .card, .fade-in, .btn::before, .btn::after{transition:none !important;animation:none !important;transform:none !important}
+      .slider .slide,
+      .slider .slide:hover,
+      .slider .slide-media,
+      .slider .slide-media video,
+      .slider .slider-dot,
+      .slider--b .slide-body{transition:none !important;transform:none !important}
     }
+
   </style>
+  <link rel="stylesheet" href="../assets/react/slider-a.css" />
 </head>
 <body>
   <header>
@@ -129,7 +273,7 @@
           <a href="#contacto">Contacto</a>
         </div>
         <div class="nav-actions">
-          <a class="btn primary" href="#contacto">Hablar con un ingeniero</a>
+          <a class="btn primary btn--fx" href="#contacto">Hablar con un ingeniero</a>
           <button class="lang-btn" type="button" aria-label="Cambiar idioma ES/EN" translate="no">
             <span class="lang-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -147,95 +291,11 @@
   </header>
 
   <main id="inicio">
-    <section class="slider fade-in" aria-label="Servicios en video">
-      <div class="wrap">
-        <div class="slider-head">
-          <h2>Portafolio de servicios</h2>
-          <div class="slider-actions">
-            <button class="slider-btn prev" type="button" aria-label="Anterior">&#8249;</button>
-            <button class="slider-btn next" type="button" aria-label="Siguiente">&#8250;</button>
-          </div>
-        </div>
-        <div class="slider-shell">
-          <div class="slider-track">
-            <article class="slide">
-              <div class="slide-media">
-                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="../assets/Adecuaciones%20electricas%202.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="slide-body">
-                <b>Adecuaciones eléctricas</b>
-                <p>Intervenciones en tableros, canalizaciones y puesta a tierra con cumplimiento NTC 2050/RETIE.</p>
-                <div style="height:10px"></div>
-                <a class="btn secondary" href="adecuaciones-electricas.html">Ver adecuaciones</a>
-              </div>
-            </article>
-            <article class="slide">
-              <div class="slide-media">
-                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="../assets/HVAC%20VIDEO.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="slide-body">
-                <b>HVAC / BMS</b>
-                <p>Diagnóstico, ajuste de control e integración BMS para confort estable y eficiencia.</p>
-                <div style="height:10px"></div>
-                <a class="btn secondary" href="hvac-bms.html">Ver HVAC / BMS</a>
-              </div>
-            </article>
-                        <article class="slide">
-              <div class="slide-media">
-                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="../assets/interventoria.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="slide-body">
-                <b>Revisión técnica</b>
-                <p>Auditoría de ingeniería y control de cantidades con informes para consorcios.</p>
-                <div style="height:10px"></div>
-                <a class="btn secondary" href="revision-tecnica.html">Solicitar auditoría</a>
-              </div>
-            </article>
-            <article class="slide">
-              <div class="slide-media">
-                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="../assets/Dise%C3%B1o%20el%C3%A9ctrico%20y%20automatizaci%C3%B3n%20profesional%20seg%C3%BAn%20norma%20RETIE%20%20NTC%20%C2%B7%20BMS%20%C2%B7%20Baja%20tensi%C3%B3n.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="slide-body">
-                <b>Automatización</b>
-                <p>Integración PLC/HMI, datos y alarmas para estabilidad de procesos y mejora medible.</p>
-                <div style="height:10px"></div>
-                <a class="btn secondary" href="automatizacion.html">Ver automatización</a>
-              </div>
-            </article>
-            <article class="slide">
-              <div class="slide-media">
-                <video class="slide-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="../assets/mantenimiento.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="slide-body">
-                <b>Mantenimiento</b>
-                <p>Plan preventivo y correctivo con trazabilidad y soporte para activos críticos.</p>
-                <div style="height:10px"></div>
-                <a class="btn secondary" href="mantenimiento.html">Plan de mantenimiento</a>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="slider-dots" aria-label="Navegaci?n de servicios">
-          <button class="slider-dot active" type="button" aria-label="Adecuaciones el?ctricas" data-index="0"></button>
-          <button class="slider-dot" type="button" aria-label="HVAC / BMS" data-index="1"></button>
-          <button class="slider-dot" type="button" aria-label="Revisi?n t?cnica" data-index="2"></button>
-          <button class="slider-dot" type="button" aria-label="Automatizaci?n" data-index="3"></button>
-          <button class="slider-dot" type="button" aria-label="Mantenimiento" data-index="4"></button>
-        </div>
-      </div>
+    <section class="slider-react fade-in" aria-label="Soluciones de ingeniería">
+      <div id="react-slider-a"></div>
     </section>
 
-    <section class="hero fade-in">
+<section class="hero fade-in">
       <div class="wrap">
         <div class="herogrid">
           <div>
@@ -247,9 +307,9 @@
               corporativos, comerciales e industriales.
             </p>
             <div class="cta">
-              <a class="btn secondary" href="#contacto">Solicitar propuesta</a>
-              <a class="btn secondary" href="#servicios">Explorar servicios</a>
-              <a class="btn secondary" href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+              <a class="btn secondary btn--fx" href="#contacto">Solicitar propuesta</a>
+              <a class="btn secondary btn--fx" href="#servicios">Explorar servicios</a>
+              <a class="btn secondary btn--fx" href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">Hablar por WhatsApp</a>
             </div>
             <p class="small" style="margin-top:10px;">* Personaliza el número de WhatsApp y ajusta los textos a tu portafolio.</p>
           </div>
@@ -383,7 +443,7 @@
               <input id="company" placeholder="Empresa (opcional)" />
               <input id="phone" placeholder="Teléfono / WhatsApp" required />
               <textarea id="msg" placeholder="Describe tu necesidad (alcance, ciudad, fecha, etc.)" required></textarea>
-              <button class="btn secondary" type="submit">Enviar por WhatsApp</button>
+              <button class="btn secondary btn--fx" type="submit">Enviar por WhatsApp</button>
               <div class="small">* Esto abre WhatsApp con el mensaje listo.</div>
             </form>
           </div>
@@ -399,6 +459,8 @@
   </footer>
 
   <div id="google_translate_element" aria-hidden="true"></div>
+
+  <script type="module" src="../assets/react/slider-a.js"></script>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
@@ -430,9 +492,9 @@ ${msg}`;
       const scrolled = window.scrollY > 10;
       header.classList.toggle("scrolled", scrolled);
       if(scrolled){
-        nav.style.padding = "8px 0";
+        nav.style.padding = "6px 0";
       }else{
-        nav.style.padding = "14px 0";
+        nav.style.padding = "8px 0";
       }
     });
 
@@ -453,14 +515,16 @@ ${msg}`;
       document.querySelectorAll(".fade-in").forEach(el => el.classList.add("visible"));
     }
 
+    
     // Slider de servicios en video
-    const slider = document.querySelector(".slider");
-    if(slider){
+    const sliders = Array.from(document.querySelectorAll(".slider"));
+    sliders.forEach((slider) => {
       const track = slider.querySelector(".slider-track");
       const slides = Array.from(slider.querySelectorAll(".slide"));
       const prevBtn = slider.querySelector(".slider-btn.prev");
       const nextBtn = slider.querySelector(".slider-btn.next");
       const dots = Array.from(slider.querySelectorAll(".slider-dot"));
+      if(!track || slides.length === 0){return;}
       let index = 0;
       let autoTimer;
 
@@ -486,6 +550,7 @@ ${msg}`;
         index = (i + slides.length) % slides.length;
         track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((dot, di) => dot.classList.toggle("active", di === index));
+        slides.forEach((slide, si) => slide.classList.toggle("is-active", si === index));
         playActiveVideo();
       };
 
@@ -530,7 +595,7 @@ ${msg}`;
 
       setSlide(0);
       startAuto();
-    }
+    });
 
     // Scrollspy sencillo para menú activo
     const sections = Array.from(document.querySelectorAll("main section[id]"));
