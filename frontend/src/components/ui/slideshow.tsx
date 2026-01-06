@@ -172,13 +172,13 @@ export default function Slideshow() {
 
   return (
     <section
-      className="relative w-full"
+      className="hero-slider relative w-full"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <div className="relative h-[100svh] min-h-[100svh] w-full overflow-hidden rounded-[28px] bg-[#0f1a40] shadow-[0_30px_90px_rgba(15,26,64,0.35)]">
+      <div className="hero-frame relative h-[100dvh] min-h-[100vh] w-full overflow-hidden rounded-[28px] bg-[#0f1a40] shadow-[0_30px_90px_rgba(15,26,64,0.35)]">
         <div className="absolute left-3 top-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/70 opacity-80 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur sm:left-5 sm:top-5 sm:h-14 sm:w-14">
           <img
             src="../assets/11zon_cropped.png"
@@ -242,7 +242,7 @@ export default function Slideshow() {
           type="button"
           onClick={prevSlide}
           aria-label="Anterior"
-          className="group absolute left-3 bottom-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/12 text-[20px] font-semibold leading-none text-white/90 shadow-[0_12px_28px_rgba(8,12,28,0.32)] backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white/18 hover:shadow-[0_0_18px_rgba(148,163,184,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/60 motion-reduce:transition-none sm:left-4 sm:bottom-6 sm:h-11 sm:w-11 sm:text-[22px] md:bottom-auto md:top-1/2 md:-translate-y-1/2"
+          className="slider-arrow slider-arrow--prev group absolute left-3 bottom-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/12 text-[20px] font-semibold leading-none text-white/90 shadow-[0_12px_28px_rgba(8,12,28,0.32)] backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white/18 hover:shadow-[0_0_18px_rgba(148,163,184,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/60 motion-reduce:transition-none sm:left-4 sm:bottom-6 sm:h-11 sm:w-11 sm:text-[22px] md:bottom-auto md:top-1/2 md:-translate-y-1/2"
         >
           {"\u2039"}
         </button>
@@ -250,12 +250,12 @@ export default function Slideshow() {
           type="button"
           onClick={nextSlide}
           aria-label="Siguiente"
-          className="group absolute right-3 bottom-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/12 text-[20px] font-semibold leading-none text-white/90 shadow-[0_12px_28px_rgba(8,12,28,0.32)] backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white/18 hover:shadow-[0_0_18px_rgba(148,163,184,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/60 motion-reduce:transition-none sm:right-4 sm:bottom-6 sm:h-11 sm:w-11 sm:text-[22px] md:bottom-auto md:top-1/2 md:-translate-y-1/2"
+          className="slider-arrow slider-arrow--next group absolute right-3 bottom-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/12 text-[20px] font-semibold leading-none text-white/90 shadow-[0_12px_28px_rgba(8,12,28,0.32)] backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white/18 hover:shadow-[0_0_18px_rgba(148,163,184,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/60 motion-reduce:transition-none sm:right-4 sm:bottom-6 sm:h-11 sm:w-11 sm:text-[22px] md:bottom-auto md:top-1/2 md:-translate-y-1/2"
         >
           {"\u203a"}
         </button>
 
-        <div className="pointer-events-none absolute bottom-4 right-4 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/70 backdrop-blur sm:bottom-5 sm:right-6 sm:text-[11px]">
+        <div className="slider-counter pointer-events-none absolute bottom-4 right-4 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/70 backdrop-blur sm:bottom-5 sm:right-6 sm:text-[11px]">
           {`0${current + 1} / 0${total}`}
         </div>
       </div>

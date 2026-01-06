@@ -1,7 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" translate="no">
 <head>
   <meta charset="utf-8" />
+  <meta name="google" content="notranslate" />
+  <meta name="translation" content="notranslate" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KoolRed Soluciones | Ingeniería eléctrica, automatización y control corporativo</title>
   <meta name="description" content="KoolRed Soluciones diseña, integra y mantiene sistemas eléctricos, automatización, HVAC/BMS y tecnología crítica con cumplimiento RETIE/NTC para clientes corporativos, comerciales e industriales." />
@@ -10,13 +12,16 @@
       --bg:#ffffff; --card:#f6f8fc; --text:#1c2b4a; --muted:#55627a;
       --brand:#d2182a; --brand-blue:#152354; --line:#dbe2f0;
       --max:1100px;
+      --page-pad:clamp(16px, 3vw, 36px);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    html, body{margin:0;padding:0;overflow-x:hidden}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b1220;color:var(--text)}
+    main{background:var(--bg)}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--page-pad)}
     :root{--header-h:72px}
-    header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,var(--header-bg-alpha,0));backdrop-filter:blur(var(--header-blur,0px));-webkit-backdrop-filter:blur(var(--header-blur,0px));border-bottom:1px solid rgba(0,0,0,var(--header-border-alpha,0));box-shadow:0 12px 30px rgba(0,0,0,var(--header-shadow-alpha,0));z-index:20;color:var(--header-fg,var(--text));transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,backdrop-filter .2s ease}
+    header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:calc(100vw - 48px);max-width:100vw;background:rgba(255,255,255,var(--header-bg-alpha,0));backdrop-filter:blur(var(--header-blur,0px));-webkit-backdrop-filter:blur(var(--header-blur,0px));border-bottom:1px solid rgba(0,0,0,var(--header-border-alpha,0));box-shadow:0 12px 30px rgba(0,0,0,var(--header-shadow-alpha,0));z-index:20;color:var(--header-fg,var(--text));transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,backdrop-filter .2s ease}
     header.is-top{--header-bg-alpha:0;--header-blur:0px;--header-border-alpha:0;--header-shadow-alpha:0;--header-fg:#ffffff}
     header.is-scrolled{--header-fg:var(--text)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:18px;transition:padding .3s ease}
@@ -27,6 +32,13 @@
     .links a{display:block;color:currentColor;font-weight:700;font-size:14px;letter-spacing:.2px;position:relative;transition:color .2s ease}
     .links a:hover{color:var(--brand)}
     .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:3px;background:var(--brand);border-radius:999px;box-shadow:0 4px 12px rgba(210,24,42,.25)}
+    header.is-top .links a{color:rgba(255,255,255,.96);text-shadow:0 2px 12px rgba(0,0,0,.35)}
+    header.is-top .links a:hover{color:#ffffff}
+    header.is-top .logo img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.28))}
+    header.is-top .lang-btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
+    header.is-top .lang-btn:hover{background:rgba(255,255,255,.22)}
+    header.is-top .nav-toggle{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
+    header.is-top .nav-toggle:hover{background:rgba(255,255,255,.22)}
     .dropdown{position:relative}
     .dropdown::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px;}
     .submenu{position:absolute;top:calc(100% + 10px);left:0;display:flex;flex-direction:column;gap:8px;min-width:230px;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s ease, transform .2s ease;transition-delay:.12s;z-index:15}
@@ -220,6 +232,54 @@
     .slider .slider-btn:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px}
     .slider-react .btn.secondary:hover{box-shadow:0 18px 36px rgba(21,35,84,.28), 0 0 0 1px rgba(74,124,207,.55), 0 0 18px rgba(74,124,207,.28);--btn-border-opacity:.9;--btn-border-angle:210deg}
     .slider-react .btn.secondary:hover::after{transform:translate(2px,-50%)}
+    .slider-react{background:#0b1220;margin:0;padding:0;position:relative}
+    .slider-react::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-1px;
+      height:clamp(48px, 8vh, 110px);
+      background:linear-gradient(to top, rgba(11,18,32,.85), rgba(11,18,32,0));
+      pointer-events:none;
+      z-index:0;
+    }
+    #react-slider-a{width:100%;max-width:none;margin:0;padding:0;position:relative;z-index:1}
+    #react-slider-a > section{width:100%;max-width:none;margin:0}
+    #react-slider-a > section > div{width:100%;max-width:none;height:100vh;min-height:100vh;margin:0;border-radius:28px;overflow:hidden}
+    @supports (height: 100dvh){
+      #react-slider-a > section > div{height:100dvh;min-height:100dvh}
+    }
+      #react-slider-a .hero-content{
+      padding-top:calc(var(--header-h,72px) + 16px);
+      padding-left:var(--page-pad);
+      padding-right:var(--page-pad);
+      position:relative;
+      z-index:2;
+    }
+    #react-slider-a button[aria-label="Anterior"]{left:20px;z-index:3}
+    #react-slider-a button[aria-label="Siguiente"]{right:20px;z-index:3}
+    #react-slider-a .pointer-events-none.absolute{right:18px;bottom:18px;z-index:3}
+    #react-slider-a .absolute.left-3.top-3.rounded-full{
+      left:auto;
+      top:auto;
+      right:18px;
+      bottom:56px;
+      width:38px;
+      height:38px;
+      opacity:.85;
+      z-index:5;
+      pointer-events:none;
+    }
+    #react-slider-a .absolute.left-3.top-3.rounded-full img{
+      width:20px;
+      height:20px;
+    }
+    @media (min-width:768px){
+      #react-slider-a button[aria-label="Anterior"]{left:26px}
+      #react-slider-a button[aria-label="Siguiente"]{right:26px}
+      #react-slider-a .pointer-events-none.absolute{right:18px;bottom:18px}
+    }
 
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
@@ -238,6 +298,7 @@
     textarea{min-height:120px;resize:vertical}
     footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
     .small{font-size:12px;color:var(--muted)}
+    main section[id]{scroll-margin-top:calc(var(--header-h,72px) + 16px)}
     @media (max-width:900px){
       .herogrid{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
@@ -261,7 +322,8 @@
 
     /* Respeto a usuarios con reducción de movimiento */
     @media (prefers-reduced-motion: reduce) {
-      header, nav, .btn, .card, .fade-in, .btn::before, .btn::after{transition:none !important;animation:none !important;transform:none !important}
+      header, nav, .btn, .card, .fade-in, .btn::before, .btn::after,
+      #react-slider-a button, #react-slider-a .hero-content{transition:none !important;animation:none !important;transform:none !important}
       .slider .slide,
       .slider .slide:hover,
       .slider .slide-media,
@@ -269,6 +331,11 @@
       .slider .slider-dot,
       .slider--b .slide-body{transition:none !important;transform:none !important}
     }
+
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+      header{background:rgba(255,255,255,var(--header-bg-alpha,0.85))}
+    }
+    html, body{margin:0;padding:0;overflow-x:hidden;background:#0b1220}
 
   </style>
   <link rel="stylesheet" href="../assets/react/slider-a.css" />
@@ -533,10 +600,15 @@ ${msg}`;
     // Header glass progresivo al hacer scroll
     const header = document.querySelector("header");
     const root = document.documentElement;
+    let headerTicking = false;
+    let latestScrollY = 0;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
     const updateHeader = () => {
       if(!header){return;}
-      const y = window.scrollY || 0;
-      const progress = Math.min(Math.max(y / 220, 0), 1);
+      const y = latestScrollY;
+      const progress = clamp(y / 220, 0, 1);
       const bgAlpha = (progress * 0.9).toFixed(3);
       const blur = progress === 0 ? 0 : (16 - progress * 10);
       const borderAlpha = (progress * 0.18).toFixed(3);
@@ -553,9 +625,24 @@ ${msg}`;
       root.style.setProperty("--header-h", `${header.offsetHeight}px`);
     };
 
+    const requestHeaderUpdate = () => {
+      if(headerTicking){return;}
+      headerTicking = true;
+      window.requestAnimationFrame(() => {
+        updateHeader();
+        headerTicking = false;
+      });
+    };
+
+    const onScroll = () => {
+      latestScrollY = window.scrollY || 0;
+      requestHeaderUpdate();
+    };
+
+    latestScrollY = window.scrollY || 0;
     updateHeader();
-    window.addEventListener("scroll", updateHeader, {passive:true});
-    window.addEventListener("resize", updateHeader);
+    window.addEventListener("scroll", onScroll, {passive:true});
+    window.addEventListener("resize", onScroll, {passive:true});
     window.addEventListener("load", updateHeader);
 
     const navToggle = document.querySelector(".nav-toggle");
@@ -765,13 +852,3 @@ ${msg}`;
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-    header.is-top .links a{color:rgba(255,255,255,.92)}
-    header.is-top .links a:hover{color:#ffffff}
-    header.is-top .lang-btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
-    header.is-top .lang-btn:hover{background:rgba(255,255,255,.22)}
-    header.is-top .nav-toggle{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
-    header.is-top .nav-toggle:hover{background:rgba(255,255,255,.22)}
-    .slider-react .hero-content{padding-top:calc(var(--header-h,72px) + 8px)}
-    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
-      header{background:rgba(255,255,255,var(--header-bg-alpha,0.85))}
-    }
