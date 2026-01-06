@@ -178,10 +178,10 @@ export default function Slideshow() {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <div className="relative min-h-[78svh] w-full overflow-hidden rounded-[28px] bg-[#0f1a40] shadow-[0_30px_90px_rgba(15,26,64,0.35)] sm:min-h-[82svh] lg:min-h-[88svh]">
+      <div className="relative h-[100svh] min-h-[100svh] w-full overflow-hidden rounded-[28px] bg-[#0f1a40] shadow-[0_30px_90px_rgba(15,26,64,0.35)]">
         <div className="absolute left-3 top-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/70 opacity-80 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur sm:left-5 sm:top-5 sm:h-14 sm:w-14">
           <img
-            src="../assets/LOGO%20.png"
+            src="../assets/11zon_cropped.png"
             alt="KoolRed"
             className="h-7 w-7 object-contain sm:h-9 sm:w-9"
           />
@@ -203,7 +203,7 @@ export default function Slideshow() {
               />
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_25%,rgba(255,255,255,0.06)_0%,rgba(11,16,36,0.45)_55%,rgba(11,16,36,0.85)_100%),linear-gradient(to_top,rgba(11,16,36,0.65),rgba(11,16,36,0.25),transparent)]" />
               <div className="absolute inset-0 flex items-end">
-                <div className="w-full p-4 sm:p-6 md:p-10">
+                <div className="hero-content w-full p-4 sm:p-6 md:p-10">
                   <div
                     className={cn(
                       "max-w-full rounded-xl border border-[rgba(148,163,184,0.28)] bg-[#0b1024]/45 p-5 text-white shadow-[0_18px_40px_rgba(8,12,28,0.38)] backdrop-blur-sm transition-all duration-500 motion-reduce:transition-none sm:max-w-[520px] sm:rounded-2xl sm:p-6 lg:max-w-[720px]",
