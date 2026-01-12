@@ -227,7 +227,7 @@ export default function Slideshow() {
                       <a className="btn secondary w-full sm:w-auto" href={slide.href}>
                         {"Explorar soluci\u00f3n"}
                       </a>
-                      <a className="btn primary w-full sm:w-auto" href="#contacto">
+                          <a className="btn primary w-full sm:w-auto" href="https://wa.me/573154940908">
                         {"Hablar con un ingeniero"}
                       </a>
                     </div>
