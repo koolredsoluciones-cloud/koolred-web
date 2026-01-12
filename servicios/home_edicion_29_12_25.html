@@ -21,9 +21,9 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--page-pad)}
     :root{--header-h:72px}
-    header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:calc(100vw - 48px);max-width:100vw;background:rgba(255,255,255,var(--header-bg-alpha,0));backdrop-filter:blur(var(--header-blur,0px));-webkit-backdrop-filter:blur(var(--header-blur,0px));border-bottom:1px solid rgba(0,0,0,var(--header-border-alpha,0));box-shadow:0 12px 30px rgba(0,0,0,var(--header-shadow-alpha,0));z-index:20;color:var(--header-fg,var(--text));transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,backdrop-filter .2s ease}
-    header.is-top{--header-bg-alpha:0;--header-blur:0px;--header-border-alpha:0;--header-shadow-alpha:0;--header-fg:#ffffff}
-    header.is-scrolled{--header-fg:var(--text)}
+    body > header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:calc(100vw - 48px);max-width:100vw;background:rgba(255,255,255,var(--header-bg-alpha,0));backdrop-filter:blur(var(--header-blur,0px));-webkit-backdrop-filter:blur(var(--header-blur,0px));border-bottom:1px solid rgba(0,0,0,var(--header-border-alpha,0));box-shadow:0 12px 30px rgba(0,0,0,var(--header-shadow-alpha,0));z-index:20;color:var(--header-fg,var(--text));transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,backdrop-filter .2s ease}
+    body > header.is-top{--header-bg-alpha:0;--header-blur:0px;--header-border-alpha:0;--header-shadow-alpha:0;--header-fg:#ffffff}
+    body > header.is-scrolled{--header-fg:var(--text)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:18px;transition:padding .3s ease}
     .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
     .logo img{height:52px;width:auto;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.08))}
@@ -32,13 +32,13 @@
     .links a{display:block;color:currentColor;font-weight:700;font-size:14px;letter-spacing:.2px;position:relative;transition:color .2s ease}
     .links a:hover{color:var(--brand)}
     .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:3px;background:var(--brand);border-radius:999px;box-shadow:0 4px 12px rgba(210,24,42,.25)}
-    header.is-top .links a{color:rgba(255,255,255,.96);text-shadow:0 2px 12px rgba(0,0,0,.35)}
-    header.is-top .links a:hover{color:#ffffff}
-    header.is-top .logo img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.28))}
-    header.is-top .lang-btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
-    header.is-top .lang-btn:hover{background:rgba(255,255,255,.22)}
-    header.is-top .nav-toggle{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
-    header.is-top .nav-toggle:hover{background:rgba(255,255,255,.22)}
+    body > header.is-top .links a{color:rgba(255,255,255,.96);text-shadow:0 2px 12px rgba(0,0,0,.35)}
+    body > header.is-top .links a:hover{color:#ffffff}
+    body > header.is-top .logo img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.28))}
+    body > header.is-top .lang-btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
+    body > header.is-top .lang-btn:hover{background:rgba(255,255,255,.22)}
+    body > header.is-top .nav-toggle{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#ffffff}
+    body > header.is-top .nav-toggle:hover{background:rgba(255,255,255,.22)}
     .dropdown{position:relative}
     .dropdown::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px;}
     .submenu{position:absolute;top:calc(100% + 10px);left:0;display:flex;flex-direction:column;gap:8px;min-width:230px;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s ease, transform .2s ease;transition-delay:.12s;z-index:15}
@@ -281,6 +281,23 @@
       #react-slider-a .pointer-events-none.absolute{right:18px;bottom:18px}
     }
 
+    .layout-section{padding:72px 0;background:var(--bg)}
+    .layout-section--alt{background:rgba(21,35,84,.03)}
+    .section-header{margin:0 0 18px}
+    .section-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .mini-cards{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px}
+    .mini-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--card)}
+    .placeholder-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px}
+    .placeholder-card{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+    .placeholder-card h3{margin:0 0 6px;font-size:16px}
+    .placeholder-card p{margin:0 0 12px}
+    .placeholder-link{color:var(--brand-blue);font-weight:700;font-size:13px}
+    .chip-list{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted);background:#fff}
+    .media-placeholder{height:160px;border-radius:14px;background:linear-gradient(120deg, rgba(21,35,84,.08), rgba(21,35,84,.02));margin-bottom:12px}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:14px}
+    .step{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
     .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
     .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -322,7 +339,7 @@
 
     /* Respeto a usuarios con reducción de movimiento */
     @media (prefers-reduced-motion: reduce) {
-      header, nav, .btn, .card, .fade-in, .btn::before, .btn::after,
+      body > header, nav, .btn, .card, .fade-in, .btn::before, .btn::after,
       #react-slider-a button, #react-slider-a .hero-content{transition:none !important;animation:none !important;transform:none !important}
       .slider .slide,
       .slider .slide:hover,
@@ -333,12 +350,13 @@
     }
 
     @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
-      header{background:rgba(255,255,255,var(--header-bg-alpha,0.85))}
+      body > header{background:rgba(255,255,255,var(--header-bg-alpha,0.85))}
     }
     html, body{margin:0;padding:0;overflow-x:hidden;background:#0b1220}
 
   </style>
   <link rel="stylesheet" href="../assets/react/slider-a.css" />
+  <link rel="stylesheet" href="../frontend/home-cool.css" />
 </head>
 <body>
   <header class="is-top">
@@ -360,7 +378,7 @@
             </div>
           </div>
           <a href="#proyectos">Proyectos</a>
-          <a href="#nosotros">Industria</a>
+          <a href="#industrias">Industria</a>
           <a href="#contacto">Contacto</a>
         </div>
         <div class="nav-actions">
@@ -369,7 +387,7 @@
             <span></span>
             <span></span>
           </button>
-          <a class="btn primary btn--fx" href="#contacto">Hablar con un ingeniero</a>
+          <a class="btn primary btn--fx" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
           <button class="lang-btn" type="button" aria-label="Cambiar idioma ES/EN" translate="no">
             <span class="lang-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -395,174 +413,247 @@
             <a href="mantenimiento.html">Mantenimiento</a>
           </div>
           <a href="#proyectos">Proyectos</a>
-          <a href="#nosotros">Industria</a>
+          <a href="#industrias">Industria</a>
           <a href="#contacto">Contacto</a>
         </div>
       </div>
     </div>
   </header>
 
-  <main id="inicio">
+  <main id="inicio" class="cool-lab">
     <section class="slider-react fade-in" aria-label="Soluciones de ingeniería">
       <div id="react-slider-a"></div>
     </section>
 
-<section class="hero fade-in">
+    <section class="layout-section cool-section" id="valor">
       <div class="wrap">
-        <div class="herogrid">
-          <div>
-            <div class="kicker">Ingeniería · Instalación · Automatización</div>
-            <h1>Ejecución eléctrica y automatización crítica para operaciones corporativas.</h1>
-            <p>
-              Diseñamos, construimos e integramos sistemas eléctricos, automatización y control (BMS/HVAC),
-              redes y baja tensión. Aseguramos continuidad operativa, cumplimiento normativo y trazabilidad en sitios
-              corporativos, comerciales e industriales.
-            </p>
-            <div class="cta">
-              <a class="btn secondary btn--fx" href="#contacto">Solicitar propuesta</a>
-              <a class="btn secondary btn--fx" href="#servicios">Explorar servicios</a>
-              <a class="btn secondary btn--fx" href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        <div class="split value-split">
+          <div class="value-copy" data-reveal>
+            <p class="eyebrow">INGENIERIA &middot; INSTALACION &middot; AUTOMATIZACION</p>
+            <h2>Soluciones de ingenier&iacute;a para operaciones cr&iacute;ticas</h2>
+            <p class="lead">Reducimos riesgo operativo con ejecuci&oacute;n controlada, cumplimiento RETIE/NTC y trazabilidad. Respuesta r&aacute;pida cuando la continuidad no puede esperar.</p>
+            <p class="trust-line">DOCUMENTACI&Oacute;N &middot; VERIFICACI&Oacute;N &middot; TRAZABILIDAD &middot; SOPORTE</p>
+            <div class="section-actions">
+              <a class="btn primary" href="#contacto">Solicitar propuesta</a>
+              <a class="btn secondary" href="#servicios">Explorar servicios</a>
             </div>
-            <p class="small" style="margin-top:10px;">* Personaliza el número de WhatsApp y ajusta los textos a tu portafolio.</p>
-          </div>
-
-          <div class="card">
-            <div class="pill">Enfoque corporativo <span class="dot" style="width:8px;height:8px"></span></div>
-            <div style="height:12px"></div>
-            <div class="stats">
-              <div class="card stat">
-                <b>RETIE / NTC</b>
-                <div class="small">Cumplimiento normativo, memorias y planos ejecutivos.</div>
-              </div>
-              <div class="card stat">
-                <b>Proyectos integrales</b>
-                <div class="small">Diseño, control, baja tensión y distribución eléctrica coordinada.</div>
-              </div>
-              <div class="card stat">
-                <b>Calidad</b>
-                <div class="small">Pruebas, comisionamiento y entrega documentada.</div>
-              </div>
-              <div class="card stat">
-                <b>Soporte</b>
-                <div class="small">Soporte 24/7, mantenimiento preventivo y mejoras continuas.</div>
-              </div>
+            <div class="intent-chips">
+              <a class="intent-chip" href="https://wa.me/573154940908">Urgencia operativa</a>
+              <a class="intent-chip" href="#servicios" data-scroll="#servicios">Proyecto nuevo</a>
+              <a class="intent-chip" href="#servicios" data-scroll="#servicios" data-highlight="automatizacion">Automatizaci&oacute;n / IA</a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="servicios">
-      <div class="wrap">
-        <div class="title">
-          <h2>Servicios</h2>
-          <span class="small">Selecciona 3–6 servicios clave para no saturar.</span>
-        </div>
-        <div class="grid">
-          <div class="card svc fade-in">
-            <h3>Instalaciones eléctricas</h3>
-            <p>Tableros, circuitos, canalizaciones, puestas a tierra e iluminación con cálculos, coordinación y puesta en servicio.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>Automatización y control</h3>
-            <p>PLC/HMI, lógica de control, integración de datos, monitoreo centralizado y optimización de procesos.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>HVAC / BMS</h3>
-            <p>Levantamiento, diagnóstico, mantenimiento preventivo y mejoras de control para confort, eficiencia y alarmas.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>Baja tensión</h3>
-            <p>CCTV, redes, control de acceso, intercom y canalización estructurada con continuidad y soporte.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>Energía solar (On-grid)</h3>
-            <p>Evaluación técnica, dimensionamiento, trámites y montaje con análisis de retorno y normativa vigente.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>Revisión de calidad y cantidades</h3>
-            <p>Auditoría técnica, verificación de obra, cubicaciones y control de programación.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="proyectos">
-      <div class="wrap">
-        <div class="title">
-          <h2>Experiencia</h2>
-          <span class="small">Presenta 4–8 proyectos reales (ideal con fotos y métricas).</span>
-        </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <b>Edificio corporativo - Retrofit eléctrico y BMS</b>
-            <p class="small">Renovación de tableros, control HVAC y monitoreo centralizado; reducción de fallas y consumo.</p>
-          </div>
-          <div class="card fade-in">
-            <b>Planta logística - Automatización de procesos</b>
-            <p class="small">Integración PLC/HMI con trazabilidad, alarmas y disminución de tiempos muertos.</p>
-          </div>
-          <div class="card fade-in">
-            <b>Red de oficinas - Seguridad y conectividad</b>
-            <p class="small">CCTV, control de acceso y red estructurada con soporte 24/7 y redundancia.</p>
+          <div class="benefits-stack">
+            <div class="risk-flow" data-reveal>
+              <p class="eyebrow">As&iacute; reducimos riesgo operativo en 3 pasos</p>
+              <ol class="risk-steps">
+                <li>
+                  <span class="risk-step-title">Cumplimiento normativo</span>
+                  <span class="risk-step-text">Normativa integrada al dise&ntilde;o y la ejecuci&oacute;n.</span>
+                </li>
+                <li>
+                  <span class="risk-step-title">Ejecuci&oacute;n verificada</span>
+                  <span class="risk-step-text">Probamos, documentamos y validamos antes de entregar.</span>
+                </li>
+                <li>
+                  <span class="risk-step-title">Soporte continuo</span>
+                  <span class="risk-step-text">Acompa&ntilde;amiento t&eacute;cnico cuando la operaci&oacute;n lo exige.</span>
+                </li>
+              </ol>
+            </div>
+            <div class="mini-cards" data-reveal>
+              <div class="mini-card">
+                <strong>RETIE / NTC</strong>
+                <p class="small">Ingenier&iacute;a y cumplimiento integrados desde el dise&ntilde;o hasta la entrega.</p>
+                <a class="mini-link" href="https://wa.me/573154940908">Hablar con un ingeniero &rarr;</a>
+              </div>
+              <div class="mini-card">
+                <strong>Proyectos integrales</strong>
+                <p class="small">Un solo responsable del sistema completo: dise&ntilde;o, instalaci&oacute;n y puesta en marcha.</p>
+                <a class="mini-link" href="#servicios">Ver c&oacute;mo lo hacemos &rarr;</a>
+              </div>
+              <div class="mini-card">
+                <strong>Calidad</strong>
+                <p class="small">Nada se entrega sin pruebas, documentaci&oacute;n y validaci&oacute;n en campo.</p>
+                <a class="mini-link" href="#proyectos">Ver c&oacute;mo lo hacemos &rarr;</a>
+              </div>
+              <div class="mini-card">
+                <strong>Soporte</strong>
+                <p class="small">Acompa&ntilde;amiento t&eacute;cnico cuando la operaci&oacute;n lo exige.</p>
+                <a class="mini-link" href="https://wa.me/573154940908">Hablar con un ingeniero &rarr;</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-in" id="nosotros">
+    <section class="layout-section layout-section--alt cool-section" id="servicios">
       <div class="wrap">
-        <div class="split">
-          <div class="card">
-            <h2 style="margin:0 0 8px">Nosotros</h2>
-            <p>
-              En KoolRed operamos con disciplina de ingeniería: alcance claro, documentación completa,
-              estándares RETIE/NTC, supervisión en campo y ejecución ordenada. Entregamos soluciones confiables,
-              escalables y fáciles de mantener.
-            </p>
-            <div style="height:10px"></div>
-            <div class="pill">Cobertura: Bogotá y proyectos nacionales</div>
+        <header class="section-header" data-reveal>
+          <p class="eyebrow">SERVICIOS PRINCIPALES</p>
+          <h2>Servicios principales</h2>
+          <p class="section-lede">Portafolio priorizado para resultados medibles en infraestructura cr&iacute;tica.</p>
+        </header>
+        <div class="services-mosaic" data-reveal>
+          <a class="service-card service-card--xl" href="automatizacion.html" data-service="automatizacion">
+            <span class="service-tag is-popular">M&aacute;s solicitado</span>
+            <h3>Automatizaci&oacute;n y control</h3>
+            <p>PLC/HMI, integraci&oacute;n de datos y alarmas para procesos estables y medibles.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+          <a class="service-card service-card--md" href="adecuaciones-electricas.html">
+            <span class="service-tag is-critical">Cr&iacute;tico</span>
+            <h3>Adecuaciones el&eacute;ctricas</h3>
+            <p>Tableros, canalizaciones y puesta a tierra con RETIE/NTC.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+          <a class="service-card service-card--sm" href="cableado-estructurado.html">
+            <span class="service-tag is-critical">Cr&iacute;tico</span>
+            <h3>Cableado estructurado</h3>
+            <p>Dise&ntilde;o, certificaci&oacute;n y redes confiables.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+          <a class="service-card service-card--sm" href="cctv.html">
+            <span class="service-tag is-critical">Cr&iacute;tico</span>
+            <h3>Seguridad electr&oacute;nica</h3>
+            <p>CCTV, accesos y monitoreo continuo.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+          <a class="service-card service-card--md" href="adecuaciones-electricas.html">
+            <span class="service-tag is-critical">Cr&iacute;tico</span>
+            <h3>Tableros y distribuci&oacute;n</h3>
+            <p>Dise&ntilde;o, coordinaci&oacute;n y respaldo el&eacute;ctrico.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+          <a class="service-card service-card--sm" href="mantenimiento.html">
+            <span class="service-tag is-popular">M&aacute;s solicitado</span>
+            <h3>Mantenimiento y soporte</h3>
+            <p>Plan preventivo y correctivo para activos cr&iacute;ticos.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+          <a class="service-card service-card--sm" href="ia-n8n.html">
+            <span class="service-tag is-new">Nuevo</span>
+            <h3>IA con n8n</h3>
+            <p>Asistentes y flujos inteligentes para correos, reportes, licitaciones y operaciones.</p>
+            <span class="service-link">Ver detalle &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout-section cool-section" id="industrias">
+      <div class="wrap">
+        <header class="section-header" data-reveal>
+          <p class="eyebrow">INDUSTRIAS</p>
+          <h2>Industrias donde operamos</h2>
+          <p class="section-lede">Experiencia real en entornos corporativos, cr&iacute;ticos e industriales.</p>
+        </header>
+        <div class="industry-grid">
+          <div class="industry-chips" data-reveal>
+            <button class="industry-chip is-active" type="button" data-industry="corporativo" aria-pressed="true">Corporativo</button>
+            <button class="industry-chip" type="button" data-industry="industrial" aria-pressed="false">Industrial</button>
+            <button class="industry-chip" type="button" data-industry="retail" aria-pressed="false">Retail</button>
+            <button class="industry-chip" type="button" data-industry="clinico" aria-pressed="false">Cl&iacute;nico</button>
+            <button class="industry-chip" type="button" data-industry="educativo" aria-pressed="false">Educativo</button>
+            <button class="industry-chip" type="button" data-industry="data" aria-pressed="false">Data/Telecom</button>
           </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">Diferenciales</h3>
-            <ul class="small" style="margin:0;padding-left:18px;line-height:1.7">
-              <li>Equipo técnico con experiencia en obra</li>
-              <li>Levantamientos, memorias y planos claros</li>
-              <li>Control de calidad, pruebas y entregables verificables</li>
-              <li>Soporte postventa, mantenimiento y mejora continua</li>
-            </ul>
+          <div class="industry-panel" data-reveal>
+            <span class="industry-label">Ejemplos</span>
+            <p class="industry-output">UPS, tableros, soporte, continuidad</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-in" id="contacto">
+    <section class="layout-section layout-section--alt cool-section" id="proyectos">
       <div class="wrap">
-        <div class="split">
-          <div class="card">
-            <h2 style="margin:0 0 8px">Contacto</h2>
-            <p>Cuéntanos tu proyecto; respondemos con una ruta de trabajo, tiempos y cotización detallada.</p>
-            <div style="height:10px"></div>
-            <p class="small">
-              <b>Correo:</b> contacto@koolredsoluciones.com<br/>
-              <b>Tel/WhatsApp:</b> +57 XXX XXX XXXX
-              <br/>Disponibilidad: Lun–Vie 8:00–17:30
-            </p>
-          </div>
-          <div class="card">
-            <form onsubmit="sendWhatsApp(event)">
-              <input id="name" placeholder="Nombre" required />
-              <input id="company" placeholder="Empresa (opcional)" />
-              <input id="phone" placeholder="Teléfono / WhatsApp" required />
-              <textarea id="msg" placeholder="Describe tu necesidad (alcance, ciudad, fecha, etc.)" required></textarea>
-              <button class="btn secondary btn--fx" type="submit">Enviar por WhatsApp</button>
-              <div class="small">* Esto abre WhatsApp con el mensaje listo.</div>
-            </form>
-          </div>
+        <header class="section-header" data-reveal>
+          <p class="eyebrow">PROYECTOS DESTACADOS</p>
+          <h2>Proyectos destacados</h2>
+          <p class="section-lede">Resultados medibles en continuidad, control y eficiencia.</p>
+        </header>
+        <div class="projects-track" data-reveal>
+          <article class="project-card">
+            <h3>Edificio corporativo - Retrofit el&eacute;ctrico y BMS</h3>
+            <p><strong>Problema:</strong> fallas recurrentes y consumo alto.</p>
+            <p><strong>Qu&eacute; hicimos:</strong> renovaci&oacute;n de tableros, control HVAC y monitoreo central.</p>
+            <p><strong>Resultado:</strong> reducci&oacute;n de fallas y consumo energ&eacute;tico.</p>
+          </article>
+          <article class="project-card">
+            <h3>Planta log&iacute;stica - Automatizaci&oacute;n de procesos</h3>
+            <p><strong>Problema:</strong> tiempos muertos por paradas no planificadas.</p>
+            <p><strong>Qu&eacute; hicimos:</strong> integraci&oacute;n PLC/HMI con alarmas y trazabilidad.</p>
+            <p><strong>Resultado:</strong> mayor productividad y control operativo.</p>
+          </article>
+          <article class="project-card">
+            <h3>Red de oficinas - Seguridad y conectividad</h3>
+            <p><strong>Problema:</strong> seguridad fragmentada y baja visibilidad.</p>
+            <p><strong>Qu&eacute; hicimos:</strong> CCTV, control de acceso y red estructurada.</p>
+            <p><strong>Resultado:</strong> monitoreo 24/7 y soporte continuo.</p>
+          </article>
+          <article class="project-card">
+            <h3>Centro comercial - Continuidad el&eacute;ctrica</h3>
+            <p><strong>Problema:</strong> riesgo de continuidad en cargas cr&iacute;ticas.</p>
+            <p><strong>Qu&eacute; hicimos:</strong> redistribuci&oacute;n de tableros y respaldo.</p>
+            <p><strong>Resultado:</strong> continuidad estable y cumplimiento RETIE/NTC.</p>
+          </article>
+          <article class="project-card">
+            <h3>Cl&iacute;nico - Monitoreo de &aacute;reas cr&iacute;ticas</h3>
+            <p><strong>Problema:</strong> falta de monitoreo central en equipos cr&iacute;ticos.</p>
+            <p><strong>Qu&eacute; hicimos:</strong> integraci&oacute;n BMS y alarmas inteligentes.</p>
+            <p><strong>Resultado:</strong> respuesta r&aacute;pida y trazabilidad.</p>
+          </article>
         </div>
       </div>
     </section>
-  </main>
+
+    <section class="layout-section cool-section" id="proceso">
+      <div class="wrap">
+        <header class="section-header" data-reveal>
+          <p class="eyebrow">METODO</p>
+          <h2>C&oacute;mo trabajamos</h2>
+          <p class="section-lede">Ruta clara, control de riesgos y entregables verificables.</p>
+        </header>
+        <ol class="timeline" data-reveal>
+          <li class="timeline-step" data-step="01">
+            <h3>Diagn&oacute;stico t&eacute;cnico</h3>
+            <p>Levantamiento, riesgos y KPIs de operaci&oacute;n.</p>
+          </li>
+          <li class="timeline-step" data-step="02">
+            <h3>Ingenier&iacute;a detallada</h3>
+            <p>Planos, memorias, secuencias y plan de ejecuci&oacute;n.</p>
+          </li>
+          <li class="timeline-step" data-step="03">
+            <h3>Ejecuci&oacute;n controlada</h3>
+            <p>Gesti&oacute;n de cambios, pruebas y seguridad en campo.</p>
+          </li>
+          <li class="timeline-step" data-step="04">
+            <h3>Entrega y soporte</h3>
+            <p>Comisionamiento, capacitaci&oacute;n y soporte postventa.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="layout-section layout-section--alt cool-section cool-cta" id="contacto">
+      <div class="wrap">
+        <div class="cta-panel" data-reveal>
+          <div class="cta-copy">
+            <p class="eyebrow">CIERRE TECNICO</p>
+            <h2>Si tu operaci&oacute;n es cr&iacute;tica, no improvises.</h2>
+            <p class="lead">Te respondemos con criterio t&eacute;cnico y una ruta clara de implementaci&oacute;n.</p>
+          </div>
+          <div class="section-actions">
+            <a class="btn primary" href="https://wa.me/573154940908">Hablar con un ingeniero ahora</a>
+            <a class="btn secondary" href="#contacto">Solicitar propuesta &rarr;</a>
+          </div>
+          <p class="small cta-note">Respuesta r&aacute;pida, alcance claro y entregables verificables.</p>
+        </div>
+      </div>
+    </section>
+
+</main>
 
   <footer>
     <div class="wrap">
@@ -573,6 +664,9 @@
   <div id="google_translate_element" aria-hidden="true"></div>
 
   <script type="module" src="../assets/react/slider-a.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js" defer></script>
+  <script src="../frontend/home-cool.js" defer></script>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
@@ -598,7 +692,7 @@ ${msg}`;
     }
 
     // Header glass progresivo al hacer scroll
-    const header = document.querySelector("header");
+    const header = document.querySelector("body > header");
     const root = document.documentElement;
     let headerTicking = false;
     let latestScrollY = 0;
