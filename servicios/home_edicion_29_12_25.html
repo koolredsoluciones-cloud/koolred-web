@@ -21,7 +21,7 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--page-pad)}
     :root{--header-h:72px}
-    body > header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:calc(100vw - 48px);max-width:100vw;background:rgba(255,255,255,var(--header-bg-alpha,0));backdrop-filter:blur(var(--header-blur,0px));-webkit-backdrop-filter:blur(var(--header-blur,0px));border-bottom:1px solid rgba(0,0,0,var(--header-border-alpha,0));box-shadow:0 12px 30px rgba(0,0,0,var(--header-shadow-alpha,0));z-index:20;color:var(--header-fg,var(--text));transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,backdrop-filter .2s ease}
+    body > header{position:fixed;top:0;left:0;right:0;width:100%;background:rgba(255,255,255,var(--header-bg-alpha,0));backdrop-filter:blur(var(--header-blur,0px));-webkit-backdrop-filter:blur(var(--header-blur,0px));border-bottom:1px solid rgba(0,0,0,var(--header-border-alpha,0));box-shadow:0 12px 30px rgba(0,0,0,var(--header-shadow-alpha,0));z-index:20;color:var(--header-fg,var(--text));transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,backdrop-filter .2s ease}
     body > header.is-top{--header-bg-alpha:0;--header-blur:0px;--header-border-alpha:0;--header-shadow-alpha:0;--header-fg:#ffffff}
     body > header.is-scrolled{--header-fg:var(--text)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:18px;transition:padding .3s ease}
@@ -503,7 +503,7 @@
             <span class="service-link">Ver detalle &rarr;</span>
           </a>
           <a class="service-card service-card--md" href="adecuaciones-electricas.html">
-            <span class="service-tag is-critical">Cr&iacute;tico</span>
+            <span class="service-tag is-popular">Cr&iacute;tico</span>
             <h3>Adecuaciones el&eacute;ctricas</h3>
             <p>Tableros, canalizaciones y puesta a tierra con RETIE/NTC.</p>
             <span class="service-link">Ver detalle &rarr;</span>
@@ -514,8 +514,8 @@
             <p>Dise&ntilde;o, certificaci&oacute;n y redes confiables.</p>
             <span class="service-link">Ver detalle &rarr;</span>
           </a>
-          <a class="service-card service-card--sm" href="cctv.html">
-            <span class="service-tag is-critical">Cr&iacute;tico</span>
+          <a class="service-card service-card--sm" href="#contacto">
+            <span class="service-tag is-popular">Cr&iacute;tico</span>
             <h3>Seguridad electr&oacute;nica</h3>
             <p>CCTV, accesos y monitoreo continuo.</p>
             <span class="service-link">Ver detalle &rarr;</span>
@@ -533,7 +533,7 @@
             <span class="service-link">Ver detalle &rarr;</span>
           </a>
           <a class="service-card service-card--sm" href="ia-n8n.html">
-            <span class="service-tag is-new">Nuevo</span>
+            <span class="service-tag is-popular">Nuevo</span>
             <h3>IA con n8n</h3>
             <p>Asistentes y flujos inteligentes para correos, reportes, licitaciones y operaciones.</p>
             <span class="service-link">Ver detalle &rarr;</span>

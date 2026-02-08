@@ -14,6 +14,15 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
+    id: "ia-n8n",
+    titleLines: ["Automatizaci\u00f3n inteligente", "para tu operaci\u00f3n"],
+    kicker: "IA + n8n",
+    description:
+      "Implementamos asistentes y flujos con IA que leen correos, clasifican informaci\u00f3n y generan acciones autom\u00e1ticas en segundos.",
+    href: "ia-n8n.html",
+    videoSrc: "../assets/n8nai.mp4",
+  },
+  {
     id: "adecuaciones",
     titleLines: ["Adecuaciones", "el\u00e9ctricas"],
     kicker: "Energ\u00eda",
@@ -29,7 +38,7 @@ const SLIDES: Slide[] = [
     description:
       "Dise\u00f1o, instalaci\u00f3n y certificaci\u00f3n de cableado estructurado, redes y canalizaciones.",
     href: "cableado-estructurado.html",
-    videoSrc: "",
+    videoSrc: "../assets/cableado%20estructurado%20.mp4",
   },
   {
     id: "cctv",
@@ -108,7 +117,6 @@ function SlideVideo({
   isActive: boolean;
   label: string;
 }) {
-  const prefersReducedMotion = usePrefersReducedMotion();
   const ref = React.useRef<HTMLVideoElement | null>(null);
 
   React.useEffect(() => {
@@ -116,13 +124,13 @@ function SlideVideo({
     if (!video) {
       return;
     }
-    if (prefersReducedMotion || !isActive) {
+    if (!isActive) {
       video.pause();
       video.currentTime = 0;
       return;
     }
     video.play().catch(() => {});
-  }, [isActive, prefersReducedMotion]);
+  }, [isActive]);
 
   if (!src) {
     return (
@@ -142,6 +150,7 @@ function SlideVideo({
       )}
       muted
       playsInline
+      autoPlay
       loop
       preload="metadata"
       aria-label={label}
