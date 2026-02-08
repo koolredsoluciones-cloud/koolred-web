@@ -5,8 +5,8 @@
   <meta name="google" content="notranslate" />
   <meta name="translation" content="notranslate" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KoolRed Soluciones | Ingeniería eléctrica, automatización y control corporativo</title>
-  <meta name="description" content="KoolRed Soluciones diseña, integra y mantiene sistemas eléctricos, automatización, HVAC/BMS y tecnología crítica con cumplimiento RETIE/NTC para clientes corporativos, comerciales e industriales." />
+  <title>KoolRed Soluciones | Ingenier&iacute;a integral para operaciones cr&iacute;ticas</title>
+  <meta name="description" content="Ingenier&iacute;a integral para operaciones cr&iacute;ticas: electricidad RETIE/NTC, automatizaci&oacute;n, HVAC, CCTV, consultor&iacute;a y automatizaci&oacute;n digital con ejecuci&oacute;n verificada y soporte." />
   <style>
     :root{
       --bg:#ffffff; --card:#f6f8fc; --text:#1c2b4a; --muted:#55627a;
@@ -337,7 +337,7 @@
     .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
 
-    /* Respeto a usuarios con reducción de movimiento */
+    /* Respeto a usuarios con reduccion de movimiento */
     @media (prefers-reduced-motion: reduce) {
       body > header, nav, .btn, .card, .fade-in, .btn::before, .btn::after,
       #react-slider-a button, #react-slider-a .hero-content{transition:none !important;animation:none !important;transform:none !important}
@@ -357,6 +357,7 @@
   </style>
   <link rel="stylesheet" href="../assets/react/slider-a.css" />
   <link rel="stylesheet" href="../frontend/home-cool.css" />
+  <link rel="stylesheet" href="../frontend/segment-toggle.css" />
 </head>
 <body>
   <header class="is-top">
@@ -369,12 +370,14 @@
           <a href="#inicio">Inicio</a>
           <div class="dropdown">
             <a href="#servicios">Servicios</a>
-            <div class="submenu">
-              <a href="adecuaciones-electricas.html">Adecuaciones eléctricas</a>
+                        <div class="submenu">
+              <a href="adecuaciones-electricas.html">Ingenier&iacute;a el&eacute;ctrica</a>
+              <a href="automatizacion.html">Automatizaci&oacute;n industrial</a>
               <a href="hvac-bms.html">HVAC / BMS</a>
-              <a href="revision-tecnica.html">Revisión técnica</a>
-              <a href="automatizacion.html">Automatización</a>
-              <a href="mantenimiento.html">Mantenimiento</a>
+              <a href="cctv.html">CCTV y seguridad</a>
+              <a href="revision-tecnica.html">Consultor&iacute;a t&eacute;cnica</a>
+              <a href="ia-n8n.html">Automatizaci&oacute;n digital</a>
+              <a href="mantenimiento.html">Soporte operativo</a>
             </div>
           </div>
           <a href="#proyectos">Proyectos</a>
@@ -405,12 +408,14 @@
         <div class="mobile-links">
           <a href="#inicio">Inicio</a>
           <a href="#servicios">Servicios</a>
-          <div class="mobile-sub">
-            <a href="adecuaciones-electricas.html">Adecuaciones el&eacute;ctricas</a>
+                    <div class="mobile-sub">
+            <a href="adecuaciones-electricas.html">Ingenier&iacute;a el&eacute;ctrica</a>
+            <a href="automatizacion.html">Automatizaci&oacute;n industrial</a>
             <a href="hvac-bms.html">HVAC / BMS</a>
-            <a href="revision-tecnica.html">Revisi&oacute;n t&eacute;cnica</a>
-            <a href="automatizacion.html">Automatizaci&oacute;n</a>
-            <a href="mantenimiento.html">Mantenimiento</a>
+            <a href="cctv.html">CCTV y seguridad</a>
+            <a href="revision-tecnica.html">Consultor&iacute;a t&eacute;cnica</a>
+            <a href="ia-n8n.html">Automatizaci&oacute;n digital</a>
+            <a href="mantenimiento.html">Soporte operativo</a>
           </div>
           <a href="#proyectos">Proyectos</a>
           <a href="#industrias">Industria</a>
@@ -421,66 +426,99 @@
   </header>
 
   <main id="inicio" class="cool-lab">
-    <section class="slider-react fade-in" aria-label="Soluciones de ingeniería">
+    <section class="slider-react fade-in" aria-label="Soluciones de ingenier&iacute;a">
       <div id="react-slider-a"></div>
     </section>
 
-    <section class="layout-section cool-section" id="valor">
+        <section class="layout-section cool-section" id="valor">
       <div class="wrap">
         <div class="split value-split">
           <div class="value-copy" data-reveal>
-            <p class="eyebrow">INGENIERIA &middot; INSTALACION &middot; AUTOMATIZACION</p>
-            <h2>Soluciones de ingenier&iacute;a para operaciones cr&iacute;ticas</h2>
-            <p class="lead">Reducimos riesgo operativo con ejecuci&oacute;n controlada, cumplimiento RETIE/NTC y trazabilidad. Respuesta r&aacute;pida cuando la continuidad no puede esperar.</p>
+            <div class="segment-toggle" role="group" aria-label="Selecciona el segmento de operaci&oacute;n">
+              <span class="segment-label">Segmento:</span>
+              <button class="segment-btn is-active" type="button" data-segment="industrial" aria-pressed="true">Industrial</button>
+              <button class="segment-btn" type="button" data-segment="comercial" aria-pressed="false">Comercial</button>
+            </div>
+            <p class="eyebrow">INGENIER&Iacute;A &bull; INSTALACI&Oacute;N &bull; AUTOMATIZACI&Oacute;N &bull; OT/IT</p>
+            <h2 data-segment-text data-industrial="Ingenier&iacute;a integral para plantas 24/7 y procesos cr&iacute;ticos." data-comercial="Infraestructura t&eacute;cnica para sedes corporativas y retail.">Ingenier&iacute;a integral para plantas 24/7 y procesos cr&iacute;ticos.</h2>
+            <p class="lead" data-segment-text data-industrial="Dise&ntilde;amos y ejecutamos infraestructura el&eacute;ctrica, control, HVAC, CCTV y sistemas digitales para operaci&oacute;n continua, con RETIE/NTC, pruebas en campo y trazabilidad OT/IT." data-comercial="Implementamos sistemas el&eacute;ctricos, HVAC, CCTV y automatizaci&oacute;n digital para edificios y comercios, priorizando seguridad, confort, eficiencia y cumplimiento RETIE/NTC sin afectar usuarios.">
+              Dise&ntilde;amos y ejecutamos infraestructura el&eacute;ctrica, control, HVAC, CCTV y sistemas digitales para operaci&oacute;n continua, con RETIE/NTC, pruebas en campo y trazabilidad OT/IT.
+            </p>
+            <ul class="hero-bullets">
+              <li data-segment-text data-industrial="Continuidad de proceso: energ&iacute;a segura, control y alarmas en tiempo real." data-comercial="Confort y experiencia: HVAC estable, iluminaci&oacute;n y accesos.">Continuidad de proceso: energ&iacute;a segura, control y alarmas en tiempo real.</li>
+              <li data-segment-text data-industrial="RETIE/NTC + pruebas de puesta en marcha y documentaci&oacute;n para auditor&iacute;a." data-comercial="Seguridad y cumplimiento: CCTV, control de acceso y reportes.">RETIE/NTC + pruebas de puesta en marcha y documentaci&oacute;n para auditor&iacute;a.</li>
+              <li data-segment-text data-industrial="Soporte operativo y automatizaci&oacute;n digital para reducir paradas." data-comercial="Automatizaci&oacute;n digital para tickets, servicios y ahorro operativo.">Soporte operativo y automatizaci&oacute;n digital para reducir paradas.</li>
+            </ul>
             <p class="trust-line">DOCUMENTACI&Oacute;N &middot; VERIFICACI&Oacute;N &middot; TRAZABILIDAD &middot; SOPORTE</p>
             <div class="section-actions">
-              <a class="btn primary" href="#contacto">Solicitar propuesta</a>
+              <a class="btn primary" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
               <a class="btn secondary" href="#servicios">Explorar servicios</a>
             </div>
             <div class="intent-chips">
               <a class="intent-chip" href="https://wa.me/573154940908">Urgencia operativa</a>
               <a class="intent-chip" href="#servicios" data-scroll="#servicios">Proyecto nuevo</a>
-              <a class="intent-chip" href="#servicios" data-scroll="#servicios" data-highlight="automatizacion">Automatizaci&oacute;n / IA</a>
+              <a class="intent-chip" href="#servicios" data-scroll="#servicios" data-highlight="consultoria">Auditor&iacute;a / Consultor&iacute;a</a>
+              <a class="intent-chip" href="#servicios" data-scroll="#servicios" data-highlight="automatizacion-digital">Automatizaci&oacute;n digital (IA / n8n)</a>
             </div>
           </div>
           <div class="benefits-stack">
             <div class="risk-flow" data-reveal>
-              <p class="eyebrow">As&iacute; reducimos riesgo operativo en 3 pasos</p>
+              <p class="eyebrow">3 PASOS PARA ASEGURAR CONTINUIDAD</p>
               <ol class="risk-steps">
                 <li>
-                  <span class="risk-step-title">Cumplimiento normativo</span>
-                  <span class="risk-step-text">Normativa integrada al dise&ntilde;o y la ejecuci&oacute;n.</span>
+                  <span class="risk-step-title">Diagn&oacute;stico t&eacute;cnico integral</span>
+                  <span class="risk-step-text">El&eacute;ctrico, control, HVAC, CCTV y sistemas digitales.</span>
                 </li>
                 <li>
                   <span class="risk-step-title">Ejecuci&oacute;n verificada</span>
-                  <span class="risk-step-text">Probamos, documentamos y validamos antes de entregar.</span>
+                  <span class="risk-step-text">Instalamos, probamos y documentamos en campo.</span>
                 </li>
                 <li>
-                  <span class="risk-step-title">Soporte continuo</span>
-                  <span class="risk-step-text">Acompa&ntilde;amiento t&eacute;cnico cuando la operaci&oacute;n lo exige.</span>
+                  <span class="risk-step-title">Continuidad operativa</span>
+                  <span class="risk-step-text">Soporte, mejoras y automatizaci&oacute;n de procesos.</span>
                 </li>
               </ol>
             </div>
             <div class="mini-cards" data-reveal>
-              <div class="mini-card">
-                <strong>RETIE / NTC</strong>
-                <p class="small">Ingenier&iacute;a y cumplimiento integrados desde el dise&ntilde;o hasta la entrega.</p>
-                <a class="mini-link" href="https://wa.me/573154940908">Hablar con un ingeniero &rarr;</a>
+              <div class="mini-card kr-card kr-card--hero">
+                <span class="kr-sheen" aria-hidden="true"></span>
+                <div class="kr-card-content">
+                  <strong>Cumplimiento y entrega trazable</strong>
+                  <p class="small">RETIE / NTC &middot; Planos &middot; Memorias &middot; Pruebas &middot; Actas.</p>
+                  <a class="mini-link" href="#proceso">Ver c&oacute;mo trabajamos &rarr;</a>
+                </div>
               </div>
-              <div class="mini-card">
-                <strong>Proyectos integrales</strong>
-                <p class="small">Un solo responsable del sistema completo: dise&ntilde;o, instalaci&oacute;n y puesta en marcha.</p>
-                <a class="mini-link" href="#servicios">Ver c&oacute;mo lo hacemos &rarr;</a>
+              <div class="mini-card kr-card">
+                <span class="kr-sheen" aria-hidden="true"></span>
+                <div class="kr-card-content">
+                  <strong>Automatizaci&oacute;n, SCADA e IoT</strong>
+                  <p class="small">Control, monitoreo, alarmas, historiales y recetas.</p>
+                  <a class="mini-link" href="automatizacion.html">Ver soluciones &rarr;</a>
+                </div>
               </div>
-              <div class="mini-card">
-                <strong>Calidad</strong>
-                <p class="small">Nada se entrega sin pruebas, documentaci&oacute;n y validaci&oacute;n en campo.</p>
-                <a class="mini-link" href="#proyectos">Ver c&oacute;mo lo hacemos &rarr;</a>
+              <div class="mini-card kr-card">
+                <span class="kr-sheen" aria-hidden="true"></span>
+                <div class="kr-card-content">
+                  <strong>HVAC y climatizaci&oacute;n t&eacute;cnica</strong>
+                  <p class="small">Dise&ntilde;o, instalaci&oacute;n y soporte para confort y procesos.</p>
+                  <a class="mini-link" href="hvac-bms.html">Ver proyectos &rarr;</a>
+                </div>
               </div>
-              <div class="mini-card">
-                <strong>Soporte</strong>
-                <p class="small">Acompa&ntilde;amiento t&eacute;cnico cuando la operaci&oacute;n lo exige.</p>
-                <a class="mini-link" href="https://wa.me/573154940908">Hablar con un ingeniero &rarr;</a>
+              <div class="mini-card kr-card">
+                <span class="kr-sheen" aria-hidden="true"></span>
+                <div class="kr-card-content">
+                  <strong>CCTV y seguridad electr&oacute;nica</strong>
+                  <p class="small">C&aacute;maras, control de acceso y monitoreo integrados.</p>
+                  <a class="mini-link" href="cctv.html">Ver soluciones &rarr;</a>
+                </div>
+              </div>
+              <div class="mini-card kr-card">
+                <span class="kr-sheen" aria-hidden="true"></span>
+                <div class="kr-card-content">
+                  <strong>Consultor&iacute;a + Automatizaci&oacute;n digital</strong>
+                  <p class="small">Auditor&iacute;as, optimizaci&oacute;n de procesos, n8n, RPA e IA aplicada.</p>
+                  <a class="mini-link" href="https://wa.me/573154940908">Hablar con un ingeniero &rarr;</a>
+                </div>
               </div>
             </div>
           </div>
@@ -488,56 +526,121 @@
       </div>
     </section>
 
-    <section class="layout-section layout-section--alt cool-section" id="servicios">
+        <section class="layout-section layout-section--alt cool-section" id="servicios">
       <div class="wrap">
         <header class="section-header" data-reveal>
           <p class="eyebrow">SERVICIOS PRINCIPALES</p>
           <h2>Servicios principales</h2>
-          <p class="section-lede">Portafolio priorizado para resultados medibles en infraestructura cr&iacute;tica.</p>
+          <p class="section-lede">Portafolio integral para continuidad, cumplimiento y eficiencia operativa.</p>
         </header>
-        <div class="services-mosaic" data-reveal>
-          <a class="service-card service-card--xl" href="automatizacion.html" data-service="automatizacion">
-            <span class="service-tag is-popular">M&aacute;s solicitado</span>
-            <h3>Automatizaci&oacute;n y control</h3>
-            <p>PLC/HMI, integraci&oacute;n de datos y alarmas para procesos estables y medibles.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+        <div class="services-mosaic">
+          <a class="service-card service-card--featured kr-card kr-card--hero" href="adecuaciones-electricas.html" data-service="electricidad" data-row="1">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag is-critical">RETIE / NTC</span>
+              <h3>Ingenier&iacute;a el&eacute;ctrica (RETIE/NTC)</h3>
+              <p>Continuidad el&eacute;ctrica con cumplimiento RETIE/NTC y entregables verificables para auditor&iacute;a.</p>
+              <span class="service-mini-title">Incluye:</span>
+              <ul class="service-bullets">
+                <li>Planos y memorias con trazabilidad</li>
+                <li>Pruebas, protocolos y actas firmadas</li>
+                <li>Intervenciones sin reprocesos cr&iacute;ticos</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
-          <a class="service-card service-card--md" href="adecuaciones-electricas.html">
-            <span class="service-tag is-popular">Cr&iacute;tico</span>
-            <h3>Adecuaciones el&eacute;ctricas</h3>
-            <p>Tableros, canalizaciones y puesta a tierra con RETIE/NTC.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+          <a class="service-card service-card--auto kr-card" href="automatizacion.html" data-service="automatizacion-industrial" data-row="1">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag is-popular">Cr&iacute;tico</span>
+              <h3>Automatizaci&oacute;n industrial + SCADA/IoT</h3>
+              <p>Control, trazabilidad y estabilidad de procesos cr&iacute;ticos con monitoreo y alarmas en tiempo real.</p>
+              <ul class="service-bullets">
+                <li>PLC/HMI con alarmas y l&oacute;gicas seguras</li>
+                <li>Hist&oacute;ricos y KPIs para decisiones r&aacute;pidas</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
-          <a class="service-card service-card--sm" href="cableado-estructurado.html">
-            <span class="service-tag is-critical">Cr&iacute;tico</span>
-            <h3>Cableado estructurado</h3>
-            <p>Dise&ntilde;o, certificaci&oacute;n y redes confiables.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+          <a class="service-card service-card--cctv kr-card" href="cctv.html" data-service="cctv" data-row="2">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag is-critical">Seguridad</span>
+              <h3>CCTV y seguridad electr&oacute;nica</h3>
+              <p>Seguridad continua con control de accesos y videovigilancia confiable para reducir incidentes cr&iacute;ticos.</p>
+              <ul class="service-bullets">
+                <li>Cobertura, grabaci&oacute;n y monitoreo 24/7</li>
+                <li>Alertas y mantenimiento preventivo</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
-          <a class="service-card service-card--sm" href="#contacto">
-            <span class="service-tag is-popular">Cr&iacute;tico</span>
-            <h3>Seguridad electr&oacute;nica</h3>
-            <p>CCTV, accesos y monitoreo continuo.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+          <a class="service-card service-card--hvac kr-card" href="hvac-bms.html" data-service="hvac" data-row="2">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag">Clima</span>
+              <h3>HVAC y climatizaci&oacute;n</h3>
+              <p>Confort y control t&eacute;rmico estable para procesos y personas sin paradas no planificadas cr&iacute;ticas.</p>
+              <ul class="service-bullets">
+                <li>C&aacute;lculo, selecci&oacute;n y balanceo preciso</li>
+                <li>Mantenimiento y continuidad t&eacute;rmica</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
-          <a class="service-card service-card--md" href="adecuaciones-electricas.html">
-            <span class="service-tag is-critical">Cr&iacute;tico</span>
-            <h3>Tableros y distribuci&oacute;n</h3>
-            <p>Dise&ntilde;o, coordinaci&oacute;n y respaldo el&eacute;ctrico.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+          <a class="service-card service-card--consult kr-card" href="revision-tecnica.html" data-service="consultoria" data-row="2">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag">Auditor&iacute;a</span>
+              <h3>Consultor&iacute;a t&eacute;cnica y auditor&iacute;as</h3>
+              <p>Auditor&iacute;as y soporte experto para decisiones t&eacute;cnicas con menor riesgo y alcance en obra cr&iacute;tica.</p>
+              <ul class="service-bullets">
+                <li>Revisi&oacute;n de cantidades y costos</li>
+                <li>Conceptos t&eacute;cnicos para adjudicar</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
-          <a class="service-card service-card--sm" href="mantenimiento.html">
-            <span class="service-tag is-popular">M&aacute;s solicitado</span>
-            <h3>Mantenimiento y soporte</h3>
-            <p>Plan preventivo y correctivo para activos cr&iacute;ticos.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+          <a class="service-card service-card--digital kr-card" href="ia-n8n.html" data-service="automatizacion-digital" data-row="3">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag is-new">Digital</span>
+              <h3>Automatizaci&oacute;n digital (n8n &middot; RPA &middot; IA)</h3>
+              <p>Eficiencia operativa con flujos y asistentes que reducen tiempos y errores repetitivos.</p>
+              <ul class="service-bullets">
+                <li>Integraciones r&aacute;pidas con sistemas clave</li>
+                <li>Bots y reportes autom&aacute;ticos</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
-          <a class="service-card service-card--sm" href="ia-n8n.html">
-            <span class="service-tag is-popular">Nuevo</span>
-            <h3>IA con n8n</h3>
-            <p>Asistentes y flujos inteligentes para correos, reportes, licitaciones y operaciones.</p>
-            <span class="service-link">Ver detalle &rarr;</span>
+          <a class="service-card service-card--support kr-card" href="mantenimiento.html" data-service="soporte" data-row="3">
+            <span class="kr-sheen" aria-hidden="true"></span>
+            <div class="kr-card-content">
+              <span class="service-tag is-popular">Continuidad</span>
+              <h3>Soporte operativo y continuidad</h3>
+              <p>Continuidad asegurada con mantenimiento planificado y respuesta t&eacute;cnica oportuna para evitar paradas.</p>
+              <ul class="service-bullets">
+                <li>Atenci&oacute;n programada y emergencias</li>
+                <li>KPIs, bit&aacute;cora y trazabilidad</li>
+              </ul>
+              <span class="service-link">Ver servicio &rarr;</span>
+            </div>
           </a>
+        </div>
+        <div class="services-callout">
+          <div class="services-callout__copy">
+            <span class="services-callout__kicker">
+              <span class="services-callout__dot" aria-hidden="true"></span>
+              Asesor&iacute;a t&eacute;cnica
+            </span>
+            <h3>Definimos la ruta t&eacute;cnica correcta para tu operaci&oacute;n</h3>
+            <p>Alcance, riesgos y pr&oacute;ximos pasos en una llamada de 15 minutos.</p>
+          </div>
+          <div class="services-callout__actions">
+            <a class="btn primary" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
+            <a class="btn secondary" href="#contacto">Solicitar propuesta &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -657,7 +760,7 @@
 
   <footer>
     <div class="wrap">
-      © <span id="y"></span> KoolRed Soluciones. Todos los derechos reservados.
+      &copy; <span id="y"></span> KoolRed Soluciones. Todos los derechos reservados.
     </div>
   </footer>
 
@@ -667,6 +770,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js" defer></script>
   <script src="../frontend/home-cool.js" defer></script>
+  <script src="../frontend/segment-toggle.js" defer></script>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
@@ -785,7 +889,7 @@ ${msg}`;
     }
 
 
-    // Animación de entrada con IntersectionObserver
+    // Animacion de entrada con IntersectionObserver
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if(!prefersReduced){
       const observer = new IntersectionObserver((entries) => {
@@ -884,7 +988,7 @@ ${msg}`;
       startAuto();
     });
 
-    // Scrollspy sencillo para menú activo
+    // Scrollspy sencillo para menu activo
     const sections = Array.from(document.querySelectorAll("main section[id]"));
     const links = Array.from(document.querySelectorAll(".links a"));
 
@@ -905,7 +1009,7 @@ ${msg}`;
     document.addEventListener("scroll", setActiveLink, {passive:true});
     window.addEventListener("load", setActiveLink);
 
-    // Traducción automática ES/EN
+    // Traduccion automatica ES/EN
     const LANG_KEY = "koolred_lang";
     const langBtn = document.querySelector(".lang-btn");
 

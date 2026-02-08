@@ -1,0 +1,8 @@
+﻿.segment-toggle{display:inline-flex;align-items:center;gap:8px;padding:6px 8px;border-radius:999px;border:1px solid rgba(21,35,84,0.16);background:rgba(255,255,255,0.85);box-shadow:0 10px 24px rgba(15,26,64,0.08);margin-bottom:12px}
+.segment-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(21,35,84,0.7);padding:0 6px}
+.segment-btn{border:1px solid transparent;border-radius:999px;padding:6px 12px;background:transparent;color:#152354;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease}
+.segment-btn.is-active{background:#152354;color:#fff;border-color:rgba(21,35,84,0.5);box-shadow:0 10px 20px rgba(15,26,64,0.18)}
+.segment-btn:focus-visible{outline:2px solid rgba(88,210,255,0.6);outline-offset:2px}
+.hero-bullets{margin:14px 0 0;padding-left:18px;display:grid;gap:8px;color:#55627a;font-size:14px;line-height:1.6}
+.hero-bullets li{margin:0}
+.segment-note{font-size:12px;color:#55627a}

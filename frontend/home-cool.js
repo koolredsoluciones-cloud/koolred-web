@@ -54,6 +54,67 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
+  const servicesSection = document.querySelector("#servicios");
+  if (servicesSection && window.gsap && !reduced) {
+    const rows = [1, 2, 3].map((row) =>
+      Array.from(
+        servicesSection.querySelectorAll(`.service-card[data-row='${row}']`)
+      )
+    );
+    const callout = servicesSection.querySelector(".services-callout");
+
+    if (rows.some((row) => row.length)) {
+      const animatedItems = rows.flat();
+      if (callout) {
+        animatedItems.push(callout);
+      }
+
+      window.gsap.set(animatedItems, { opacity: 0, y: 10 });
+
+      const animateServices = () => {
+        const tl = window.gsap.timeline({
+          defaults: { duration: 0.15, ease: "power1.out" },
+        });
+
+        rows.forEach((row, index) => {
+          if (!row.length) {
+            return;
+          }
+          tl.fromTo(
+            row,
+            { y: 10, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.05 },
+            index === 0 ? 0 : "+=0.06"
+          );
+        });
+
+        if (callout) {
+          tl.fromTo(
+            callout,
+            { y: 10, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.18 },
+            "+=0.06"
+          );
+        }
+      };
+
+      const servicesObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            animateServices();
+            servicesObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      servicesObserver.observe(servicesSection);
+    }
+  }
+
   const industryMap = {
     corporativo: "UPS, tableros, soporte, continuidad",
     industrial: "VFD, PLC, SCADA, sensores",
@@ -123,9 +184,8 @@
 
   const intentChips = Array.from(document.querySelectorAll(".intent-chip"));
   if (intentChips.length) {
-    const automationCard = document.querySelector(
-      ".service-card[data-service='automatizacion']"
-    );
+    const findCard = (key) =>
+      document.querySelector(`.service-card[data-service='${key}']`);
 
     intentChips.forEach((chip) => {
       chip.addEventListener("click", (event) => {
@@ -140,13 +200,16 @@
           }
         }
 
-        if (highlight === "automatizacion" && automationCard) {
-          window.setTimeout(() => {
-            automationCard.classList.add("is-highlight");
+        if (highlight) {
+          const card = findCard(highlight);
+          if (card) {
             window.setTimeout(() => {
-              automationCard.classList.remove("is-highlight");
-            }, 1800);
-          }, 300);
+              card.classList.add("is-highlight");
+              window.setTimeout(() => {
+                card.classList.remove("is-highlight");
+              }, 1800);
+            }, 300);
+          }
         }
       });
     });
