@@ -316,6 +316,150 @@ main.cool-lab .mini-link:hover {
   color: var(--cool-ink);
 }
 
+/* === Tech Panel (dark dashboard in #valor) === */
+main.cool-lab .tech-panel {
+  background: linear-gradient(160deg, #0f1a40 0%, #152354 60%, #1a2d5e 100%);
+  border-radius: 22px;
+  padding: 24px 26px;
+  box-shadow:
+    0 28px 70px rgba(8, 12, 28, 0.45),
+    0 0 0 1px rgba(88, 210, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+main.cool-lab .tech-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(88, 210, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(128, 88, 255, 0.10), transparent 50%);
+  pointer-events: none;
+}
+
+main.cool-lab .tech-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(160deg, rgba(88, 210, 255, 0.25), transparent 40%, transparent 60%, rgba(128, 88, 255, 0.15));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+main.cool-lab .tech-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+main.cool-lab .tech-panel__pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #58d2ff;
+  box-shadow: 0 0 12px rgba(88, 210, 255, 0.6), 0 0 4px rgba(88, 210, 255, 0.4);
+  animation: techPulse 2.4s ease-in-out infinite;
+}
+
+main.cool-lab .tech-panel__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+main.cool-lab .tech-panel__features {
+  display: grid;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+main.cool-lab .tech-feature {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 8px;
+  border-top: 1px solid rgba(88, 210, 255, 0.10);
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  transition: background 0.25s ease;
+}
+
+main.cool-lab .tech-feature:first-child {
+  border-top: none;
+}
+
+main.cool-lab .tech-feature:hover {
+  background: rgba(88, 210, 255, 0.06);
+}
+
+main.cool-lab .tech-feature__indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(88, 210, 255, 0.6);
+  box-shadow: 0 0 10px rgba(88, 210, 255, 0.25);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+main.cool-lab .tech-feature:hover .tech-feature__indicator {
+  background: #58d2ff;
+  box-shadow: 0 0 14px rgba(88, 210, 255, 0.5);
+}
+
+main.cool-lab .tech-feature__content {
+  min-width: 0;
+}
+
+main.cool-lab .tech-feature__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+main.cool-lab .tech-feature__text {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.5;
+}
+
+main.cool-lab .tech-feature:hover .tech-feature__text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+main.cool-lab .tech-feature__arrow {
+  font-size: 16px;
+  color: rgba(88, 210, 255, 0.35);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+main.cool-lab .tech-feature:hover .tech-feature__arrow {
+  color: rgba(88, 210, 255, 0.8);
+  transform: translateX(3px);
+}
+
+@keyframes techPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 12px rgba(88, 210, 255, 0.6), 0 0 4px rgba(88, 210, 255, 0.4); }
+  50% { opacity: 0.4; box-shadow: 0 0 6px rgba(88, 210, 255, 0.2); }
+}
+
 main.cool-lab .section-actions {
   margin-top: 20px;
   display: flex;
@@ -447,46 +591,7 @@ main.cool-lab .intent-chip:focus-visible {
   outline-offset: 2px;
 }
 
-main.cool-lab #valor .mini-cards {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: minmax(120px, auto);
-}
-
-main.cool-lab #valor .mini-card:nth-child(1) {
-  grid-column: 1 / -1;
-  min-height: 180px;
-}
-
-main.cool-lab #valor .mini-card:nth-child(2),
-main.cool-lab #valor .mini-card:nth-child(3),
-main.cool-lab #valor .mini-card:nth-child(4) {
-  min-height: 140px;
-}
-
-main.cool-lab #valor .mini-card:nth-child(5) {
-  grid-column: 1 / -1;
-  min-height: 96px;
-}
-
-main.cool-lab #valor .mini-card:nth-child(5) .kr-card-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-rows: auto auto;
-  gap: 8px 18px;
-  height: 100%;
-}
-
-main.cool-lab #valor .mini-card:nth-child(5) .kr-card-content strong,
-main.cool-lab #valor .mini-card:nth-child(5) .kr-card-content p {
-  grid-column: 1 / 2;
-}
-
-main.cool-lab #valor .mini-card:nth-child(5) .kr-card-content .mini-link {
-  grid-column: 2 / 3;
-  grid-row: 1 / span 2;
-  align-self: center;
-  margin-top: 0;
-}
+/* Tech panel responsive handled in @media blocks below */
 
 main.cool-lab .layout-section .btn {
   transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -602,16 +707,19 @@ main.cool-lab .service-card--consult {
   grid-row: 2;
 }
 
-main.cool-lab .service-card--digital {
-  grid-column: 1 / span 6;
+main.cool-lab .service-card--lighting {
+  grid-column: 1 / span 4;
   grid-row: 3;
-  min-height: 210px;
+}
+
+main.cool-lab .service-card--digital {
+  grid-column: 5 / span 4;
+  grid-row: 3;
 }
 
 main.cool-lab .service-card--support {
-  grid-column: 7 / span 6;
+  grid-column: 9 / span 4;
   grid-row: 3;
-  min-height: 210px;
 }
 
 main.cool-lab .service-card--featured.kr-card,
@@ -629,6 +737,7 @@ main.cool-lab .service-card--auto.kr-card:hover {
     0 8px 22px rgba(15, 25, 45, 0.1);
 }
 
+main.cool-lab .service-card--lighting.kr-card,
 main.cool-lab .service-card--digital.kr-card,
 main.cool-lab .service-card--support.kr-card {
   box-shadow:
@@ -637,6 +746,7 @@ main.cool-lab .service-card--support.kr-card {
   border-color: rgba(15, 25, 45, 0.08);
 }
 
+main.cool-lab .service-card--lighting.kr-card:hover,
 main.cool-lab .service-card--digital.kr-card:hover,
 main.cool-lab .service-card--support.kr-card:hover {
   box-shadow:
@@ -710,6 +820,69 @@ main.cool-lab .service-card:focus-within .service-tag.is-new {
   background: rgba(90, 130, 255, 0.14);
   border-color: rgba(90, 130, 255, 0.26);
   color: #234071;
+}
+
+/* === Services Differentiators === */
+main.cool-lab .services-diff {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+main.cool-lab .services-diff li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cool-ink);
+}
+
+main.cool-lab .services-diff__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #152354;
+}
+
+/* === Service Card Top Row (icon + tag) === */
+main.cool-lab .service-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+main.cool-lab .service-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(21, 35, 84, 0.05);
+  border: 1px solid rgba(21, 35, 84, 0.08);
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+main.cool-lab .service-card:hover .service-icon-wrap {
+  background: rgba(21, 35, 84, 0.08);
+  border-color: rgba(21, 35, 84, 0.14);
+}
+
+/* === Service Card Icon === */
+main.cool-lab .service-icon {
+  width: 28px;
+  height: 28px;
+  color: rgba(21, 35, 84, 0.65);
+  flex-shrink: 0;
+}
+
+main.cool-lab .service-card:hover .service-icon {
+  color: rgba(21, 35, 84, 0.85);
 }
 
 main.cool-lab #servicios {
@@ -1040,7 +1213,7 @@ main.cool-lab .projects-track::-webkit-scrollbar-thumb {
 /* Base card (aplicalo a TODAS las tarjetas) */
 main.cool-lab .kr-card {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   border-radius: 18px;
   background: var(--kr-white);
   border: 1px solid var(--kr-border);
@@ -1099,14 +1272,101 @@ main.cool-lab .kr-card .kr-sheen {
   transition: opacity 0.25s ease, transform 0.65s ease;
 }
 
-/* Hover / focus: movimiento + profundidad */
+/* CURSOR-FOLLOWING GLOW */
+main.cool-lab .kr-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    500px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(88, 210, 255, 0.18),
+    rgba(90, 130, 255, 0.08) 35%,
+    transparent 65%
+  );
+}
+
+main.cool-lab .kr-card:hover .kr-glow {
+  opacity: 1;
+}
+
+/* CURSOR-FOLLOWING BORDER GLOW */
+main.cool-lab .kr-glow-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  padding: 1px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    350px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(88, 210, 255, 0.5),
+    rgba(128, 88, 255, 0.2) 35%,
+    transparent 65%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+main.cool-lab .kr-card:hover .kr-glow-border {
+  opacity: 1;
+}
+
+/* HOLOGRAPHIC SHIMMER LAYER */
+main.cool-lab .kr-holo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background:
+    radial-gradient(500px at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(88, 210, 255, 0.14), transparent 50%),
+    radial-gradient(500px at calc(var(--glow-x, 50%) + 12%) calc(var(--glow-y, 50%) + 12%),
+      rgba(128, 88, 255, 0.12), transparent 50%),
+    radial-gradient(500px at calc(var(--glow-x, 50%) - 8%) calc(var(--glow-y, 50%) - 8%),
+      rgba(210, 24, 42, 0.06), transparent 50%);
+  mix-blend-mode: color-dodge;
+}
+
+main.cool-lab .kr-card:hover .kr-holo {
+  opacity: 1;
+}
+
+/* 3D CARD SETUP */
+main.cool-lab .services-mosaic {
+  perspective: 1200px;
+}
+
+main.cool-lab .kr-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Content floats above card surface for parallax depth */
+main.cool-lab .kr-card .kr-card-content {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(24px);
+}
+
+/* Hover / focus: deeper shadow + border glow */
 main.cool-lab .kr-card:hover,
 main.cool-lab .kr-card:focus-within {
-  transform: translateY(-2px);
-  border-color: rgba(15, 25, 45, 0.16);
+  border-color: rgba(88, 210, 255, 0.18);
   box-shadow:
-    0 26px 80px rgba(15, 25, 45, 0.14),
-    0 6px 18px rgba(15, 25, 45, 0.08);
+    0 30px 90px rgba(15, 25, 45, 0.2),
+    0 8px 24px rgba(15, 25, 45, 0.1),
+    0 0 0 1px rgba(88, 210, 255, 0.08);
 }
 
 main.cool-lab .kr-card:hover::after,
@@ -1155,8 +1415,18 @@ main.cool-lab .kr-card button:focus-visible {
   main.cool-lab .kr-card::after {
     opacity: 0.15;
   }
-  main.cool-lab .kr-card .kr-sheen {
+  main.cool-lab .kr-card .kr-sheen,
+  main.cool-lab .kr-card .kr-glow,
+  main.cool-lab .kr-card .kr-glow-border,
+  main.cool-lab .kr-card .kr-holo {
     display: none;
+  }
+  main.cool-lab .kr-card .kr-card-content {
+    transform: none;
+  }
+  main.cool-lab .service-card {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -1172,6 +1442,7 @@ main.cool-lab .kr-card button:focus-visible {
   main.cool-lab .service-card--cctv,
   main.cool-lab .service-card--hvac,
   main.cool-lab .service-card--consult,
+  main.cool-lab .service-card--lighting,
   main.cool-lab .service-card--digital,
   main.cool-lab .service-card--support {
     grid-column: span 1;
@@ -1184,8 +1455,15 @@ main.cool-lab .kr-card button:focus-visible {
   main.cool-lab .services-callout__actions {
     width: 100%;
   }
-  main.cool-lab #valor .mini-cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  main.cool-lab .tech-panel {
+    padding: 20px 18px;
+  }
+  main.cool-lab .tech-feature {
+    gap: 10px;
+  }
+  main.cool-lab .services-diff {
+    flex-direction: column;
+    gap: 8px;
   }
   main.cool-lab .industry-grid {
     grid-template-columns: 1fr;
@@ -1226,6 +1504,7 @@ main.cool-lab .kr-card button:focus-visible {
   main.cool-lab .service-card--cctv,
   main.cool-lab .service-card--hvac,
   main.cool-lab .service-card--consult,
+  main.cool-lab .service-card--lighting,
   main.cool-lab .service-card--digital,
   main.cool-lab .service-card--support {
     grid-column: span 1;
@@ -1237,6 +1516,9 @@ main.cool-lab .kr-card button:focus-visible {
   }
   main.cool-lab .mini-cards {
     grid-template-columns: 1fr;
+  }
+  main.cool-lab .tech-feature__arrow {
+    display: none;
   }
   main.cool-lab .section-actions {
     flex-direction: column;
@@ -1274,8 +1556,21 @@ main.cool-lab .kr-card button:focus-visible {
 
   main.cool-lab .kr-card::before,
   main.cool-lab .kr-card::after,
-  main.cool-lab .kr-card .kr-sheen {
+  main.cool-lab .kr-card .kr-sheen,
+  main.cool-lab .kr-card .kr-glow,
+  main.cool-lab .kr-card .kr-glow-border,
+  main.cool-lab .kr-card .kr-holo {
     transition: none !important;
+    opacity: 0 !important;
+  }
+
+  main.cool-lab .kr-card .kr-card-content {
+    transform: none !important;
+  }
+
+  main.cool-lab .service-card {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   main.cool-lab #valor::before,
@@ -1285,6 +1580,17 @@ main.cool-lab .kr-card button:focus-visible {
 
   main.cool-lab .mini-card::after {
     animation: none !important;
+  }
+
+  main.cool-lab .tech-panel__pulse {
+    animation: none !important;
+  }
+
+  main.cool-lab .tech-feature,
+  main.cool-lab .tech-feature__arrow,
+  main.cool-lab .tech-feature__indicator {
+    transition: none !important;
+    transform: none !important;
   }
 }
 

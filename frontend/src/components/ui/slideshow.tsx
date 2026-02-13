@@ -108,6 +108,17 @@ function usePrefersReducedMotion() {
   return prefersReduced;
 }
 
+function getVisibleIndices(current: number, total: number): Set<number> {
+  if (total <= 3) {
+    return new Set(Array.from({ length: total }, (_, i) => i));
+  }
+  return new Set([
+    (current - 1 + total) % total,
+    current,
+    (current + 1) % total,
+  ]);
+}
+
 function SlideVideo({
   src,
   isActive,
@@ -150,9 +161,8 @@ function SlideVideo({
       )}
       muted
       playsInline
-      autoPlay
       loop
-      preload="metadata"
+      preload={isActive ? "auto" : "metadata"}
       aria-label={label}
     >
       <source src={src} type="video/mp4" />
@@ -172,9 +182,14 @@ export default function Slideshow() {
     }
     const id = window.setTimeout(() => {
       setCurrent((prev) => (prev + 1) % total);
-    }, 9000);
+    }, 13000);
     return () => window.clearTimeout(id);
   }, [current, paused, prefersReducedMotion, total]);
+
+  const visibleIndices = React.useMemo(
+    () => getVisibleIndices(current, total),
+    [current, total]
+  );
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % total);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
@@ -197,6 +212,7 @@ export default function Slideshow() {
         </div>
         {SLIDES.map((slide, index) => {
           const isActive = index === current;
+          if (!visibleIndices.has(index)) return null;
           return (
             <div
               key={slide.id}
