@@ -52,7 +52,7 @@ body > header.is-top .nav-toggle:hover{background:rgba(255,255,255,.22)}
 .btn:active{transform:translateY(0);filter:brightness(.98)}
 
 .nav-actions{display:flex;align-items:center;gap:10px}
-.nav-toggle{display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid rgba(21,35,84,.18);background:rgba(255,255,255,.85);color:inherit;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+.nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid rgba(21,35,84,.18);background:rgba(255,255,255,.85);color:inherit;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
 .nav-toggle span{display:block;width:18px;height:2px;background:currentColor;border-radius:999px;transition:transform .2s ease, opacity .2s ease}
 .nav-toggle span+span{margin-top:4px}
 .nav-toggle:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.08)}
