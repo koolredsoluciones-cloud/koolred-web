@@ -897,16 +897,36 @@ main.cool-lab #servicios::before {
 main.cool-lab #servicios::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480' viewBox='0 0 480 480' fill='none'%3E%3Cg stroke='%23152354' stroke-opacity='0.22' stroke-width='1'%3E%3Cpath d='M240 40A200 200 0 0 1 440 240A140 140 0 0 1 300 380A90 90 0 0 1 210 290A60 60 0 0 1 270 230'/%3E%3Cpath d='M240 90A150 150 0 0 1 390 240A110 110 0 0 1 280 350A70 70 0 0 1 210 280'/%3E%3Cpath d='M240 140A100 100 0 0 1 340 240A70 70 0 0 1 270 310'/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='340' viewBox='0 0 720 340' fill='none'%3E%3Cstyle%3Etext%7Bfont-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.12em;fill:%23152354;fill-opacity:0.32%7D%3C/style%3E%3Ctext x='24' y='42'%3EF(n)%3DF(n-1)%2BF(n-2)%3C/text%3E%3Ctext x='24' y='74'%3EF(0)%3D0%2C%20F(1)%3D1%3C/text%3E%3Ctext x='24' y='106'%3Ephi%3D(1%2Bsqrt(5))%2F2%3C/text%3E%3Ctext x='24' y='138'%3EF(n)~phi%5En%2Fsqrt(5)%3C/text%3E%3Ctext x='24' y='170'%3Elim%20F(n%2B1)%2FF(n)%3Dphi%3C/text%3E%3Ctext x='24' y='202'%3Esum_%7Bk%3D0%7D%5En%20F(k)%3DF(n%2B2)-1%3C/text%3E%3Ctext x='24' y='234'%3E1%2C%201%2C%202%2C%203%2C%205%2C%208%2C%2013%2C%2021%2C%2034%2C%2055%3C/text%3E%3Ctext x='24' y='266'%3EA%3D%5B%5B1%2C1%5D%2C%5B1%2C0%5D%5D%2C%20A%5En%3C/text%3E%3Ctext x='24' y='298'%3EF(n)%3Dround(phi%5En%2Fsqrt(5))%3C/text%3E%3C/svg%3E");
-  background-repeat: repeat, repeat;
-  background-size: 520px 520px, 520px 260px;
-  background-position: center, 24px 24px;
-  opacity: 0.32;
+  inset: -50%;
   pointer-events: none;
   z-index: 0;
+  background:
+    radial-gradient(ellipse 600px 500px at 15% 20%, rgba(88, 210, 255, 0.18), transparent),
+    radial-gradient(ellipse 500px 600px at 75% 10%, rgba(128, 88, 255, 0.12), transparent),
+    radial-gradient(ellipse 450px 400px at 85% 70%, rgba(88, 210, 255, 0.14), transparent),
+    radial-gradient(ellipse 400px 500px at 25% 80%, rgba(210, 24, 42, 0.06), transparent),
+    radial-gradient(ellipse 550px 450px at 50% 50%, rgba(90, 130, 255, 0.08), transparent);
+  filter: blur(60px);
+  opacity: 0.7;
+  animation: meshDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshDrift {
+  0% {
+    transform: translate(0%, 0%) scale(1);
+  }
+  25% {
+    transform: translate(3%, -2%) scale(1.03);
+  }
+  50% {
+    transform: translate(-2%, 3%) scale(0.98);
+  }
+  75% {
+    transform: translate(2%, 1%) scale(1.02);
+  }
+  100% {
+    transform: translate(-1%, -2%) scale(1);
+  }
 }
 
 main.cool-lab #servicios > .wrap {
