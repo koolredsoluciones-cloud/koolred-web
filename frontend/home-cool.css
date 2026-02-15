@@ -2140,6 +2140,27 @@ a.contact-channel:hover {
   .proc-step {
     margin: 0;
   }
+
+  /* Contact tablet */
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  /* Footer tablet */
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-right: 0;
+  }
+  .footer-logo {
+    height: 100px;
+    margin: 0 auto 12px;
+  }
 }
 
 /* MOBILE: Vertical timeline with left line */
@@ -2221,14 +2242,86 @@ a.contact-channel:hover {
     transform: none;
   }
 
-  /* Contact form responsive */
+  /* Contact section responsive */
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
 
+  .contact-info h2 {
+    font-size: 24px;
+    color: #ffffff;
+  }
+
+  .contact-desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .contact-channel {
+    padding: 12px 14px;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .contact-channel__label {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .contact-channel__value {
+    font-size: 13px;
+    color: #ffffff;
+  }
+
+  .contact-channel svg {
+    color: #ff6b6b;
+  }
+
+  .contact-form {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .contact-submit {
+    font-size: 15px;
+    padding: 14px 24px;
+    min-height: 48px;
+  }
+
+  .contact-wave {
+    height: 6em;
+  }
+
+  /* Process section responsive */
+  .proc-lines {
+    width: 100%;
+  }
+
+  #proceso::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  #proceso .section-header h2 {
+    font-size: 22px;
+  }
+
+  #proceso .section-lede {
+    font-size: 13px;
   }
 
   /* Footer responsive */
@@ -2245,6 +2338,20 @@ a.contact-channel:hover {
 
   .footer-logo {
     height: 80px;
+    margin: 0 auto 12px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+  }
+
+  .footer-col h4 {
+    font-size: 12px;
+  }
+
+  .footer-bottom {
+    padding: 20px 0;
+    text-align: center;
   }
 }
 
@@ -2668,6 +2775,60 @@ main.cool-lab .kr-card button:focus-visible {
   }
   main.cool-lab .cta-panel {
     padding: clamp(22px, 4vw, 32px);
+  }
+
+  /* Contact 480 */
+  .contact-info h2 {
+    font-size: 22px;
+  }
+  .contact-form {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .form-field label {
+    font-size: 11px;
+  }
+  .form-field input,
+  .form-field textarea {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .contact-submit {
+    font-size: 14px;
+    padding: 12px 20px;
+    min-height: 44px;
+    box-shadow: 5px 5px 0 rgba(210, 24, 42, 0.15);
+  }
+  .contact-wave {
+    height: 4em;
+  }
+
+  /* Process 480 */
+  .proc-timeline {
+    padding-left: 20px;
+  }
+  .proc-step {
+    padding: 10px 12px 16px 0;
+    gap: 10px;
+  }
+  .proc-step h3 {
+    font-size: 14px;
+  }
+  .proc-step p {
+    font-size: 11px;
+  }
+  .proc-step__tag {
+    font-size: 8px;
+    padding: 4px 10px;
+  }
+
+  /* Footer 480 */
+  .footer-grid {
+    gap: 20px;
+    padding: 24px 0;
+  }
+  .footer-logo {
+    height: 60px;
   }
 }
 
