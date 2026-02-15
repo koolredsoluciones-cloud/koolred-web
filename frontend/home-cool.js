@@ -204,31 +204,37 @@
 
   // --- Process Timeline Animation ---
   const procLine = document.querySelector(".proc-line");
+  const procTimeline = document.querySelector(".proc-timeline");
   const procSteps = Array.from(document.querySelectorAll(".proc-step"));
 
-  if (procLine && procSteps.length && window.gsap && !reduced) {
+  if (procSteps.length && window.gsap && !reduced) {
     window.gsap.set(procSteps, { opacity: 0, y: 20 });
 
-    const procObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          procLine.classList.add("is-filled");
-          window.gsap.to(procSteps, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            stagger: 0.15,
-            delay: 0.3,
-          });
-          procObserver.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2 }
-    );
+    // Use procLine on desktop (visible), fall back to procTimeline on mobile (procLine hidden)
+    const procTarget = procLine && procLine.offsetParent !== null ? procLine : procTimeline;
 
-    procObserver.observe(procLine);
+    if (procTarget) {
+      const procObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            if (procLine) procLine.classList.add("is-filled");
+            window.gsap.to(procSteps, {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: "power2.out",
+              stagger: 0.15,
+              delay: 0.3,
+            });
+            procObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      procObserver.observe(procTarget);
+    }
   }
 
   const intentChips = Array.from(document.querySelectorAll(".intent-chip"));

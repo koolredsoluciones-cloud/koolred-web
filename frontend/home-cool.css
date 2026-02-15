@@ -2169,7 +2169,7 @@ a.contact-channel:hover {
     grid-template-columns: 1fr;
     gap: 0;
     padding-top: 0;
-    padding-left: 28px;
+    padding-left: 44px;
     position: relative;
   }
 
@@ -2177,25 +2177,25 @@ a.contact-channel:hover {
   .proc-timeline::before {
     content: "";
     position: absolute;
-    left: 10px;
-    top: 8px;
-    bottom: 8px;
+    left: 17px;
+    top: 0;
+    bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, rgba(210, 24, 42, 0.5), rgba(210, 24, 42, 0.1));
+    background: linear-gradient(180deg, rgba(210, 24, 42, 0.6), rgba(210, 24, 42, 0.15));
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(210, 24, 42, 0.15);
+    box-shadow: 0 0 10px rgba(210, 24, 42, 0.2);
   }
 
   .proc-step {
-    flex-direction: row;
+    flex-direction: column;
     text-align: left;
     align-items: flex-start;
-    gap: 14px;
-    padding: 12px 14px 20px 0;
-    margin: 0 0 12px 0;
-    border-radius: 12px;
+    gap: 0;
+    padding: 16px;
+    margin: 0 0 16px 0;
+    border-radius: 14px;
     background: linear-gradient(160deg, #0c1530, #111d42);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     position: relative;
   }
 
@@ -2205,24 +2205,33 @@ a.contact-channel:hover {
 
   .proc-step__marker {
     flex-direction: row;
-    gap: 0;
-    margin-bottom: 0;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
     position: absolute;
-    left: -28px;
+    left: -44px;
+    top: 18px;
   }
 
   .proc-step__icon {
-    width: 20px;
-    height: 20px;
-    box-shadow: 0 0 0 3px rgba(210, 24, 42, 0.2), 0 0 12px rgba(210, 24, 42, 0.1);
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 0 0 3px #0c1530, 0 0 0 5px rgba(210, 24, 42, 0.3), 0 0 16px rgba(210, 24, 42, 0.15);
   }
 
   .proc-step__icon svg {
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
   }
 
   .proc-step__num {
+    display: block;
+    font-size: 10px;
+    color: rgba(210, 24, 42, 0.6);
+    position: absolute;
+    left: 42px;
+    top: 50%;
+    transform: translateY(-50%);
     display: none;
   }
 
@@ -2232,10 +2241,17 @@ a.contact-channel:hover {
 
   .proc-step h3 {
     font-size: 15px;
+    margin-bottom: 6px;
   }
 
   .proc-step p {
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .proc-step__tag {
+    font-size: 9px;
   }
 
   .proc-step:hover .proc-step__icon {
@@ -2326,31 +2342,44 @@ a.contact-channel:hover {
 
   /* Footer responsive */
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 28px 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+    padding: 32px 0;
   }
 
   .footer-brand {
+    grid-column: 1 / -1;
     padding-right: 0;
     text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 8px;
   }
 
   .footer-logo {
-    height: 80px;
-    margin: 0 auto 12px;
+    height: 70px;
+    margin: 0 auto 10px;
   }
 
   .footer-tagline {
-    font-size: 13px;
-  }
-
-  .footer-col h4 {
     font-size: 12px;
   }
 
+  .footer-col h4 {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .footer-col li {
+    margin-bottom: 8px;
+  }
+
+  .footer-col:last-child {
+    grid-column: 1 / -1;
+  }
+
   .footer-bottom {
-    padding: 20px 0;
+    padding: 16px 0;
     text-align: center;
   }
 }
@@ -2805,17 +2834,31 @@ main.cool-lab .kr-card button:focus-visible {
 
   /* Process 480 */
   .proc-timeline {
-    padding-left: 20px;
+    padding-left: 38px;
+  }
+  .proc-timeline::before {
+    left: 14px;
   }
   .proc-step {
-    padding: 10px 12px 16px 0;
-    gap: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .proc-step__marker {
+    left: -38px;
+  }
+  .proc-step__icon {
+    width: 30px;
+    height: 30px;
+  }
+  .proc-step__icon svg {
+    width: 14px;
+    height: 14px;
   }
   .proc-step h3 {
     font-size: 14px;
   }
   .proc-step p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .proc-step__tag {
     font-size: 8px;
@@ -2824,11 +2867,21 @@ main.cool-lab .kr-card button:focus-visible {
 
   /* Footer 480 */
   .footer-grid {
+    grid-template-columns: 1fr;
     gap: 20px;
     padding: 24px 0;
   }
+  .footer-col:last-child {
+    grid-column: 1;
+  }
+  .footer-col {
+    text-align: center;
+  }
+  .footer-col li {
+    justify-content: center;
+  }
   .footer-logo {
-    height: 60px;
+    height: 50px;
   }
 }
 
