@@ -115,45 +115,65 @@
     }
   }
 
-  const industryMap = {
-    corporativo: "UPS, tableros, soporte, continuidad",
-    industrial: "VFD, PLC, SCADA, sensores",
-    retail: "energia, redes, CCTV, operacion",
-    clinico: "areas criticas, respaldo, control",
-    educativo: "distribucion, modernizacion, mantenimiento",
-    data: "energia critica, monitoreo, redundancia",
-  };
 
-  const chips = Array.from(document.querySelectorAll(".industry-chip"));
-  const output = document.querySelector(".industry-output");
+  // --- Industry Showcase ---
+  const indBtns = Array.from(document.querySelectorAll(".ind-nav-btn"));
+  const indPanels = Array.from(document.querySelectorAll(".ind-showcase__panel"));
+  const indBgLayers = Array.from(document.querySelectorAll(".ind-showcase__bg-layer"));
 
-  if (chips.length && output) {
-    const setActive = (chip) => {
-      chips.forEach((btn) => {
-        const isActive = btn === chip;
+  if (indBtns.length && indPanels.length) {
+    let currentInd = "corporativo";
+
+    const switchIndustry = (key) => {
+      if (key === currentInd) return;
+      currentInd = key;
+
+      indBtns.forEach((btn) => {
+        const isActive = btn.getAttribute("data-ind") === key;
         btn.classList.toggle("is-active", isActive);
         btn.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
-      const key = chip.getAttribute("data-industry");
-      const nextText = industryMap[key] || "";
-      if (window.gsap && !reduced) {
-        window.gsap.to(output, {
-          opacity: 0,
-          y: 4,
-          duration: 0.15,
-          onComplete: () => {
-            output.textContent = nextText;
-            window.gsap.to(output, { opacity: 1, y: 0, duration: 0.2 });
-          },
-        });
-      } else {
-        output.textContent = nextText;
+
+      indBgLayers.forEach((layer) => {
+        layer.classList.toggle("is-active", layer.getAttribute("data-bg") === key);
+      });
+
+      const nextPanel = indPanels.find((p) => p.getAttribute("data-panel") === key);
+      const activePanel = indPanels.find((p) => p.classList.contains("is-active"));
+
+      if (activePanel && activePanel !== nextPanel) {
+        if (window.gsap && !reduced) {
+          window.gsap.to(activePanel, {
+            opacity: 0,
+            y: -8,
+            duration: 0.25,
+            ease: "power2.in",
+            onComplete: () => {
+              activePanel.classList.remove("is-active");
+              activePanel.style.cssText = "";
+              if (nextPanel) {
+                nextPanel.classList.add("is-active");
+                window.gsap.fromTo(
+                  nextPanel,
+                  { opacity: 0, y: 12 },
+                  { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+                );
+              }
+            },
+          });
+        } else {
+          activePanel.classList.remove("is-active");
+          if (nextPanel) nextPanel.classList.add("is-active");
+        }
+      } else if (nextPanel && !activePanel) {
+        nextPanel.classList.add("is-active");
       }
     };
 
-    setActive(chips[0]);
-    chips.forEach((chip) => {
-      chip.addEventListener("click", () => setActive(chip));
+    indBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        switchIndustry(btn.getAttribute("data-ind"));
+      });
     });
   }
 
@@ -180,6 +200,35 @@
     );
 
     steps.forEach((step) => stepObserver.observe(step));
+  }
+
+  // --- Process Timeline Animation ---
+  const procLine = document.querySelector(".proc-line");
+  const procSteps = Array.from(document.querySelectorAll(".proc-step"));
+
+  if (procLine && procSteps.length && window.gsap && !reduced) {
+    window.gsap.set(procSteps, { opacity: 0, y: 20 });
+
+    const procObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          procLine.classList.add("is-filled");
+          window.gsap.to(procSteps, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.15,
+            delay: 0.3,
+          });
+          procObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    procObserver.observe(procLine);
   }
 
   const intentChips = Array.from(document.querySelectorAll(".intent-chip"));
@@ -214,4 +263,5 @@
       });
     });
   }
+
 })();
