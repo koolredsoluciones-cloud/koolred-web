@@ -3,434 +3,1431 @@
 <head>
   <meta charset="utf-8" />
   <meta name="google" content="notranslate" />
-  <meta name="translation" content="notranslate" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ingenier&iacute;a el&eacute;ctrica RETIE/NTC | KoolRed Soluciones</title>
-  <meta name="description" content="Ingenier&iacute;a el&eacute;ctrica RETIE/NTC con entrega trazable: dise&ntilde;o, adecuaciones, pruebas y documentaci&oacute;n para operaciones cr&iacute;ticas y edificios corporativos." />
-  <style>
-    :root{
-      --bg:#ffffff; --card:#f6f8fc; --text:#1c2b4a; --muted:#55627a;
-      --brand:#d2182a; --brand-blue:#152354; --line:#dbe2f0;
-      --max:1100px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10;transition:all .3s ease}
-    header.scrolled{padding:6px 0;border-bottom-color:rgba(0,0,0,.06);box-shadow:0 10px 30px rgba(0,0,0,.06);background:rgba(255,255,255,.96)}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:18px;transition:padding .3s ease}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
-    .logo img{height:66px;width:auto;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.08))}
-    .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block}
-    .links{display:flex;gap:18px;flex-wrap:wrap;position:relative}
-    .links a{display:block;color:var(--text);font-weight:700;font-size:14px;letter-spacing:.2px;position:relative;transition:color .2s ease}
-    .links a:hover{color:var(--brand)}
-    .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:3px;background:var(--brand);border-radius:999px;box-shadow:0 4px 12px rgba(210,24,42,.25)}
-    .dropdown{position:relative}
-    .dropdown::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px;}
-    .submenu{position:absolute;top:calc(100% + 10px);left:0;display:flex;flex-direction:column;gap:8px;min-width:230px;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s ease, transform .2s ease;transition-delay:.12s;z-index:15}
-    .submenu a{font-weight:600;color:var(--text);padding:6px 6px;border-radius:8px}
-    .submenu a:hover{background:rgba(0,0,0,.03);color:var(--brand)}
-    .dropdown:hover .submenu,
-    .dropdown:focus-within .submenu{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
-            .btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 18px;border-radius:12px;border:1px solid rgba(21,35,84,.22);background:transparent;color:var(--text);font-weight:700;letter-spacing:.2px;line-height:1.1;transform:translateZ(0);transition:transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s cubic-bezier(.16,1,.3,1), filter .18s ease, border-color .18s ease, background .18s ease}
-    .btn::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(var(--btn-border-angle,120deg), var(--btn-border-1, transparent), var(--btn-border-2, transparent));-webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);mask-composite:exclude;opacity:var(--btn-border-opacity,0);transition:opacity .18s ease, background .18s ease;pointer-events:none}
-    .btn.secondary{padding-right:34px}
-    .btn.secondary::after{content:"\2192";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.7;transition:transform .18s ease, opacity .18s ease;pointer-events:none}
-    .btn.primary{--btn-border-angle:140deg;--btn-border-1:rgba(255,58,74,.35);--btn-border-2:rgba(178,18,34,.75);--btn-border-opacity:.35;background:var(--brand);color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(210,24,42,.2), 0 0 0 1px rgba(210,24,42,.25)}
-    .btn.secondary{--btn-border-angle:150deg;--btn-border-1:rgba(74,124,207,.5);--btn-border-2:rgba(15,26,64,.85);--btn-border-opacity:.35;background:linear-gradient(160deg, rgba(30,58,122,.98), rgba(15,26,64,.98));color:#ffffff;border-color:transparent;box-shadow:0 10px 24px rgba(21,35,84,.22), 0 0 0 1px rgba(21,35,84,.24)}
-    .btn:hover{transform:translateY(-2px);filter:brightness(1.03)}
-    .btn.primary:hover{box-shadow:0 16px 34px rgba(210,24,42,.28), 0 0 0 1px rgba(255,58,74,.5), 0 0 26px rgba(210,24,42,.25);--btn-border-opacity:.85;--btn-border-angle:210deg}
-    .btn.secondary:hover{box-shadow:0 18px 36px rgba(21,35,84,.28), 0 0 0 1px rgba(74,124,207,.55), 0 0 28px rgba(21,35,84,.25);--btn-border-opacity:.9;--btn-border-angle:210deg}
-    .btn.secondary:hover::after{transform:translate(3px,-50%);opacity:1}
-    .btn:focus-visible{outline:2px solid rgba(21,35,84,.55);outline-offset:2px;box-shadow:0 0 0 3px rgba(21,35,84,.18);--btn-border-opacity:1}
-    .btn.primary:focus-visible{outline-color:rgba(210,24,42,.6);box-shadow:0 0 0 3px rgba(210,24,42,.2), 0 0 0 1px rgba(255,58,74,.4)}
-    .btn.secondary:focus-visible{outline-color:rgba(74,124,207,.6);box-shadow:0 0 0 3px rgba(21,35,84,.2), 0 0 0 1px rgba(74,124,207,.45)}
-    .btn:active{transform:translateY(0);filter:brightness(.98)}
-
-    .nav-actions{display:flex;align-items:center;gap:10px}
-    .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:700;font-size:12px;letter-spacing:.2px;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
-    .lang-btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.06);background:rgba(0,0,0,.03)}
-    .lang-btn:focus-visible{outline:2px solid rgba(210,24,42,.55);outline-offset:2px}
-    .lang-icon{width:16px;height:16px;display:inline-flex}
-    #google_translate_element{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
-    .hero{padding:64px 0 26px}
-    .herogrid{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center}
-    .kicker{color:var(--brand);font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:12px}
-    h1{margin:10px 0 10px;font-size:40px;line-height:1.05}
-    p{margin:0;color:var(--muted);line-height:1.6}
-    .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
-    .card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
-    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .stat b{font-size:20px}
-    .section{padding:26px 0}
-    .title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:12px}
-    .title h2{margin:0;font-size:22px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .svc h3{margin:0 0 6px;font-size:16px}
-    .svc p{font-size:14px}
-    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:12px}
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    form{display:grid;gap:10px}
-    input,textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text)}
-    textarea{min-height:120px;resize:vertical}
-    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
-    .small{font-size:12px;color:var(--muted)}
-    @media (max-width:900px){
-      .herogrid{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      h1{font-size:34px}
-    }
-
-    /* Animaciones de entrada controladas por JS */
-    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
-    .fade-in.visible{opacity:1;transform:translateY(0)}
-
-    /* Respeto a usuarios con reduccion de movimiento */
-    @media (prefers-reduced-motion: reduce) {
-      header, nav, .btn, .card, .fade-in, .btn::before, .btn::after{transition:none !important;animation:none !important;transform:none !important}
-    }
-  </style>
+  <title>Ingeniería eléctrica RETIE/NTC | KoolRed Soluciones</title>
+  <meta name="description" content="Ingeniería eléctrica RETIE/NTC con entrega trazable: diseño, adecuaciones, pruebas y documentación para operaciones críticas y edificios corporativos." />
+  <link rel="icon" type="image/png" href="../assets/11zon_cropped.png" />
   <link rel="stylesheet" href="../frontend/segment-toggle.css" />
+  <style>
+/* ── TOKENS ─────────────────────────────────── */
+:root{
+  --bg:#fff;--card:#f6f8fc;--text:#1c2b4a;--muted:#55627a;
+  --brand:#d2182a;--blue:#152354;--line:#dbe2f0;
+  --max:1100px;--pad:clamp(16px,3vw,36px);--hh:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b1220;color:var(--text);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+img{display:block}
+
+/* ── HEADER ──────────────────────────────────── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  background:rgba(255,255,255,var(--hbg,0));
+  backdrop-filter:blur(var(--hbl,0px));
+  border-bottom:1px solid rgba(0,0,0,var(--hbd,0));
+  box-shadow:0 12px 30px rgba(0,0,0,var(--hsh,0));
+  color:var(--hfg,#fff);
+  transition:background .25s,border-color .25s,box-shadow .25s,color .25s,backdrop-filter .25s;
+}
+header.is-scrolled{
+  --hbg:.97;--hbl:14px;--hbd:.07;--hsh:.05;--hfg:var(--text);
+}
+nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:18px}
+.logo img{height:52px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
+.links{display:flex;gap:18px;position:relative}
+.links a{color:currentColor;font-weight:700;font-size:14px;letter-spacing:.2px;transition:color .2s}
+.links a:hover{color:var(--brand)}
+.links a.active{color:var(--brand)}
+.dropdown{position:relative}
+.dropdown::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px}
+.submenu{
+  position:absolute;top:calc(100% + 10px);left:0;
+  display:flex;flex-direction:column;gap:8px;min-width:230px;
+  background:rgba(255,255,255,.98);border:1px solid var(--line);
+  border-radius:12px;padding:10px;
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+  opacity:0;pointer-events:none;transform:translateY(6px);
+  transition:opacity .2s,transform .2s;z-index:15;
+}
+.submenu a{font-weight:600;color:var(--text);padding:6px;border-radius:8px}
+.submenu a:hover{background:rgba(0,0,0,.03);color:var(--brand)}
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu{opacity:1;pointer-events:auto;transform:translateY(0)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn{
+  position:relative;isolation:isolate;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 18px;border-radius:12px;border:none;
+  font-weight:700;font-size:14px;letter-spacing:.2px;cursor:pointer;
+  transform:translateZ(0);
+  transition:transform .18s cubic-bezier(.16,1,.3,1),box-shadow .18s ease,filter .18s ease;
+}
+.btn.primary{background:var(--brand);color:#fff;box-shadow:0 8px 22px rgba(210,24,42,.25)}
+.btn.secondary{background:linear-gradient(150deg,rgba(30,58,122,.98),rgba(15,26,64,.98));color:#fff;box-shadow:0 8px 22px rgba(21,35,84,.22)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn.primary:hover{box-shadow:0 14px 32px rgba(210,24,42,.35)}
+.btn.secondary:hover{box-shadow:0 14px 32px rgba(21,35,84,.32)}
+.btn.lg{padding:13px 26px;font-size:15px}
+.btn.ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22);box-shadow:none}
+.btn.ghost:hover{background:rgba(255,255,255,.18)}
+.nav-toggle{
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.12);color:currentColor;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+.nav-toggle span{display:block;width:18px;height:2px;background:currentColor;border-radius:999px;transition:transform .2s,opacity .2s}
+.nav-toggle span+span{margin-top:4px}
+.nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle.is-open span:nth-child(2){opacity:0}
+.nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+header.is-scrolled .nav-toggle{border-color:rgba(21,35,84,.18);background:rgba(255,255,255,.85)}
+.mobile-menu{
+  display:none;position:absolute;left:0;right:0;top:100%;
+  background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+  opacity:0;transform:translateY(-6px);pointer-events:none;
+  transition:opacity .2s,transform .2s;z-index:9;
+}
+.mobile-menu.is-open{opacity:1;transform:translateY(0);pointer-events:auto}
+.mobile-links{display:flex;flex-direction:column;gap:12px;padding:14px 18px 18px}
+.mobile-links a{font-weight:700;color:var(--text);font-size:14px}
+.mobile-sub{display:flex;flex-direction:column;gap:8px;padding-left:12px;border-left:2px solid var(--line)}
+.mobile-sub a{font-weight:600;color:var(--muted)}
+.lang-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 10px;
+  border-radius:999px;border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.12);color:currentColor;
+  font-weight:700;font-size:12px;cursor:pointer;
+  transition:background .2s,transform .2s;
+}
+.lang-btn:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+header.is-scrolled .lang-btn{border-color:var(--line);background:#fff;color:var(--text)}
+.lang-icon{width:15px;height:15px;display:inline-flex}
+#google_translate_element{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ── HERO ────────────────────────────────────── */
+.svc-hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(var(--hh) + 80px) 0 64px;
+  background:#0b1220;overflow:hidden;
+}
+.circuit-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.circuit-bg svg{width:100%;height:100%;opacity:.55}
+.c-line{stroke:rgba(21,35,84,.6);stroke-width:.8;fill:none;stroke-dasharray:400;stroke-dashoffset:400;animation:draw 3s ease forwards}
+.c-line.r{stroke:rgba(210,24,42,.7);stroke-width:1;stroke-dasharray:250;stroke-dashoffset:250;animation:draw 2.5s ease forwards}
+.c-dot{fill:rgba(21,35,84,.7)}
+.c-dot.hot{fill:var(--brand);filter:drop-shadow(0 0 4px rgba(210,24,42,.8))}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.scanline{
+  position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(210,24,42,.5),transparent);
+  animation:scan 5s ease-in-out infinite;pointer-events:none;z-index:1;
+}
+@keyframes scan{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:.4}100%{top:100%;opacity:0}}
+
+.svc-hero .wrap{position:relative;z-index:2}
+
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 14px;border-radius:999px;
+  border:1px solid rgba(210,24,42,.35);background:rgba(210,24,42,.1);
+  color:#ff7a8a;font-size:11px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px;
+}
+.kicker-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--brand);
+  box-shadow:0 0 8px var(--brand);
+  animation:kdot 2s ease infinite;
+}
+@keyframes kdot{0%,100%{box-shadow:0 0 4px var(--brand)}50%{box-shadow:0 0 14px var(--brand),0 0 28px rgba(210,24,42,.4)}}
+
+.svc-hero h1{
+  font-size:clamp(36px,5.5vw,66px);line-height:1.02;
+  font-weight:900;color:#fff;letter-spacing:-.025em;
+  margin-bottom:18px;
+}
+.svc-hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#ff8a96,#d2182a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-lead{
+  font-size:17px;line-height:1.65;
+  color:rgba(255,255,255,.68);max-width:520px;margin-bottom:28px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+
+.scroll-cue{
+  display:flex;align-items:center;gap:10px;margin-top:36px;
+  color:rgba(255,255,255,.38);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.scroll-cue-mouse{
+  width:20px;height:30px;border-radius:10px;
+  border:1.5px solid rgba(255,255,255,.28);position:relative;
+}
+.scroll-cue-mouse::after{
+  content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);
+  width:3px;height:5px;border-radius:999px;background:rgba(255,255,255,.6);
+  animation:mscroll 2.2s ease infinite;
+}
+@keyframes mscroll{0%{top:5px;opacity:1}100%{top:18px;opacity:0}}
+
+/* Stats strip in hero */
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin-top:64px;gap:1px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;
+}
+.hstat{
+  background:rgba(11,18,32,.7);backdrop-filter:blur(10px);
+  padding:20px 22px;text-align:center;
+  transition:background .25s;
+}
+.hstat:hover{background:rgba(21,35,84,.5)}
+.hstat-n{
+  display:block;font-size:30px;font-weight:900;color:#fff;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+}
+.hstat-n sup{font-size:.55em;color:var(--brand)}
+.hstat-l{display:block;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+
+/* ── SECTION BASE ────────────────────────────── */
+.svc-sec{background:var(--bg);padding:80px 0}
+.svc-sec.alt{background:#f5f7fa}
+.svc-sec.dark{background:#0b1220}
+.eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:10px}
+.sec-title{font-size:clamp(22px,3.2vw,36px);font-weight:900;color:var(--text);line-height:1.1;letter-spacing:-.01em;margin-bottom:12px}
+.sec-lede{font-size:15px;line-height:1.7;color:var(--muted);max-width:520px}
+.sec-head{margin-bottom:48px}
+
+/* ── BENEFITS ────────────────────────────────── */
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.bcard{
+  border:1px solid var(--line);border-radius:18px;padding:28px;background:#fff;
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+}
+.bcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(21,35,84,.09);border-color:rgba(21,35,84,.2)}
+.bcard-icon{
+  width:46px;height:46px;border-radius:12px;
+  display:grid;place-items:center;margin-bottom:16px;
+}
+.bcard-icon.red{background:rgba(210,24,42,.09);color:var(--brand)}
+.bcard-icon.blue{background:rgba(21,35,84,.08);color:var(--blue)}
+.bcard-icon.green{background:rgba(16,150,80,.09);color:#10904e}
+.bcard-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:8px}
+.bcard-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ── PROCESS STEPPER ─────────────────────────── */
+.process-wrap{
+  display:grid;grid-template-columns:260px 1fr;
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  min-height:360px;margin-top:48px;
+}
+.step-nav{border-right:1px solid var(--line)}
+.step-btn{
+  width:100%;display:flex;align-items:flex-start;gap:14px;
+  padding:20px 22px;border:none;border-bottom:1px solid var(--line);
+  background:transparent;cursor:pointer;text-align:left;
+  transition:background .2s;position:relative;
+}
+.step-btn:last-child{border-bottom:none}
+.step-btn:hover{background:rgba(21,35,84,.03)}
+.step-btn.active{background:rgba(210,24,42,.04)}
+.step-btn.active::after{
+  content:"";position:absolute;right:0;top:0;bottom:0;
+  width:3px;background:var(--brand);border-radius:2px 0 0 2px;
+}
+.step-n{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  border:1.5px solid var(--line);
+  display:grid;place-items:center;
+  font-size:12px;font-weight:800;color:var(--muted);
+  transition:all .2s;
+}
+.step-btn.active .step-n{
+  background:var(--brand);border-color:var(--brand);
+  color:#fff;box-shadow:0 4px 12px rgba(210,24,42,.3);
+}
+.step-meta{flex:1;min-width:0}
+.step-label{font-size:13px;font-weight:700;color:var(--text);display:block;margin-bottom:2px}
+.step-sub{font-size:11px;color:var(--muted)}
+.step-detail{padding:36px 40px;display:flex;flex-direction:column;justify-content:center}
+.step-panel{display:none}
+.step-panel.active{display:block;animation:fadeup .32s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.panel-h{font-size:20px;font-weight:800;color:var(--text);margin-bottom:10px}
+.panel-p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.check-list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:13px;color:var(--text);line-height:1.5;
+}
+.check-list li::before{
+  content:"";flex-shrink:0;width:18px;height:18px;border-radius:50%;margin-top:1px;
+  background:rgba(210,24,42,.1) url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 6l2.5 2.5 4.5-5' stroke='%23d2182a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+  border:1px solid rgba(210,24,42,.25);
+}
+
+/* ── DELIVERABLES ────────────────────────────── */
+.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.del-card{
+  border:1px solid var(--line);border-radius:16px;padding:24px;
+  background:#fff;cursor:default;
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+  position:relative;overflow:hidden;
+}
+.del-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--brand),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+}
+.del-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(21,35,84,.1);border-color:rgba(21,35,84,.18)}
+.del-card:hover::before{transform:scaleX(1)}
+.del-icon{
+  width:42px;height:42px;border-radius:10px;
+  display:grid;place-items:center;margin-bottom:14px;
+  background:rgba(21,35,84,.07);color:var(--blue);
+}
+.del-title{font-size:15px;font-weight:800;color:var(--text);margin-bottom:6px}
+.del-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.del-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.del-tag{
+  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;
+  border:1px solid rgba(21,35,84,.15);color:var(--muted);
+}
+
+/* ── FAQ ─────────────────────────────────────── */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:48px}
+.faq-item{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:box-shadow .2s,border-color .2s}
+.faq-item.open{border-color:rgba(21,35,84,.22);box-shadow:0 8px 24px rgba(21,35,84,.07)}
+.faq-trigger{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 20px;background:transparent;border:none;cursor:pointer;text-align:left;gap:12px;
+}
+.faq-q{font-size:14px;font-weight:700;color:var(--text)}
+.faq-icon{
+  width:22px;height:22px;flex-shrink:0;border-radius:50%;
+  border:1.5px solid var(--line);display:grid;place-items:center;
+  color:var(--muted);transition:transform .25s,background .2s,border-color .2s,color .2s;
+}
+.faq-item.open .faq-icon{transform:rotate(180deg);background:var(--brand);border-color:var(--brand);color:#fff}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.faq-inner{padding:0 20px 18px;font-size:13px;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-body{max-height:260px}
+
+/* ── CONTACT ─────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px}
+.ct-title{font-size:clamp(22px,3vw,34px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px}
+.ct-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px}
+.ct-info{display:flex;flex-direction:column;gap:14px}
+.ct-row{display:flex;gap:12px;align-items:center}
+.ct-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  display:grid;place-items:center;color:rgba(255,255,255,.7);
+}
+.ct-txt strong{display:block;color:#fff;font-size:13px;font-weight:700}
+.ct-txt span{font-size:12px;color:rgba(255,255,255,.5)}
+.ct-form{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:32px;backdrop-filter:blur(12px);
+}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;padding:11px 14px;border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);color:#fff;
+  font-size:14px;font-family:inherit;
+  transition:border-color .2s,background .2s;
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.32)}
+.field input:focus,.field textarea:focus{outline:none;border-color:rgba(210,24,42,.5);background:rgba(255,255,255,.09)}
+.field textarea{min-height:90px;resize:vertical}
+.form-note{font-size:11px;color:rgba(255,255,255,.35);margin-top:10px}
+
+/* ── REVEAL ANIMATIONS ───────────────────────── */
+[data-r]{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+[data-r].on{opacity:1;transform:none}
+[data-r][data-d="1"]{transition-delay:.1s}
+[data-r][data-d="2"]{transition-delay:.2s}
+[data-r][data-d="3"]{transition-delay:.3s}
+[data-r][data-d="4"]{transition-delay:.4s}
+[data-r][data-d="5"]{transition-delay:.5s}
+
+/* ── FOOTER ──────────────────────────────────── */
+footer{background:#060d18;border-top:1px solid rgba(255,255,255,.06);padding:24px 0;color:rgba(255,255,255,.35);font-size:13px}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media(max-width:900px){
+  .links{display:none}
+  .nav-toggle{display:inline-flex}
+  .mobile-menu{display:block}
+  .nav-actions .btn.primary{display:none}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .benefits-grid{grid-template-columns:1fr}
+  .process-wrap{grid-template-columns:1fr}
+  .step-nav{border-right:none;border-bottom:1px solid var(--line)}
+  .step-btn.active::after{right:auto;left:0;top:auto;bottom:0;width:100%;height:3px;border-radius:0 0 2px 2px}
+  .step-detail{padding:24px}
+  .del-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .del-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .logo img{height:40px}
+  .nav-actions .btn.ghost{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  [data-r]{opacity:1;transform:none}
+}
+  </style>
+  <style>
+/* ════════════════════════════════════════════════
+   PALETA AZUL / BLANCO / AZUL / BLANCO / AZUL
+   Hero   → dark #0b1220
+   Beneficios → dark #0c1628
+   Proceso    → white #ffffff
+   Entregables→ dark #0b1220
+   FAQ        → white #ffffff
+   Contacto   → dark #060d18
+════════════════════════════════════════════════ */
+
+/* ── ANIMACIÓN COMPARTIDA ─────────────────────── */
+@keyframes flow-travel{from{stroke-dashoffset:620}to{stroke-dashoffset:-20}}
+@keyframes flow-rev{from{stroke-dashoffset:-620}to{stroke-dashoffset:20}}
+@keyframes node-ping{0%,100%{r:5;opacity:.9}50%{r:11;opacity:.3}}
+@keyframes node-pulse{0%,100%{box-shadow:0 0 0 0 rgba(210,24,42,.5)}60%{box-shadow:0 0 0 10px rgba(210,24,42,0)}}
+
+/* ════ BENEFICIOS — dark con cables ══════════════ */
+.svc-sec.dark-sec{background:#0c1628;position:relative;overflow:hidden}
+.svc-sec.dark-sec .eyebrow{color:#ff7a8a}
+.svc-sec.dark-sec .sec-title{color:#fff}
+.svc-sec.dark-sec .sec-lede{color:rgba(255,255,255,.62)}
+.svc-sec.dark-sec .wrap{position:relative;z-index:2}
+.svc-sec.dark-sec .bcard{
+  background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.09);
+  backdrop-filter:blur(4px);
+}
+.svc-sec.dark-sec .bcard:hover{
+  background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);
+  box-shadow:0 20px 48px rgba(0,0,0,.4),0 0 0 1px rgba(210,24,42,.2);
+}
+.svc-sec.dark-sec .bcard-title{color:#fff}
+.svc-sec.dark-sec .bcard-desc{color:rgba(255,255,255,.62)}
+.svc-sec.dark-sec .bcard-icon.red{background:rgba(210,24,42,.18)}
+.svc-sec.dark-sec .bcard-icon.blue{background:rgba(21,35,84,.4)}
+.svc-sec.dark-sec .bcard-icon.green{background:rgba(16,150,80,.18)}
+
+/* Cables — bus trifásico animado */
+.cables-bg{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.cables-bg svg{width:100%;height:100%}
+/* Tubo base */
+.cb-tube{fill:none;stroke-linecap:round}
+.cb-tube.ph-a{stroke:rgba(21,35,84,.3);stroke-width:3}
+.cb-tube.ph-b{stroke:rgba(21,35,84,.22);stroke-width:2}
+.cb-tube.ph-c{stroke:rgba(21,35,84,.18);stroke-width:2}
+/* Corriente viajando */
+.cb-cur{fill:none;stroke-linecap:round;stroke-dasharray:18 600}
+.cb-cur.ph-a{stroke:rgba(210,24,42,.9);stroke-width:4;animation:flow-travel 3.5s linear infinite}
+.cb-cur.ph-b{stroke:rgba(80,160,255,.85);stroke-width:3;animation:flow-travel 4.5s linear infinite;animation-delay:-1.5s}
+.cb-cur.ph-c{stroke:rgba(255,200,40,.8);stroke-width:3;animation:flow-travel 5.5s linear infinite;animation-delay:-3s}
+/* Nodo pulsante */
+.cb-ping{animation:node-ping 2s ease-out infinite;fill:var(--brand);opacity:.7}
+.cb-ping.b{fill:#50a0ff;animation-delay:-0.8s}
+.cb-ping.c{fill:#ffc828;animation-delay:-1.6s}
+/* Halo exterior del nodo */
+.cb-node-base{fill:rgba(210,24,42,.12);stroke:rgba(210,24,42,.35);stroke-width:1}
+/* Resistor / componente */
+.cb-comp{fill:rgba(21,35,84,.5);stroke:rgba(21,35,84,.8);stroke-width:1}
+
+/* ════ PROCESO — white con bus bar superior ══════ */
+.svc-sec.alt{background:#fff;position:relative;overflow:hidden}
+.svc-sec.alt .wrap{position:relative;z-index:2}
+/* Bus bar horizontal en el tope */
+.bus-bg{position:absolute;top:0;left:0;right:0;height:90px;pointer-events:none;z-index:0;overflow:hidden}
+.bus-bg svg{width:100%;height:100%}
+.bus-bar{fill:none;stroke:rgba(21,35,84,.1);stroke-width:10;stroke-linecap:round}
+.bus-tap{stroke:rgba(21,35,84,.1);stroke-width:4;stroke-linecap:round;fill:none}
+.bus-energized{
+  fill:none;stroke:rgba(210,24,42,.35);stroke-width:5;stroke-linecap:round;
+  stroke-dasharray:800;stroke-dashoffset:800;
+  transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1);
+}
+/* Corriente en bus */
+.bus-flow{
+  fill:none;stroke:rgba(210,24,42,.7);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:20 800;animation:flow-travel 3s linear infinite;
+  opacity:0;transition:opacity .4s;
+}
+.bus-flow.on{opacity:1}
+/* Tap energizado */
+.tap-glow{
+  stroke:rgba(210,24,42,.5);stroke-width:3;fill:none;
+  stroke-dasharray:60;stroke-dashoffset:60;
+  transition:stroke-dashoffset .6s ease;
+}
+.tap-glow.on{stroke-dashoffset:0}
+.tap-node{
+  fill:rgba(21,35,84,.15);stroke:rgba(21,35,84,.25);stroke-width:1.5;
+  transition:fill .3s,stroke .3s;
+}
+.tap-node.on{fill:rgba(210,24,42,.25);stroke:rgba(210,24,42,.6)}
+/* Conduit vertical */
+.conduit-bg{position:absolute;left:0;top:0;bottom:0;width:100px;pointer-events:none;z-index:0;overflow:hidden}
+.conduit-bg svg{width:100%;height:100%}
+.cond-tube{fill:none;stroke:rgba(21,35,84,.08);stroke-width:14;stroke-linecap:round}
+.cond-fill{
+  fill:none;stroke:rgba(210,24,42,.4);stroke-width:7;stroke-linecap:round;
+  stroke-dasharray:760;stroke-dashoffset:760;
+  transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1);
+}
+.cond-flow{
+  fill:none;stroke:rgba(210,24,42,.75);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:18 760;animation:flow-travel 2.2s linear infinite;
+  opacity:0;transition:opacity .4s;
+}
+.cond-flow.on{opacity:1}
+.cond-node{transition:fill .3s,stroke .3s}
+.cond-node.on{fill:rgba(210,24,42,.3)!important;stroke:rgba(210,24,42,.7)!important}
+
+/* ════ ENTREGABLES — dark blueprint mejorado ═════ */
+.svc-sec.del-sec{background:#0b1220;position:relative;overflow:hidden}
+/* Grid blueprint */
+.svc-sec.del-sec::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(30,60,140,.2) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,60,140,.2) 1px,transparent 1px),
+    radial-gradient(circle,rgba(30,60,140,.25) 1px,transparent 1px);
+  background-size:52px 52px, 52px 52px, 52px 52px;
+  background-position:0 0, 0 0, 26px 26px;
+}
+.svc-sec.del-sec .eyebrow{color:#ff7a8a}
+.svc-sec.del-sec .sec-title{color:#fff}
+.svc-sec.del-sec .sec-lede{color:rgba(255,255,255,.6)}
+.svc-sec.del-sec .wrap{position:relative;z-index:2}
+.svc-sec.del-sec .del-card{
+  background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);
+  backdrop-filter:blur(6px);
+}
+.svc-sec.del-sec .del-card:hover{
+  background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);
+  box-shadow:0 20px 48px rgba(0,0,0,.5),0 0 0 1px rgba(210,24,42,.2);
+}
+.svc-sec.del-sec .del-card::before{background:linear-gradient(90deg,var(--brand),rgba(210,24,42,.15))}
+.svc-sec.del-sec .del-icon{background:rgba(30,60,140,.3);color:#8ab0f8;border:1px solid rgba(30,60,140,.4)}
+.svc-sec.del-sec .del-title{color:#fff}
+.svc-sec.del-sec .del-desc{color:rgba(255,255,255,.58)}
+.svc-sec.del-sec .del-tag{border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.45)}
+/* Breaker grande */
+.breaker-wrap{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  opacity:.13;pointer-events:none;z-index:1;
+}
+.b-arm{transform-origin:70px 100px;animation:btrip 5s ease-in-out infinite}
+@keyframes btrip{0%,40%{transform:rotate(0deg)}50%,57%{transform:rotate(-45deg)}70%,100%{transform:rotate(0deg)}}
+.b-arc{opacity:0;animation:barc 5s ease-in-out infinite}
+@keyframes barc{0%,46%{opacity:0}51%{opacity:1}58%{opacity:0}100%{opacity:0}}
+/* Scan laser */
+.scan-line{
+  position:absolute;left:0;right:0;height:2px;top:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(80,160,255,.18) 40%,rgba(210,24,42,.35) 60%,transparent 100%);
+  animation:scan-sweep 6s cubic-bezier(.4,0,.6,1) infinite;
+  pointer-events:none;z-index:1;
+}
+@keyframes scan-sweep{0%{top:-2px;opacity:0}5%{opacity:1}95%{opacity:.6}100%{top:100%;opacity:0}}
+
+/* ════ FAQ — white con trazado de circuito ═══════ */
+.svc-sec.faq-sec{background:#fff;position:relative;overflow:hidden}
+.svc-sec.faq-sec .eyebrow{color:var(--brand)}
+.svc-sec.faq-sec .sec-title{color:var(--text)}
+.svc-sec.faq-sec .wrap{position:relative;z-index:2}
+/* Faq items — tema claro */
+.svc-sec.faq-sec .faq-item{background:#fff;border-color:var(--line)}
+.svc-sec.faq-sec .faq-item.open{border-color:rgba(210,24,42,.3);box-shadow:0 8px 24px rgba(21,35,84,.07)}
+.svc-sec.faq-sec .faq-q{color:var(--text)}
+.svc-sec.faq-sec .faq-icon{border-color:var(--line);color:var(--muted)}
+.svc-sec.faq-sec .faq-inner{color:var(--muted)}
+/* Circuito decorativo superior */
+.faq-circuit{position:absolute;top:0;left:0;right:0;height:70px;pointer-events:none;z-index:0;overflow:hidden}
+.faq-circuit svg{width:100%;height:100%}
+.fc-path{fill:none;stroke:rgba(21,35,84,.08);stroke-width:2}
+.fc-flow{
+  fill:none;stroke:rgba(210,24,42,.35);stroke-width:2;
+  stroke-dasharray:16 700;animation:flow-travel 5s linear infinite;
+}
+.fc-flow.b{stroke:rgba(21,35,84,.25);animation-duration:7s;animation-delay:-3s}
+.fc-node{fill:rgba(21,35,84,.12);stroke:rgba(21,35,84,.2);stroke-width:1.5}
+/* Onda AC en la base */
+.wave-bg{position:absolute;bottom:0;left:0;right:0;height:80px;pointer-events:none;z-index:0;overflow:hidden}
+.wave-bg svg{width:100%;height:100%}
+.wv{fill:none;stroke:rgba(21,35,84,.07);stroke-width:1.5}
+.wv.hot{
+  stroke:rgba(210,24,42,.15);stroke-width:2;
+  stroke-dasharray:1440;animation:wavepulse 5s ease-in-out infinite;
+}
+@keyframes wavepulse{0%,100%{stroke-dashoffset:0;opacity:.6}50%{stroke-dashoffset:-350;opacity:1}}
+
+/* ════ CONTACTO — dark cables convergentes ═══════ */
+.svc-sec.dark{background:#060d18;position:relative;overflow:hidden}
+.contact-cables{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.contact-cables svg{width:100%;height:100%}
+.cc-tube{fill:none;stroke-linecap:round}
+.cc-tube.a{stroke:rgba(21,35,84,.35);stroke-width:2}
+.cc-tube.b{stroke:rgba(21,35,84,.25);stroke-width:1.5}
+.cc-cur{fill:none;stroke-linecap:round;stroke-dasharray:18 620}
+.cc-cur.a{stroke:rgba(210,24,42,.8);stroke-width:3.5;animation:flow-travel 4s linear infinite}
+.cc-cur.b{stroke:rgba(80,160,255,.7);stroke-width:2.5;animation:flow-travel 6s linear infinite;animation-delay:-2s}
+.cc-cur.c{stroke:rgba(255,200,40,.65);stroke-width:2;animation:flow-travel 8s linear infinite;animation-delay:-4.5s}
+.cc-node{fill:rgba(210,24,42,.2);stroke:rgba(210,24,42,.5);stroke-width:1.5}
+.cc-node-ping{fill:rgba(210,24,42,.5);animation:node-ping 2.5s ease-out infinite}
+.svc-sec.dark .wrap{position:relative;z-index:2}
+  </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <nav>
-        <a class="logo" href="../index.html#inicio">
-          <img src="../assets/LOGO%20.png" alt="KoolRed Soluciones" />
-        </a>
-        <div class="links">
-          <a href="../index.html#inicio">Inicio</a>
-          <div class="dropdown">
-            <a href="../index.html#servicios">Servicios</a>
-                        <div class="submenu">
-              <a href="adecuaciones-electricas.html">Ingenier&iacute;a el&eacute;ctrica</a>
-              <a href="automatizacion.html">Automatizaci&oacute;n industrial</a>
-              <a href="hvac-bms.html">HVAC / BMS</a>
-              <a href="cctv.html">CCTV y seguridad</a>
-              <a href="revision-tecnica.html">Consultor&iacute;a t&eacute;cnica</a>
-              <a href="ia-n8n.html">Automatizaci&oacute;n digital</a>
-              <a href="mantenimiento.html">Soporte operativo</a>
+
+<!-- ─── HEADER ──────────────────────────────── -->
+<header class="is-top" id="site-header">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="../index.html#inicio">
+        <img src="../assets/LOGO%20.png" alt="KoolRed Soluciones" />
+      </a>
+      <div class="links">
+        <a href="../index.html#inicio">Inicio</a>
+        <div class="dropdown">
+          <a href="../index.html#servicios">Servicios</a>
+          <div class="submenu">
+            <a href="adecuaciones-electricas.html">Ingenier&iacute;a el&eacute;ctrica</a>
+            <a href="automatizacion.html">Automatizaci&oacute;n industrial</a>
+            <a href="hvac-bms.html">HVAC / BMS</a>
+            <a href="cctv.html">CCTV y seguridad</a>
+            <a href="revision-tecnica.html">Consultor&iacute;a t&eacute;cnica</a>
+            <a href="ia-n8n.html">Automatizaci&oacute;n digital</a>
+            <a href="mantenimiento.html">Soporte operativo</a>
+          </div>
+        </div>
+        <a href="../index.html#proyectos">Proyectos</a>
+        <a href="../index.html#industrias">Industria</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="btn primary" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
+        <button class="lang-btn" type="button" aria-label="Cambiar idioma ES/EN">
+          <span class="lang-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/>
+            </svg>
+          </span>
+          <span>ES/EN</span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-links">
+        <a href="../index.html#inicio">Inicio</a>
+        <a href="../index.html#servicios">Servicios</a>
+        <div class="mobile-sub">
+          <a href="adecuaciones-electricas.html">Ingenier&iacute;a el&eacute;ctrica</a>
+          <a href="automatizacion.html">Automatizaci&oacute;n industrial</a>
+          <a href="hvac-bms.html">HVAC / BMS</a>
+          <a href="cctv.html">CCTV y seguridad</a>
+          <a href="revision-tecnica.html">Consultor&iacute;a t&eacute;cnica</a>
+          <a href="ia-n8n.html">Automatizaci&oacute;n digital</a>
+          <a href="mantenimiento.html">Soporte operativo</a>
+        </div>
+        <a href="../index.html#proyectos">Proyectos</a>
+        <a href="../index.html#industrias">Industria</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn primary" style="text-align:center" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ─── HERO ─────────────────────────────────── -->
+<section class="svc-hero" id="inicio">
+  <!-- Circuit background -->
+  <div class="circuit-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid lines -->
+      <line class="c-line" x1="0" y1="150" x2="1440" y2="150" style="animation-delay:.2s"/>
+      <line class="c-line" x1="0" y1="350" x2="1440" y2="350" style="animation-delay:.5s"/>
+      <line class="c-line" x1="0" y1="600" x2="1440" y2="600" style="animation-delay:.8s"/>
+      <line class="c-line" x1="200" y1="0" x2="200" y2="900" style="animation-delay:.3s"/>
+      <line class="c-line" x1="480" y1="0" x2="480" y2="900" style="animation-delay:.6s"/>
+      <line class="c-line" x1="800" y1="0" x2="800" y2="900" style="animation-delay:.1s"/>
+      <line class="c-line" x1="1100" y1="0" x2="1100" y2="900" style="animation-delay:.4s"/>
+      <!-- Circuit traces -->
+      <path class="c-line r" d="M200 150 L200 220 L340 220 L340 350" style="animation-delay:.9s;stroke-dasharray:320;stroke-dashoffset:320"/>
+      <path class="c-line r" d="M480 600 L480 500 L700 500 L700 350" style="animation-delay:1.1s;stroke-dasharray:380;stroke-dashoffset:380"/>
+      <path class="c-line" d="M800 150 L900 150 L900 280 L1100 280 L1100 350" style="animation-delay:1.3s;stroke-dasharray:500;stroke-dashoffset:500"/>
+      <path class="c-line" d="M0 350 L140 350 L140 500 L480 500" style="animation-delay:.7s;stroke-dasharray:460;stroke-dashoffset:460"/>
+      <path class="c-line r" d="M1100 600 L1100 720 L900 720 L900 900" style="animation-delay:1.5s;stroke-dasharray:350;stroke-dashoffset:350"/>
+      <!-- Nodes -->
+      <circle class="c-dot" cx="200" cy="150" r="4"/>
+      <circle class="c-dot" cx="480" cy="350" r="4"/>
+      <circle class="c-dot" cx="800" cy="350" r="4"/>
+      <circle class="c-dot" cx="1100" cy="600" r="4"/>
+      <circle class="c-dot hot" cx="340" cy="350" r="5" style="animation:kdot 2s ease infinite"/>
+      <circle class="c-dot hot" cx="700" cy="350" r="5" style="animation:kdot 2.5s ease infinite"/>
+      <circle class="c-dot hot" cx="900" cy="280" r="5" style="animation:kdot 3s ease infinite"/>
+      <!-- Resistors / components (simple rects) -->
+      <rect x="315" y="215" width="50" height="10" rx="3" fill="none" stroke="rgba(210,24,42,.5)" stroke-width="1"/>
+      <rect x="675" y="495" width="50" height="10" rx="3" fill="none" stroke="rgba(210,24,42,.5)" stroke-width="1"/>
+      <rect x="875" y="345" width="50" height="10" rx="3" fill="none" stroke="rgba(21,35,84,.5)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="scanline"></div>
+
+  <div class="wrap">
+    <!-- Segment toggle -->
+    <div class="segment-toggle" role="group" aria-label="Segmento de operación" style="margin-bottom:20px">
+      <span class="segment-label">Segmento:</span>
+      <button class="segment-btn is-active" type="button" data-segment="industrial" aria-pressed="true">Industrial</button>
+      <button class="segment-btn" type="button" data-segment="comercial" aria-pressed="false">Comercial</button>
+    </div>
+
+    <div class="hero-kicker">
+      <span class="kicker-dot"></span>
+      ELECTRICIDAD &middot; RETIE / NTC &middot; ENTREGA TRAZABLE
+    </div>
+
+    <h1>
+      <span class="segment-industrial">Ingenier&iacute;a el&eacute;ctrica<br/>con cumplimiento <em>RETIE/NTC.</em></span>
+      <span class="segment-comercial">Infraestructura el&eacute;ctrica<br/>segura y <em>certificada.</em></span>
+    </h1>
+
+    <p class="hero-lead">
+      <span class="segment-industrial">Dise&ntilde;amos, adecuamos y verificamos redes el&eacute;ctricas para cargas cr&iacute;ticas, con documentaci&oacute;n completa y pruebas en campo.</span>
+      <span class="segment-comercial">Adecuamos infraestructura el&eacute;ctrica para edificios corporativos y comerciales, reduciendo riesgos y cumpliendo RETIE/NTC.</span>
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn primary lg" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
+      <a class="btn ghost lg" href="#proceso">Ver proceso &darr;</a>
+    </div>
+
+    <div class="scroll-cue">
+      <div class="scroll-cue-mouse"></div>
+      <span>Desplaza para explorar</span>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-n" data-counter="120" data-suffix="+">0</span>
+        <span class="hstat-l">Proyectos ejecutados</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n" data-counter="100" data-suffix="%">0</span>
+        <span class="hstat-l">Cumplimiento RETIE/NTC</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n" data-counter="48" data-suffix="h">0</span>
+        <span class="hstat-l">Respuesta de urgencia</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n" data-counter="7" data-suffix="+">0</span>
+        <span class="hstat-l">A&ntilde;os de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFITS ──────────────────────────────── -->
+<section class="svc-sec dark-sec" id="beneficios">
+  <!-- Bus trifásico animado -->
+  <div class="cables-bg" aria-hidden="true">
+    <svg viewBox="0 0 1100 440" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- FASE A — roja -->
+      <path class="cb-tube ph-a" d="M-20 90 L180 90 L180 180 L420 180 L420 90 L700 90 L700 200 L950 200 L950 90 L1120 90"/>
+      <path class="cb-cur ph-a"  d="M-20 90 L180 90 L180 180 L420 180 L420 90 L700 90 L700 200 L950 200 L950 90 L1120 90"/>
+      <!-- FASE B — azul -->
+      <path class="cb-tube ph-b" d="M-20 260 L200 260 L200 180 L420 180"/>
+      <path class="cb-tube ph-b" d="M420 360 L620 360 L620 260 L900 260 L900 350 L1120 350"/>
+      <path class="cb-cur ph-b"  d="M-20 260 L200 260 L200 180 L420 180"/>
+      <path class="cb-cur ph-b"  d="M420 360 L620 360 L620 260 L900 260 L900 350 L1120 350" style="animation-delay:-2s"/>
+      <!-- FASE C — amarilla -->
+      <path class="cb-tube ph-c" d="M-20 380 L140 380 L140 300 L350 300 L350 380 L560 380 L560 300 L800 300 L800 380 L1120 380"/>
+      <path class="cb-cur ph-c"  d="M-20 380 L140 380 L140 300 L350 300 L350 380 L560 380 L560 300 L800 300 L800 380 L1120 380"/>
+      <!-- Nodos de conexión -->
+      <circle class="cb-node-base" cx="180" cy="90"  r="8"/>
+      <circle class="cb-node-base" cx="420" cy="180" r="8"/>
+      <circle class="cb-node-base" cx="700" cy="90"  r="8"/>
+      <circle class="cb-node-base" cx="950" cy="200" r="8" style="fill:rgba(21,35,84,.08)"/>
+      <!-- Nodos pulsantes (ping animado) -->
+      <circle class="cb-ping"   cx="180" cy="90"  r="5"/>
+      <circle class="cb-ping b" cx="420" cy="180" r="5"/>
+      <circle class="cb-ping c" cx="700" cy="90"  r="5"/>
+      <circle class="cb-ping"   cx="620" cy="360" r="5" style="animation-delay:-1.2s"/>
+      <!-- Componentes eléctricos (resistores) -->
+      <rect class="cb-comp" x="155" y="85"  width="50" height="10" rx="3"/>
+      <rect class="cb-comp" x="395" y="175" width="50" height="10" rx="3" fill="rgba(80,130,255,.3)" stroke="rgba(80,130,255,.6)"/>
+      <rect class="cb-comp" x="675" y="85"  width="50" height="10" rx="3"/>
+      <!-- Transformador simplificado -->
+      <circle cx="950" cy="90" r="22" fill="none" stroke="rgba(21,35,84,.2)" stroke-width="2"/>
+      <circle cx="950" cy="90" r="12" fill="none" stroke="rgba(21,35,84,.15)" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="eyebrow">POR QU&Eacute; KOOLRED</span>
+      <h2 class="sec-title">Ingenier&iacute;a verificada,<br/>no solo instalada</h2>
+      <p class="sec-lede">Entregamos evidencia, no solo ejecuci&oacute;n. Cada proyecto incluye documentaci&oacute;n lista para auditor&iacute;a.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="bcard" data-r data-d="1">
+        <div class="bcard-icon red">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="bcard-title">Cumplimiento sin reprocesos</div>
+        <div class="bcard-desc">RETIE/NTC integrado desde el dise&ntilde;o hasta la entrega. Planos, memorias y actas que pasan interventor&iacute;a a la primera.</div>
+      </div>
+      <div class="bcard" data-r data-d="2">
+        <div class="bcard-icon blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="bcard-title">Ejecuci&oacute;n verificada</div>
+        <div class="bcard-desc">Pruebas de continuidad, aislamiento y puesta a tierra en campo. Actas firmadas antes de energizar cualquier tablero.</div>
+      </div>
+      <div class="bcard" data-r data-d="3">
+        <div class="bcard-icon green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="bcard-title">Cero tiempo muerto</div>
+        <div class="bcard-desc">Planificamos ventanas de intervenci&oacute;n para no detener tu producci&oacute;n. Coordinamos con tu equipo de OT/IT en cada etapa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ───────────────────────────────── -->
+<section class="svc-sec alt" id="proceso">
+  <!-- Bus bar horizontal superior -->
+  <div class="bus-bg" aria-hidden="true">
+    <svg viewBox="0 0 1100 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bus bar principal -->
+      <path class="bus-bar" d="M60 45 L1040 45"/>
+      <path class="bus-energized" id="bus-energy" d="M60 45 L1040 45"/>
+      <path class="bus-flow" id="bus-flow" d="M60 45 L1040 45"/>
+      <!-- Taps hacia los 4 steps -->
+      <line class="bus-tap" id="tap1" x1="220" y1="45" x2="220" y2="88"/>
+      <line class="bus-tap" id="tap2" x1="480" y1="45" x2="480" y2="88"/>
+      <line class="bus-tap" id="tap3" x1="720" y1="45" x2="720" y2="88"/>
+      <line class="bus-tap" id="tap4" x1="960" y1="45" x2="960" y2="88"/>
+      <!-- Taps energizados (sobre los anteriores) -->
+      <line class="tap-glow" id="tg1" x1="220" y1="45" x2="220" y2="88"/>
+      <line class="tap-glow" id="tg2" x1="480" y1="45" x2="480" y2="88"/>
+      <line class="tap-glow" id="tg3" x1="720" y1="45" x2="720" y2="88"/>
+      <line class="tap-glow" id="tg4" x1="960" y1="45" x2="960" y2="88"/>
+      <!-- Nodos de conexión -->
+      <circle class="tap-node" id="tn1" cx="220" cy="45" r="7"/>
+      <circle class="tap-node" id="tn2" cx="480" cy="45" r="7"/>
+      <circle class="tap-node" id="tn3" cx="720" cy="45" r="7"/>
+      <circle class="tap-node" id="tn4" cx="960" cy="45" r="7"/>
+    </svg>
+  </div>
+  <!-- Conduit vertical izquierdo -->
+  <div class="conduit-bg" aria-hidden="true">
+    <svg viewBox="0 0 100 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <path class="cond-tube" d="M50 10 L50 890"/>
+      <path class="cond-fill" id="cond-fill" d="M50 10 L50 890"/>
+      <path class="cond-flow" id="cond-flow" d="M50 10 L50 890"/>
+      <!-- Taps laterales -->
+      <line x1="50" y1="220" x2="100" y2="220" stroke="rgba(21,35,84,.1)" stroke-width="8" stroke-linecap="round"/>
+      <line x1="50" y1="420" x2="100" y2="420" stroke="rgba(21,35,84,.1)" stroke-width="8" stroke-linecap="round"/>
+      <line x1="50" y1="620" x2="100" y2="620" stroke="rgba(21,35,84,.1)" stroke-width="8" stroke-linecap="round"/>
+      <line x1="50" y1="790" x2="100" y2="790" stroke="rgba(21,35,84,.1)" stroke-width="8" stroke-linecap="round"/>
+      <!-- Nodos -->
+      <circle class="cond-node" id="cn1" cx="50" cy="220" r="10" fill="rgba(21,35,84,.1)" stroke="rgba(21,35,84,.15)" stroke-width="2"/>
+      <circle class="cond-node" id="cn2" cx="50" cy="420" r="10" fill="rgba(21,35,84,.1)" stroke="rgba(21,35,84,.15)" stroke-width="2"/>
+      <circle class="cond-node" id="cn3" cx="50" cy="620" r="10" fill="rgba(21,35,84,.1)" stroke="rgba(21,35,84,.15)" stroke-width="2"/>
+      <circle class="cond-node" id="cn4" cx="50" cy="790" r="10" fill="rgba(21,35,84,.1)" stroke="rgba(21,35,84,.15)" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="eyebrow">PROCESO DE TRABAJO</span>
+      <h2 class="sec-title">4 fases, ruta verificable</h2>
+      <p class="sec-lede">Cada etapa entrega evidencia que el cliente puede auditar. Selecciona una fase para ver el detalle.</p>
+    </div>
+    <div class="process-wrap" data-r>
+      <div class="step-nav" role="tablist">
+        <button class="step-btn active" role="tab" aria-selected="true" data-panel="p1">
+          <span class="step-n">1</span>
+          <span class="step-meta">
+            <span class="step-label">Diagn&oacute;stico</span>
+            <span class="step-sub">Levantamiento en campo</span>
+          </span>
+        </button>
+        <button class="step-btn" role="tab" aria-selected="false" data-panel="p2">
+          <span class="step-n">2</span>
+          <span class="step-meta">
+            <span class="step-label">Ingenier&iacute;a</span>
+            <span class="step-sub">Dise&ntilde;o y memorias</span>
+          </span>
+        </button>
+        <button class="step-btn" role="tab" aria-selected="false" data-panel="p3">
+          <span class="step-n">3</span>
+          <span class="step-meta">
+            <span class="step-label">Ejecuci&oacute;n</span>
+            <span class="step-sub">Intervenci&oacute;n verificada</span>
+          </span>
+        </button>
+        <button class="step-btn" role="tab" aria-selected="false" data-panel="p4">
+          <span class="step-n">4</span>
+          <span class="step-meta">
+            <span class="step-label">Entrega</span>
+            <span class="step-sub">Documentaci&oacute;n y soporte</span>
+          </span>
+        </button>
+      </div>
+      <div class="step-detail">
+        <div class="step-panel active" id="p1">
+          <div class="panel-h">Diagn&oacute;stico t&eacute;cnico integral</div>
+          <p class="panel-p">Visitamos el sitio, levantamos el estado actual y definimos el alcance exacto del proyecto antes de emitir cualquier propuesta.</p>
+          <ul class="check-list">
+            <li>Levantamiento de cargas, tableros y canalizaciones existentes</li>
+            <li>Identificaci&oacute;n de riesgos el&eacute;ctricos y brechas RETIE/NTC</li>
+            <li>Medici&oacute;n de puesta a tierra, aislamiento y calidad de energ&iacute;a</li>
+            <li>Informe de diagn&oacute;stico con prioridades y ruta de intervenci&oacute;n</li>
+          </ul>
+        </div>
+        <div class="step-panel" id="p2">
+          <div class="panel-h">Ingenier&iacute;a y dise&ntilde;o</div>
+          <p class="panel-p">Producimos los entregables t&eacute;cnicos que soportan la ejecuci&oacute;n y la interventor&iacute;a desde el inicio.</p>
+          <ul class="check-list">
+            <li>Planos unifilares, de distribuci&oacute;n y rutas de canalizaci&oacute;n</li>
+            <li>Memoria de c&aacute;lculo: conductores, protecci&oacute;n y selectividad</li>
+            <li>Coordinaci&oacute;n de protecciones y estudio de cortocircuito</li>
+            <li>Plan de ejecuci&oacute;n con ventanas de intervenci&oacute;n y recursos</li>
+          </ul>
+        </div>
+        <div class="step-panel" id="p3">
+          <div class="panel-h">Ejecuci&oacute;n en campo</div>
+          <p class="panel-p">Intervenimos con personal certificado, coordinando con el equipo del cliente para garantizar continuidad operativa.</p>
+          <ul class="check-list">
+            <li>Montaje de tableros, canalizaciones y acometidas seg&uacute;n planos</li>
+            <li>Puesta a tierra y red equipotencial verificada con telurom&eacute;tro</li>
+            <li>Pruebas FAT en taller y SAT en sitio antes de energizaci&oacute;n</li>
+            <li>Control de calidad en campo con registro fotogr&aacute;fico por punto</li>
+          </ul>
+        </div>
+        <div class="step-panel" id="p4">
+          <div class="panel-h">Entrega y soporte</div>
+          <p class="panel-p">Cerramos con documentaci&oacute;n completa y acompa&ntilde;amiento post-entrega para garantizar la continuidad.</p>
+          <ul class="check-list">
+            <li>Planos as-built actualizados y firmados por el ingeniero responsable</li>
+            <li>Actas de pruebas, certificados y dossier de entrega RETIE/NTC</li>
+            <li>Capacitaci&oacute;n al personal operativo del cliente</li>
+            <li>Soporte t&eacute;cnico prioritario durante los 30 d&iacute;as siguientes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DELIVERABLES ──────────────────────────── -->
+<section class="svc-sec del-sec" id="entregables">
+  <!-- Scan line -->
+  <div class="scan-line" aria-hidden="true"></div>
+  <!-- Breaker animado grande en esquina -->
+  <div class="breaker-wrap" aria-hidden="true">
+    <svg width="200" height="380" viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="rgba(255,255,255,1)" stroke-linecap="round">
+      <!-- Cable entrada -->
+      <line x1="100" y1="0" x2="100" y2="40" stroke-width="6"/>
+      <line x1="70"  y1="0" x2="70"  y2="40" stroke-width="4"/>
+      <line x1="130" y1="0" x2="130" y2="40" stroke-width="4"/>
+      <!-- Cuerpo breaker -->
+      <rect x="20" y="40" width="160" height="240" rx="14" stroke-width="3.5" fill="rgba(255,255,255,.03)"/>
+      <!-- Panel interno -->
+      <rect x="38" y="58" width="124" height="60" rx="8" stroke-width="2" fill="rgba(255,255,255,.04)"/>
+      <!-- Etiquetas ON/OFF -->
+      <text x="66" y="82" font-family="monospace" font-size="14" font-weight="bold" fill="rgba(255,255,255,1)" stroke="none">ON</text>
+      <text x="116" y="82" font-family="monospace" font-size="14" font-weight="bold" fill="rgba(255,255,255,.4)" stroke="none">OFF</text>
+      <line x1="108" y1="62" x2="108" y2="112" stroke-width="1" opacity=".3"/>
+      <!-- Palanca principal -->
+      <g class="b-arm">
+        <rect x="75" y="118" width="50" height="130" rx="10" stroke-width="3" fill="rgba(255,255,255,.06)"/>
+        <rect x="88" y="150" width="24" height="60" rx="5" stroke-width="2" fill="rgba(255,255,255,.09)"/>
+        <!-- Indicador palanca -->
+        <circle cx="100" cy="185" r="10" stroke-width="2" fill="rgba(255,255,255,.06)"/>
+      </g>
+      <!-- Arc flash al disparar -->
+      <g class="b-arc">
+        <circle cx="100" cy="185" r="28" stroke="rgba(210,24,42,1)" stroke-width="2" fill="rgba(210,24,42,.06)"/>
+        <circle cx="100" cy="185" r="14" stroke="rgba(255,100,60,1)" stroke-width="1.5" fill="rgba(255,80,40,.08)"/>
+        <line x1="100" y1="157" x2="100" y2="213" stroke="rgba(255,140,60,1)" stroke-width="2"/>
+        <line x1="72"  y1="185" x2="128" y2="185" stroke="rgba(255,140,60,1)" stroke-width="2"/>
+        <line x1="80"  y1="165" x2="120" y2="205" stroke="rgba(255,100,60,.8)" stroke-width="1.5"/>
+        <line x1="120" y1="165" x2="80"  y2="205" stroke="rgba(255,100,60,.8)" stroke-width="1.5"/>
+      </g>
+      <!-- Bornes inferiores -->
+      <rect x="38" y="282" width="40" height="16" rx="4" stroke-width="1.5" fill="rgba(255,255,255,.04)"/>
+      <rect x="80" y="282" width="40" height="16" rx="4" stroke-width="1.5" fill="rgba(255,255,255,.04)"/>
+      <rect x="122" y="282" width="40" height="16" rx="4" stroke-width="1.5" fill="rgba(255,255,255,.04)"/>
+      <!-- Cables salida -->
+      <line x1="58"  y1="298" x2="58"  y2="340" stroke-width="6"/>
+      <line x1="100" y1="298" x2="100" y2="340" stroke-width="4"/>
+      <line x1="142" y1="298" x2="142" y2="340" stroke-width="4"/>
+      <!-- Label -->
+      <text x="100" y="365" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="rgba(255,255,255,1)" stroke="none" letter-spacing="2">BREAKER</text>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="eyebrow">ENTREGABLES</span>
+      <h2 class="sec-title">Documentaci&oacute;n que resiste<br/>cualquier auditor&iacute;a</h2>
+      <p class="sec-lede">Todo proyecto incluye estos entregables. Sin excepciones.</p>
+    </div>
+    <div class="del-grid">
+      <div class="del-card" data-r data-d="1">
+        <div class="del-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="del-title">Planos el&eacute;ctricos</div>
+        <div class="del-desc">Dise&ntilde;o en AutoCAD/DWG con revisiones y sellos del ingeniero responsable.</div>
+        <div class="del-tags">
+          <span class="del-tag">Unifilar</span><span class="del-tag">Distribuci&oacute;n</span><span class="del-tag">As-built</span>
+        </div>
+      </div>
+      <div class="del-card" data-r data-d="2">
+        <div class="del-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="del-title">Memorias de c&aacute;lculo</div>
+        <div class="del-desc">C&aacute;lculo de conductores, cajas, protecciones, selectividad y coordinaci&oacute;n.</div>
+        <div class="del-tags">
+          <span class="del-tag">Cortocircuito</span><span class="del-tag">Selectividad</span>
+        </div>
+      </div>
+      <div class="del-card" data-r data-d="3">
+        <div class="del-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="del-title">Actas de prueba</div>
+        <div class="del-desc">Continuidad, aislamiento, resistencia de puesta a tierra y balanceo de fases.</div>
+        <div class="del-tags">
+          <span class="del-tag">FAT</span><span class="del-tag">SAT</span><span class="del-tag">Telur&oacute;metro</span>
+        </div>
+      </div>
+      <div class="del-card" data-r data-d="4">
+        <div class="del-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="del-title">Dossier RETIE/NTC</div>
+        <div class="del-desc">Paquete documental completo listo para presentar ante interventor&iacute;a o ente certificador.</div>
+        <div class="del-tags">
+          <span class="del-tag">NTC 2050</span><span class="del-tag">RETIE</span>
+        </div>
+      </div>
+      <div class="del-card" data-r data-d="5">
+        <div class="del-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="del-title">Registro fotogr&aacute;fico</div>
+        <div class="del-desc">Evidencia visual antes, durante y despu&eacute;s de cada intervenci&oacute;n en campo.</div>
+        <div class="del-tags">
+          <span class="del-tag">Antes/Despu&eacute;s</span><span class="del-tag">Geoetiquetado</span>
+        </div>
+      </div>
+      <div class="del-card" data-r data-d="6" style="cursor:pointer">
+        <div class="del-icon" style="background:rgba(210,24,42,.09);color:var(--brand)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        </div>
+        <div class="del-title">Soporte post-entrega</div>
+        <div class="del-desc">30 d&iacute;as de soporte prioritario y acompa&ntilde;amiento t&eacute;cnico tras la entrega del proyecto.</div>
+        <div class="del-tags">
+          <span class="del-tag">30 d&iacute;as</span><span class="del-tag">Remoto + Presencial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────── -->
+<section class="svc-sec faq-sec" id="faq">
+  <!-- Circuito decorativo superior -->
+  <div class="faq-circuit" aria-hidden="true">
+    <svg viewBox="0 0 1100 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="fc-path" d="M0 35 L120 35 L120 10 L280 10 L280 35 L500 35 L500 10 L700 10 L700 35 L900 35 L900 10 L1100 10"/>
+      <path class="fc-path" d="M280 10 L280 35" style="opacity:.5"/>
+      <path class="fc-path" d="M700 10 L700 35" style="opacity:.5"/>
+      <path class="fc-flow"   d="M0 35 L120 35 L120 10 L280 10 L280 35 L500 35 L500 10 L700 10 L700 35 L900 35 L900 10 L1100 10"/>
+      <path class="fc-flow b" d="M0 35 L120 35 L120 10 L280 10 L280 35 L500 35 L500 10 L700 10 L700 35 L900 35 L900 10 L1100 10"/>
+      <rect x="255" y="4" width="50" height="10" rx="3" fill="none" stroke="rgba(21,35,84,.12)" stroke-width="1.5"/>
+      <rect x="675" y="4" width="50" height="10" rx="3" fill="none" stroke="rgba(21,35,84,.12)" stroke-width="1.5"/>
+      <circle class="fc-node" cx="120" cy="35" r="4"/>
+      <circle class="fc-node" cx="500" cy="35" r="4"/>
+      <circle class="fc-node" cx="900" cy="35" r="4"/>
+    </svg>
+  </div>
+  <!-- Onda AC en la base -->
+  <div class="wave-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="wv" d="M0 40 Q60 8 120 40 Q180 72 240 40 Q300 8 360 40 Q420 72 480 40 Q540 8 600 40 Q660 72 720 40 Q780 8 840 40 Q900 72 960 40 Q1020 8 1080 40 Q1140 72 1200 40 Q1260 8 1320 40 Q1380 72 1440 40"/>
+      <path class="wv hot" d="M0 40 Q60 8 120 40 Q180 72 240 40 Q300 8 360 40 Q420 72 480 40 Q540 8 600 40 Q660 72 720 40 Q780 8 840 40 Q900 72 960 40 Q1020 8 1080 40 Q1140 72 1200 40 Q1260 8 1320 40 Q1380 72 1440 40"/>
+      <path class="wv" d="M0 55 Q60 30 120 55 Q180 80 240 55 Q300 30 360 55 Q420 80 480 55 Q540 30 600 55 Q660 80 720 55 Q780 30 840 55 Q900 80 960 55 Q1020 30 1080 55 Q1140 80 1200 55 Q1260 30 1320 55 Q1380 80 1440 55" style="opacity:.5"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="eyebrow">PREGUNTAS FRECUENTES</span>
+      <h2 class="sec-title">Respuestas r&aacute;pidas para<br/>decisiones t&eacute;cnicas</h2>
+    </div>
+    <div class="faq-list" data-r>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">&iquest;Incluyen certificaci&oacute;n RETIE y cumplimiento NTC 2050?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+          </span>
+        </button>
+        <div class="faq-body"><div class="faq-inner">S&iacute;. Integramos los requisitos RETIE y NTC 2050 desde la fase de dise&ntilde;o. Entregamos memorias, planos firmados y actas de prueba que cumplen los criterios de certificaci&oacute;n. No es un add-on: es parte del proceso est&aacute;ndar de KoolRed.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">&iquest;Pueden intervenir sin detener la producci&oacute;n?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+          </span>
+        </button>
+        <div class="faq-body"><div class="faq-inner">En la mayor&iacute;a de los casos, s&iacute;. Planificamos ventanas de intervenci&oacute;n (turnos nocturnos, fines de semana o paradas programadas) y establecemos sectorizaci&oacute;n para mantener el resto de la planta o edificio operativo durante los trabajos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">&iquest;Qu&eacute; documentaci&oacute;n entrega al finalizar el proyecto?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+          </span>
+        </button>
+        <div class="faq-body"><div class="faq-inner">Planos as-built en DWG y PDF, memoria de c&aacute;lculo, actas de pruebas (continuidad, aislamiento, puesta a tierra), registro fotogr&aacute;fico geoetiquetado, fichas t&eacute;cnicas de equipos y el dossier RETIE/NTC completo listo para auditor&iacute;a.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">&iquest;Trabajan fuera de Bogot&aacute;?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+          </span>
+        </button>
+        <div class="faq-body"><div class="faq-inner">S&iacute;. Tenemos capacidad de operaci&oacute;n a nivel nacional. Hemos ejecutado proyectos en la regi&oacute;n central, eje cafetero y costa Caribe. Los proyectos fuera de Bogot&aacute; incluyen desplazamiento del equipo t&eacute;cnico y alojamiento coordinado con el cliente.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">&iquest;Cu&aacute;nto tiempo toma un proyecto t&iacute;pico?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+          </span>
+        </button>
+        <div class="faq-body"><div class="faq-inner">Depende del alcance. Una adecuaci&oacute;n de tablero secundario con entregables puede completarse en 2&ndash;4 semanas. Un proyecto de dise&ntilde;o e instalaci&oacute;n de un sistema el&eacute;ctrico completo (planta o edificio) puede tomar de 6 a 16 semanas seg&uacute;n complejidad. Lo definimos en el diagn&oacute;stico inicial.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────── -->
+<section class="svc-sec dark" id="contacto">
+  <!-- Cables convergentes trifásicos -->
+  <div class="contact-cables" aria-hidden="true">
+    <svg viewBox="0 0 1100 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- FASE A — roja — desde bordes izquierdo y superior convergiendo al centro-izquierda -->
+      <path class="cc-tube a" d="M-20 60  L160 60  L160 160 L420 160 L420 290"/>
+      <path class="cc-cur  a" d="M-20 60  L160 60  L160 160 L420 160 L420 290"/>
+      <path class="cc-tube a" d="M180 -20 L180 100 L420 100 L420 290"/>
+      <path class="cc-cur  a" d="M180 -20 L180 100 L420 100 L420 290" style="animation-delay:-1s"/>
+      <!-- FASE B — azul -->
+      <path class="cc-tube b" d="M-20 240 L120 240 L120 340 L420 340"/>
+      <path class="cc-cur  b" d="M-20 240 L120 240 L120 340 L420 340"/>
+      <path class="cc-tube b" d="M-20 420 L200 420 L200 360 L420 360"/>
+      <path class="cc-cur  b" d="M-20 420 L200 420 L200 360 L420 360" style="animation-delay:-2.2s"/>
+      <!-- FASE C — amarilla -->
+      <path class="cc-tube b" d="M100 640 L100 480 L280 480 L280 380 L420 380"/>
+      <path class="cc-cur  c" d="M100 640 L100 480 L280 480 L280 380 L420 380"/>
+      <!-- Nodo de convergencia principal -->
+      <circle class="cc-node" cx="420" cy="320" r="12"/>
+      <circle class="cc-node-ping" cx="420" cy="320" r="8"/>
+      <!-- Nodos secundarios -->
+      <circle cx="160" cy="160" r="6" fill="rgba(21,35,84,.3)" stroke="rgba(21,35,84,.5)" stroke-width="1.5"/>
+      <circle cx="120" cy="240" r="5" fill="rgba(80,160,255,.2)" stroke="rgba(80,160,255,.4)" stroke-width="1.5"/>
+      <circle cx="200" cy="420" r="5" fill="rgba(80,160,255,.2)" stroke="rgba(80,160,255,.4)" stroke-width="1.5"/>
+      <!-- Líneas de fondo derecho (decorativas) -->
+      <path class="cc-tube b" d="M1120 100 L950 100 L950 220 L820 220" style="opacity:.35"/>
+      <path class="cc-tube b" d="M1120 450 L1000 450 L1000 380 L820 380" style="opacity:.25"/>
+      <!-- Componentes decorativos -->
+      <rect x="390" y="90" width="60" height="14" rx="4" fill="none" stroke="rgba(210,24,42,.3)" stroke-width="1.5"/>
+      <rect x="95" y="230" width="50" height="12" rx="4" fill="none" stroke="rgba(80,160,255,.25)" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow" style="color:#ff7a8a">CONTACTO</span>
+        <div class="ct-title">Cu&eacute;ntanos<br/>tu proyecto</div>
+        <p class="ct-desc">Respondemos con ruta de trabajo, tiempos estimados y propuesta t&eacute;cnica detallada. Sin compromiso.</p>
+        <div class="ct-info">
+          <div class="ct-row">
+            <div class="ct-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+            </div>
+            <div class="ct-txt">
+              <strong>+57 315 494 0908</strong>
+              <span>WhatsApp &bull; Llamada directa</span>
             </div>
           </div>
-          <a href="../index.html#proyectos">Proyectos</a>
-          <a href="../index.html#nosotros">Industria</a>
-          <a href="#contacto">Contacto</a>
+          <div class="ct-row">
+            <div class="ct-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="ct-txt">
+              <strong>koolredsoluciones@gmail.com</strong>
+              <span>Respondemos en menos de 24 h</span>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="ct-txt">
+              <strong>Lun&ndash;Vie 8:00&ndash;17:30</strong>
+              <span>Urgencias operativas: 24/7</span>
+            </div>
+          </div>
         </div>
-        <div class="nav-actions">
-          <a class="btn primary btn--fx" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
-          <button class="lang-btn" type="button" aria-label="Cambiar idioma ES/EN" translate="no">
-            <span class="lang-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M2 12h20"></path>
-                <path d="M12 2a15 15 0 0 1 0 20"></path>
-                <path d="M12 2a15 15 0 0 0 0 20"></path>
-              </svg>
-            </span>
-            <span class="lang-label">ES/EN</span>
+      </div>
+      <div class="ct-form">
+        <form id="contact-form" onsubmit="sendWhatsApp(event)">
+          <div class="field">
+            <label for="f-name">Nombre</label>
+            <input id="f-name" type="text" placeholder="Tu nombre completo" required />
+          </div>
+          <div class="field">
+            <label for="f-company">Empresa</label>
+            <input id="f-company" type="text" placeholder="Empresa u organizaci&oacute;n (opcional)" />
+          </div>
+          <div class="field">
+            <label for="f-phone">Tel&eacute;fono / WhatsApp</label>
+            <input id="f-phone" type="tel" placeholder="+57 300 000 0000" required />
+          </div>
+          <div class="field">
+            <label for="f-msg">Describe tu necesidad</label>
+            <textarea id="f-msg" placeholder="Alcance, ciudad, fecha aproximada..." required></textarea>
+          </div>
+          <button class="btn primary" type="submit" style="width:100%;justify-content:center;padding:13px 20px">
+            Enviar por WhatsApp &rarr;
           </button>
-        </div>
-      </nav>
+          <p class="form-note">* Abre WhatsApp con el mensaje listo para enviar.</p>
+        </form>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-    <main id="inicio">
-    <section class="hero fade-in">
-      <div class="wrap">
-        <div class="herogrid">
-          <div>
-            <div class="segment-toggle" role="group" aria-label="Selecciona el segmento de operaci&oacute;n">
-              <span class="segment-label">Segmento:</span>
-              <button class="segment-btn is-active" type="button" data-segment="industrial" aria-pressed="true">Industrial</button>
-              <button class="segment-btn" type="button" data-segment="comercial" aria-pressed="false">Comercial</button>
-            </div>
-            <div class="kicker">ELECTRICIDAD &middot; RETIE / NTC &middot; ENTREGA TRAZABLE</div>
-            <h1 data-segment-text data-industrial="Ingenier&iacute;a el&eacute;ctrica con cumplimiento RETIE/NTC." data-comercial="Infraestructura el&eacute;ctrica segura y conforme para edificios.">Ingenier&iacute;a el&eacute;ctrica con cumplimiento RETIE/NTC.</h1>
-            <p class="lead" data-segment-text data-industrial="Dise&ntilde;amos, adecuamos y verificamos redes el&eacute;ctricas para cargas cr&iacute;ticas, con documentaci&oacute;n completa y pruebas en campo." data-comercial="Adecuamos infraestructura el&eacute;ctrica para edificios corporativos y comerciales, reduciendo riesgos y cumpliendo RETIE/NTC.">
-              Dise&ntilde;amos, adecuamos y verificamos redes el&eacute;ctricas para cargas cr&iacute;ticas, con documentaci&oacute;n completa y pruebas en campo.
-            </p>
-            <ul class="hero-bullets">
-              <li data-segment-text data-industrial="Tableros, canalizaciones y puesta a tierra para continuidad operativa." data-comercial="Tableros, iluminaci&oacute;n y puesta a tierra con cumplimiento RETIE/NTC.">Tableros, canalizaciones y puesta a tierra para continuidad operativa.</li>
-              <li data-segment-text data-industrial="Planos, memorias, selectividad y actas de pruebas." data-comercial="Planos, memorias y entregables listos para interventor&iacute;a.">Planos, memorias, selectividad y actas de pruebas.</li>
-              <li data-segment-text data-industrial="Coordinaci&oacute;n OT/IT y seguridad el&eacute;ctrica en campo." data-comercial="Ejecuci&oacute;n verificada sin afectar la operaci&oacute;n del edificio.">Coordinaci&oacute;n OT/IT y seguridad el&eacute;ctrica en campo.</li>
-            </ul>
-            <div class="cta">
-              <a class="btn primary btn--fx" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
-              <a class="btn secondary btn--fx" href="#entregables">Ver entregables</a>
-            </div>
-            <p class="small" style="margin-top:10px;">RETIE/NTC con ejecuci&oacute;n verificada y trazabilidad.</p>
-          </div>
+</main>
 
-          <div class="card fade-in">
-            <div class="pill">Entrega trazable <span class="dot" style="width:8px;height:8px"></span></div>
-            <div style="height:12px"></div>
-            <div class="stats">
-              <div class="card stat">
-                <b>Planos &amp; memorias</b>
-                <div class="small">Dise&ntilde;o, selectividad y coordinaciones.</div>
-              </div>
-              <div class="card stat">
-                <b>Pruebas en campo</b>
-                <div class="small">Continuidad, aislamiento y actas.</div>
-              </div>
-              <div class="card stat">
-                <b>Tableros &amp; rutas</b>
-                <div class="small">Canalizaciones y puesta a tierra.</div>
-              </div>
-              <div class="card stat">
-                <b>Soporte</b>
-                <div class="small">Acompa&ntilde;amiento t&eacute;cnico en obra.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <span>&copy; <span id="yr"></span> KoolRed Soluciones. Todos los derechos reservados.</span>
+    <span style="display:flex;gap:18px">
+      <a href="../index.html#inicio" style="color:rgba(255,255,255,.45);font-size:12px">Inicio</a>
+      <a href="../index.html#servicios" style="color:rgba(255,255,255,.45);font-size:12px">Servicios</a>
+      <a href="#contacto" style="color:rgba(255,255,255,.45);font-size:12px">Contacto</a>
+    </span>
+  </div>
+</footer>
 
-    <section class="section fade-in" id="beneficios">
-      <div class="wrap">
-        <div class="title">
-          <h2>Beneficios clave</h2>
-          <span class="small">Continuidad, cumplimiento y entrega verificada.</span>
-        </div>
-        <div class="grid">
-          <div class="card svc fade-in">
-            <h3>Cumplimiento sin reprocesos</h3>
-            <p>RETIE/NTC integrado desde el dise&ntilde;o hasta la ejecuci&oacute;n.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>Ejecuci&oacute;n verificada</h3>
-            <p>Pruebas y validaciones antes de entregar la operaci&oacute;n.</p>
-          </div>
-          <div class="card svc fade-in">
-            <h3>Entrega trazable</h3>
-            <p>Actas, planos as-built y memorias listos para auditor&iacute;a.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div id="google_translate_element" aria-hidden="true"></div>
 
-    <section class="section fade-in" id="entregables">
-      <div class="wrap">
-        <div class="title">
-          <h2>Entregables</h2>
-          <span class="small">Documentaci&oacute;n t&eacute;cnica y evidencias en campo.</span>
-        </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <b>Planos y memorias</b>
-            <p class="small">Dise&ntilde;o el&eacute;ctrico, selectividad y coordinaci&oacute;n de protecciones.</p>
-          </div>
-          <div class="card fade-in">
-            <b>Actas de prueba</b>
-            <p class="small">Continuidad, aislamiento, puesta a tierra y validaciones.</p>
-          </div>
-          <div class="card fade-in">
-            <b>As-built y listados</b>
-            <p class="small">Planos finales, fichas t&eacute;cnicas y cubicaciones.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<script>
+/* ── YEAR ─────────────────────────────────────── */
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-    <section class="section fade-in" id="proceso">
-      <div class="wrap">
-        <div class="title">
-          <h2>Proceso de trabajo</h2>
-          <span class="small">Ruta clara y verificable.</span>
-        </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <b>Diagn&oacute;stico</b>
-            <p class="small">Levantamiento, riesgos y definici&oacute;n de alcance.</p>
-          </div>
-          <div class="card fade-in">
-            <b>Ingenier&iacute;a</b>
-            <p class="small">Planos, memorias y plan de ejecuci&oacute;n.</p>
-          </div>
-          <div class="card fade-in">
-            <b>Ejecuci&oacute;n</b>
-            <p class="small">Intervenci&oacute;n en campo, pruebas y entrega.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+/* ── HEADER SCROLL ───────────────────────────── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('is-top', window.scrollY < 40);
+  header.classList.toggle('is-scrolled', window.scrollY >= 40);
+}, {passive:true});
 
-    <section class="section fade-in" id="faq">
-      <div class="wrap">
-        <div class="title">
-          <h2>FAQ</h2>
-          <span class="small">Respuestas r&aacute;pidas para decisiones t&eacute;cnicas.</span>
-        </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <b>&iquest;Incluyen RETIE y NTC?</b>
-            <p class="small">S&iacute;, integramos cumplimiento RETIE/NTC desde el dise&ntilde;o hasta la entrega.</p>
-          </div>
-          <div class="card fade-in">
-            <b>&iquest;Entregan pruebas en campo?</b>
-            <p class="small">S&iacute;, realizamos pruebas y dejamos actas verificables.</p>
-          </div>
-          <div class="card fade-in">
-            <b>&iquest;Pueden intervenir sin detener la operaci&oacute;n?</b>
-            <p class="small">Planificamos ventanas y mitigamos riesgos para continuidad operativa.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+/* ── MOBILE MENU ─────────────────────────────── */
+const toggle = document.getElementById('nav-toggle');
+const mMenu  = document.getElementById('mobile-menu');
+toggle.addEventListener('click', () => {
+  const open = mMenu.classList.toggle('is-open');
+  toggle.classList.toggle('is-open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
 
-    <section class="section fade-in" id="contacto">
-      <div class="wrap">
-        <div class="split">
-          <div class="card">
-            <h2 style="margin:0 0 8px">Contacto</h2>
-            <p>Cu&eacute;ntanos tu proyecto el&eacute;ctrico; respondemos con ruta de trabajo, tiempos y propuesta detallada.</p>
-            <div style="height:10px"></div>
-            <p class="small">
-              <b>Correo:</b> contacto@koolredsoluciones.com<br/>
-              <b>Tel/WhatsApp:</b> +57 XXX XXX XXXX
-              <br/>Disponibilidad: Lun&ndash;Vie 8:00&ndash;17:30
-            </p>
-          </div>
-          <div class="card">
-            <form onsubmit="sendWhatsApp(event)">
-              <input id="name" placeholder="Nombre" required />
-              <input id="company" placeholder="Empresa (opcional)" />
-              <input id="phone" placeholder="Tel&eacute;fono / WhatsApp" required />
-              <textarea id="msg" placeholder="Describe tu necesidad (alcance, ciudad, fecha, etc.)" required></textarea>
-              <button class="btn secondary btn--fx" type="submit">Enviar por WhatsApp</button>
-              <div class="small">* Esto abre WhatsApp con el mensaje listo.</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+/* ── PROCESS STEPPER + BUS BAR + CONDUIT ────────── */
+const condFill   = document.getElementById('cond-fill');
+const condFlow   = document.getElementById('cond-flow');
+const busEnergy  = document.getElementById('bus-energy');
+const busFlow    = document.getElementById('bus-flow');
+// offsets inversamente proporcionales al progreso (path total ~760)
+const condOffsets = { p1:570, p2:380, p3:190, p4:0 };
+// bus bar dashoffset (path total ~980)
+const busOffsets  = { p1:740, p2:490, p3:250, p4:0 };
+// step → tap/node index (1-based)
+const stepTap = { p1:1, p2:2, p3:3, p4:4 };
 
-  <footer>
-    <div class="wrap">
-      &copy; <span id="y"></span> KoolRed Soluciones. Todos los derechos reservados.
-    </div>
-  </footer>
+function updateProcess(panelId){
+  // Conduit
+  if(condFill){ condFill.style.strokeDashoffset = condOffsets[panelId] ?? 760; }
+  if(condFlow){ condFlow.classList.add('on'); }
+  // Bus bar
+  if(busEnergy){ busEnergy.style.strokeDashoffset = busOffsets[panelId] ?? 980; }
+  if(busFlow){ busFlow.classList.add('on'); }
+  // Conduit nodes
+  const activeStep = stepTap[panelId] || 1;
+  for(let i=1;i<=4;i++){
+    const cn = document.getElementById('cn'+i);
+    if(cn){ cn.classList.toggle('on', i <= activeStep); }
+    const tg = document.getElementById('tg'+i);
+    if(tg){ tg.classList.toggle('on', i <= activeStep); }
+    const tn = document.getElementById('tn'+i);
+    if(tn){ tn.classList.toggle('on', i <= activeStep); }
+  }
+}
+updateProcess('p1');
 
-  <div id="google_translate_element" aria-hidden="true"></div>
+document.querySelectorAll('.step-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.step-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+    const panel = document.getElementById(btn.dataset.panel);
+    if(panel){ panel.classList.add('active'); }
+    updateProcess(btn.dataset.panel);
+  });
+});
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    function sendWhatsApp(e){
-      e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const company = document.getElementById("company").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const msg = document.getElementById("msg").value.trim();
-
-      // Reemplaza con tu numero en formato internacional sin + ni espacios. Ej: 573154940908
-      const to = "57XXXXXXXXXX";
-
-      const text =
-`Hola, soy ${name}${company ? " de " + company : ""}.
-Mi contacto: ${phone}
-
-Necesidad / proyecto:
-${msg}`;
-
-      const url = "https://wa.me/" + to + "?text=" + encodeURIComponent(text);
-      window.open(url, "_blank");
-    }
-
-    const header = document.querySelector("header");
-    const nav = document.querySelector("nav");
-    window.addEventListener("scroll", () => {
-      const scrolled = window.scrollY > 10;
-      header.classList.toggle("scrolled", scrolled);
-      if(scrolled){
-        nav.style.padding = "8px 0";
-      }else{
-        nav.style.padding = "14px 0";
-      }
+/* ── FAQ ACCORDION ───────────────────────────── */
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
     });
-
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if(!prefersReduced){
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {threshold: 0.15});
-
-      document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
-    }else{
-      document.querySelectorAll(".fade-in").forEach(el => el.classList.add("visible"));
+    if(!isOpen){
+      item.classList.add('open');
+      trigger.setAttribute('aria-expanded','true');
     }
+  });
+});
 
-    const sections = Array.from(document.querySelectorAll("main section[id]"));
-    const links = Array.from(document.querySelectorAll(".links a"));
+/* ── REVEAL ON SCROLL ────────────────────────── */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!prefersReduced){
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); ro.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('[data-r]').forEach(el => ro.observe(el));
+} else {
+  document.querySelectorAll('[data-r]').forEach(el => el.classList.add('on'));
+}
 
-    const setActiveLink = () => {
-      const scrollPos = window.scrollY + 120;
-      let currentId = sections[0].id;
-      for(const section of sections){
-        if(section.offsetTop <= scrollPos){
-          currentId = section.id;
-        }
-      }
-      links.forEach(link => {
-        const href = link.getAttribute("href").replace("#", "");
-        link.classList.toggle("active", href === currentId);
-      });
-    };
+/* ── COUNTER ANIMATION ───────────────────────── */
+function animateCounter(el){
+  const target = parseInt(el.dataset.counter,10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  const update = (now) => {
+    const p = Math.min((now - start)/duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(ease * target) + suffix;
+    if(p < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
 
-    document.addEventListener("scroll", setActiveLink, {passive:true});
-    window.addEventListener("load", setActiveLink);
-
-    // Traduccion automatica ES/EN
-    const LANG_KEY = "koolred_lang";
-    const langBtn = document.querySelector(".lang-btn");
-
-    const applyLang = (lang) => {
-      const select = document.querySelector(".goog-te-combo");
-      if(!select){return false;}
-      select.value = lang;
-      select.dispatchEvent(new Event("change"));
-      return true;
-    };
-
-    const toggleLang = () => {
-      const current = localStorage.getItem(LANG_KEY) || "es";
-      const next = current === "en" ? "es" : "en";
-      localStorage.setItem(LANG_KEY, next);
-      if(!applyLang(next)){
-        setTimeout(() => applyLang(next), 600);
-      }
-    };
-
-    if(langBtn){
-      langBtn.addEventListener("click", toggleLang);
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
     }
+  });
+}, {threshold:0.5});
 
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: "es",
-        includedLanguages: "es,en",
-        autoDisplay: false
-      }, "google_translate_element");
+document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
 
-      const saved = localStorage.getItem(LANG_KEY);
-      if(saved && saved !== "es"){
-        setTimeout(() => applyLang(saved), 600);
-      }
-    }
-  </script>
-  <script src="../frontend/segment-toggle.js" defer></script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+/* ── SEGMENT TOGGLE ──────────────────────────── */
+const segBtns = document.querySelectorAll('.segment-btn');
+function applySegment(seg){
+  document.documentElement.setAttribute('data-segment', seg);
+  segBtns.forEach(b => {
+    const active = b.dataset.segment === seg;
+    b.classList.toggle('is-active', active);
+    b.setAttribute('aria-pressed', String(active));
+  });
+  // data-segment-text
+  document.querySelectorAll('[data-segment-text]').forEach(el => {
+    const val = el.dataset[seg];
+    if(val) el.textContent = val;
+  });
+}
+segBtns.forEach(btn => btn.addEventListener('click', () => applySegment(btn.dataset.segment)));
+
+/* ── WHATSAPP FORM ───────────────────────────── */
+function sendWhatsApp(e){
+  e.preventDefault();
+  const name    = document.getElementById('f-name').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const msg     = document.getElementById('f-msg').value.trim();
+  const to      = '573154940908';
+  const text    = `Hola, soy ${name}${company ? ' de '+company : ''}.\nMi contacto: ${phone}\n\nProyecto eléctrico:\n${msg}`;
+  window.open('https://wa.me/'+to+'?text='+encodeURIComponent(text),'_blank');
+}
+
+/* ── LANG TOGGLE ─────────────────────────────── */
+const LANG_KEY = 'koolred_lang';
+const langBtn  = document.querySelector('.lang-btn');
+const applyLang = lang => {
+  const sel = document.querySelector('.goog-te-combo');
+  if(!sel) return false;
+  sel.value = lang;
+  sel.dispatchEvent(new Event('change'));
+  return true;
+};
+if(langBtn){
+  langBtn.addEventListener('click', () => {
+    const cur  = localStorage.getItem(LANG_KEY) || 'es';
+    const next = cur === 'en' ? 'es' : 'en';
+    localStorage.setItem(LANG_KEY, next);
+    if(!applyLang(next)) setTimeout(() => applyLang(next), 600);
+  });
+}
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'es,en',autoDisplay:false},'google_translate_element');
+  const saved = localStorage.getItem(LANG_KEY);
+  if(saved && saved !== 'es') setTimeout(() => applyLang(saved), 600);
+}
+</script>
+<script src="../frontend/segment-toggle.js" defer></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
