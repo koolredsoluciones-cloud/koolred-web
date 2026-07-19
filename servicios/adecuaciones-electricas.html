@@ -595,6 +595,18 @@ footer{background:#060d18;border-top:1px solid rgba(255,255,255,.06);padding:24p
 .cc-node{fill:rgba(210,24,42,.2);stroke:rgba(210,24,42,.5);stroke-width:1.5}
 .cc-node-ping{fill:rgba(210,24,42,.5);animation:node-ping 2.5s ease-out infinite}
 .svc-sec.dark .wrap{position:relative;z-index:2}
+
+@media(max-width:900px){
+  .conduit-bg,
+  .breaker-wrap{display:none}
+  .bus-bg{height:56px}
+  .bus-bar{stroke-width:8}
+  .bus-energized{stroke-width:4}
+  .bus-flow{stroke-width:2.5}
+  .bus-tap,
+  .tap-glow,
+  .tap-node{display:none}
+}
   </style>
 </head>
 <body>
