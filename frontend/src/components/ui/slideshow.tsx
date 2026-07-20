@@ -19,7 +19,7 @@ const SLIDES: Slide[] = [
     kicker: "IA + n8n",
     description:
       "Implementamos asistentes y flujos con IA que leen correos, clasifican informaci\u00f3n y generan acciones autom\u00e1ticas en segundos.",
-    href: "ia-n8n.html",
+    href: "/servicios/ia-n8n.html",
     videoSrc: "../assets/n8nai.mp4",
   },
   {
@@ -28,7 +28,7 @@ const SLIDES: Slide[] = [
     kicker: "Energ\u00eda",
     description:
       "Intervenciones en tableros, canalizaciones y puesta a tierra con cumplimiento NTC 2050/RETIE.",
-    href: "adecuaciones-electricas.html",
+    href: "/servicios/adecuaciones-electricas.html",
     videoSrc: "../assets/Adecuaciones%20electricas%202.mp4",
   },
   {
@@ -37,7 +37,7 @@ const SLIDES: Slide[] = [
     kicker: "Comunicaciones",
     description:
       "Dise\u00f1o, instalaci\u00f3n y certificaci\u00f3n de cableado estructurado, redes y canalizaciones.",
-    href: "cableado-estructurado.html",
+    href: "/servicios/adecuaciones-electricas.html",
     videoSrc: "../assets/cableado%20estructurado%20.mp4",
   },
   {
@@ -45,7 +45,7 @@ const SLIDES: Slide[] = [
     titleLines: ["CCTV y", "seguridad"],
     kicker: "Seguridad",
     description: "Instalaci\u00f3n, configuraci\u00f3n y soporte para vigilancia continua.",
-    href: "cctv.html",
+    href: "/servicios/cctv.html",
     videoSrc: "../assets/CCTV.mp4",
   },
   {
@@ -54,7 +54,7 @@ const SLIDES: Slide[] = [
     kicker: "Clima",
     description:
       "Diagn\u00f3stico, ajuste de control e integraci\u00f3n BMS para confort estable y eficiencia.",
-    href: "hvac-bms.html",
+    href: "/servicios/hvac-bms.html",
     videoSrc: "../assets/HVAC%20VIDEO.mp4",
   },
   {
@@ -63,7 +63,7 @@ const SLIDES: Slide[] = [
     kicker: "Control",
     description:
       "Integraci\u00f3n PLC/HMI, datos y alarmas para estabilidad de procesos y mejora medible.",
-    href: "automatizacion.html",
+    href: "/servicios/automatizacion.html",
     videoSrc:
       "../assets/Dise%C3%B1o%20el%C3%A9ctrico%20y%20automatizaci%C3%B3n%20profesional%20seg%C3%BAn%20norma%20RETIE%20%20NTC%20%C2%B7%20BMS%20%C2%B7%20Baja%20tensi%C3%B3n.mp4",
   },
@@ -73,7 +73,7 @@ const SLIDES: Slide[] = [
     kicker: "Continuidad",
     description:
       "Plan preventivo y correctivo con trazabilidad y soporte para activos cr\u00edticos.",
-    href: "mantenimiento.html",
+    href: "/servicios/mantenimiento.html",
     videoSrc: "../assets/MANTENIMIENTO.mp4",
   },
   {
@@ -82,7 +82,7 @@ const SLIDES: Slide[] = [
     kicker: "Auditor\u00eda",
     description:
       "Auditor\u00eda de ingenier\u00eda y control de cantidades con informes para consorcios.",
-    href: "revision-tecnica.html",
+    href: "/servicios/revision-tecnica.html",
     videoSrc: "../assets/interventoria.mp4",
   },
 ];
