@@ -52,7 +52,7 @@
     .btn.primary:hover{box-shadow:0 16px 34px rgba(210,24,42,.28)}
     .btn.secondary:hover{box-shadow:0 18px 36px rgba(21,35,84,.28)}
     .btn.secondary:hover::after{transform:translate(3px,-50%);opacity:1}
-    .nav-actions{display:flex;align-items:center;gap:10px}
+    .nav-actions{display:flex;align-items:center;gap:10px;position:relative;z-index:2}
     .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:700;font-size:12px;letter-spacing:.2px;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
     .lang-btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.06);background:rgba(0,0,0,.03)}
     .lang-icon{width:16px;height:16px;display:inline-flex}
@@ -88,17 +88,53 @@
     textarea{min-height:120px;resize:vertical}
     footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
     .small{font-size:12px;color:var(--muted)}
+    .nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;flex:0 0 auto}
+    .nav-toggle span{display:block;width:18px;height:2px;background:var(--text);border-radius:999px;transition:transform .2s ease,opacity .2s ease}
+    .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .nav-toggle.is-open span:nth-child(2){opacity:0}
+    .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    .mobile-menu{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.12);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:9}
+    .mobile-menu.is-open{opacity:1;transform:translateY(0);pointer-events:auto}
+    .mobile-links{display:flex;flex-direction:column;gap:12px;padding:14px 18px 18px}
+    .mobile-links a{font-weight:700;color:var(--text);font-size:14px}
+    .mobile-sub{display:flex;flex-direction:column;gap:8px;padding:4px 0 4px 12px;border-left:2px solid var(--line)}
+    .mobile-sub a{font-weight:600;color:var(--muted);font-size:13px}
     @media (max-width:900px){
       .herogrid{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
       .split{grid-template-columns:1fr}
       h1{font-size:32px}
+      .links{display:none}
+      .nav-toggle{display:flex}
+      .nav-actions{gap:8px}
+      .nav-actions .btn.primary{display:none}
+      .nav-actions .lang-btn{display:none}
+      .logo img{height:44px}
+      .stats{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      .logo img{height:38px}
+      h1{font-size:27px}
+      .gal-strip img{height:170px}
+      .evi-figure img{height:200px}
+      .media-frame{aspect-ratio:4/3}
     }
     .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
     @media (prefers-reduced-motion: reduce) {
       header, nav, .btn, .card, .fade-in{transition:none !important;animation:none !important;transform:none !important}
     }
+
+    .gal-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+    .gal-tab{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted)}
+    .gal-tab.is-active{background:var(--brand);color:#fff;border-color:transparent}
+    .gal-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x proximity;margin-bottom:6px}
+    .gal-strip[hidden]{display:none}
+    .gal-strip img{height:220px;width:auto;max-width:none;border-radius:10px;object-fit:cover;scroll-snap-align:start;cursor:zoom-in;flex:0 0 auto;border:1px solid var(--line);background:#f2f2f2}
+    .lightbox{position:fixed;inset:0;background:rgba(8,13,24,.92);display:flex;align-items:center;justify-content:center;z-index:100;padding:30px}
+    .lightbox[hidden]{display:none}
+    .lightbox img{max-width:100%;max-height:100%;border-radius:8px;display:block}
+    .lightbox-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer}
   </style>
   <link rel="stylesheet" href="frontend/service-fx.css" />
 </head>
@@ -141,8 +177,33 @@
             </span>
             <span class="lang-label">ES/EN</span>
           </button>
+          <button class="nav-toggle" type="button" aria-label="Abrir men&uacute;" aria-controls="mobile-menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </nav>
+      <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-links">
+          <a href="index.html#inicio">Inicio</a>
+          <a href="index.html#servicios">Servicios</a>
+          <div class="mobile-sub">
+            <a href="servicios/adecuaciones-electricas.html">Ingenier&iacute;a el&eacute;ctrica</a>
+            <a href="servicios/automatizacion.html">Automatizaci&oacute;n industrial</a>
+            <a href="servicios/hvac-bms.html">HVAC / BMS</a>
+            <a href="servicios/cctv.html">CCTV y seguridad</a>
+            <a href="servicios/revision-tecnica.html">Consultor&iacute;a t&eacute;cnica</a>
+            <a href="servicios/ia-n8n.html">Automatizaci&oacute;n digital</a>
+            <a href="servicios/mantenimiento.html">Soporte operativo</a>
+          </div>
+          <a href="index.html#proyectos">Proyectos</a>
+          <a href="portafolio.html">Portafolio</a>
+          <a href="index.html#industrias">Industria</a>
+          <a href="#contacto">Contacto</a>
+          <a class="btn primary" style="justify-content:center" href="https://wa.me/573154940908">Hablar con un ingeniero</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -165,7 +226,7 @@
             <div style="height:12px"></div>
             <div class="stats">
               <div class="card stat">
-                <b>9 l&iacute;neas</b>
+                <b>11 l&iacute;neas</b>
                 <div class="small">De servicio activas hoy.</div>
               </div>
               <div class="card stat">
@@ -247,9 +308,620 @@
             <p>Paneles solares on/off-grid y cargadores EV con tablero y circuito dedicado.</p>
             <a class="pill" href="https://wa.me/573154940908">Consultar &rarr;</a>
           </div>
+          <div class="card svc fade-in">
+            <div class="media-frame"><img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220721_125444.jpg" alt="Sistema de red contra incendios instalado" loading="lazy" /></div>
+            <h3>Red contra incendios (RCI)</h3>
+            <p>Bombas, gabinetes y redes de tuber&iacute;a contra incendio con pruebas de presi&oacute;n y caudal.</p>
+            <a class="pill" href="https://wa.me/573154940908">Consultar &rarr;</a>
+          </div>
+          <div class="card svc fade-in">
+            <div class="media-frame"><img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125308.jpg" alt="Tablero el&eacute;ctrico en elaboraci&oacute;n" loading="lazy" /></div>
+            <h3>Elaboraci&oacute;n de tableros el&eacute;ctricos</h3>
+            <p>Fabricaci&oacute;n, cableado y prueba de tableros de distribuci&oacute;n y control en taller o en sitio.</p>
+            <a class="pill" href="servicios/adecuaciones-electricas.html">Ver servicio &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
+
+    <section class="section fade-in" id="galeria">
+      <div class="wrap">
+        <div class="title">
+          <h2>Galería de campo</h2>
+          <span class="small">Fotos reales del equipo en obra, por línea de servicio.</span>
+        </div>
+        <div class="gal-tabs" role="tablist">
+          <button class="gal-tab is-active" type="button" data-gal="electrica">Ingeniería eléctrica <span class="gal-count">136</span></button>
+          <button class="gal-tab" type="button" data-gal="cableado">Cableado estructurado <span class="gal-count">6</span></button>
+          <button class="gal-tab" type="button" data-gal="bms">Automatización y BMS <span class="gal-count">99</span></button>
+          <button class="gal-tab" type="button" data-gal="hvac">HVAC y climatización <span class="gal-count">133</span></button>
+          <button class="gal-tab" type="button" data-gal="cctv">CCTV y seguridad <span class="gal-count">37</span></button>
+          <button class="gal-tab" type="button" data-gal="interventoria">Interventoría y consultoría <span class="gal-count">19</span></button>
+          <button class="gal-tab" type="button" data-gal="ia">Automatización digital (IA) <span class="gal-count">17</span></button>
+          <button class="gal-tab" type="button" data-gal="mantenimiento">Mantenimiento y soporte <span class="gal-count">1</span></button>
+          <button class="gal-tab" type="button" data-gal="solar">Energía solar y electromovilidad <span class="gal-count">13</span></button>
+          <button class="gal-tab" type="button" data-gal="rci">Red contra incendios <span class="gal-count">17</span></button>
+          <button class="gal-tab" type="button" data-gal="tableros">Elaboración de tableros <span class="gal-count">72</span></button>
+        </div>
+          <div class="gal-strip" data-gal-panel="electrica">
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0006.jpg" alt="Ingeniería eléctrica - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0007.jpg" alt="Ingeniería eléctrica - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0011.jpg" alt="Ingeniería eléctrica - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0012.jpg" alt="Ingeniería eléctrica - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0024.jpg" alt="Ingeniería eléctrica - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0027.jpg" alt="Ingeniería eléctrica - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0032.jpg" alt="Ingeniería eléctrica - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0033.jpg" alt="Ingeniería eléctrica - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0035.jpg" alt="Ingeniería eléctrica - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG-20200309-WA0037.jpg" alt="Ingeniería eléctrica - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230306_085707.jpg" alt="Ingeniería eléctrica - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230306_085709.jpg" alt="Ingeniería eléctrica - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230314_143321.jpg" alt="Ingeniería eléctrica - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230314_143542.jpg" alt="Ingeniería eléctrica - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230314_143550.jpg" alt="Ingeniería eléctrica - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230420_134336.jpg" alt="Ingeniería eléctrica - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230420_134341.jpg" alt="Ingeniería eléctrica - foto 17" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230420_134517.jpg" alt="Ingeniería eléctrica - foto 18" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20230420_134522.jpg" alt="Ingeniería eléctrica - foto 19" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20241128_231106.jpg" alt="Ingeniería eléctrica - foto 20" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20241128_231108.jpg" alt="Ingeniería eléctrica - foto 21" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20241128_231146.jpg" alt="Ingeniería eléctrica - foto 22" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20241129_011806.jpg" alt="Ingeniería eléctrica - foto 23" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20241129_011811.jpg" alt="Ingeniería eléctrica - foto 24" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250320_134508.jpg" alt="Ingeniería eléctrica - foto 25" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_114432.jpg" alt="Ingeniería eléctrica - foto 26" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_145848.jpg" alt="Ingeniería eléctrica - foto 27" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_145852.jpg" alt="Ingeniería eléctrica - foto 28" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_145858.jpg" alt="Ingeniería eléctrica - foto 29" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_145908.jpg" alt="Ingeniería eléctrica - foto 30" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_145933.jpg" alt="Ingeniería eléctrica - foto 31" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250415_145941.jpg" alt="Ingeniería eléctrica - foto 32" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_162028.jpg" alt="Ingeniería eléctrica - foto 33" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_164503.jpg" alt="Ingeniería eléctrica - foto 34" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_164511.jpg" alt="Ingeniería eléctrica - foto 35" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_164630.jpg" alt="Ingeniería eléctrica - foto 36" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_164638.jpg" alt="Ingeniería eléctrica - foto 37" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_164645.jpg" alt="Ingeniería eléctrica - foto 38" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_175332.jpg" alt="Ingeniería eléctrica - foto 39" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181239.jpg" alt="Ingeniería eléctrica - foto 40" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181250.jpg" alt="Ingeniería eléctrica - foto 41" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181305.jpg" alt="Ingeniería eléctrica - foto 42" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181357.jpg" alt="Ingeniería eléctrica - foto 43" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181402.jpg" alt="Ingeniería eléctrica - foto 44" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181445.jpg" alt="Ingeniería eléctrica - foto 45" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181448.jpg" alt="Ingeniería eléctrica - foto 46" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181450.jpg" alt="Ingeniería eléctrica - foto 47" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181548.jpg" alt="Ingeniería eléctrica - foto 48" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181612.jpg" alt="Ingeniería eléctrica - foto 49" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181614.jpg" alt="Ingeniería eléctrica - foto 50" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181626.jpg" alt="Ingeniería eléctrica - foto 51" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181629.jpg" alt="Ingeniería eléctrica - foto 52" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181636.jpg" alt="Ingeniería eléctrica - foto 53" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181657.jpg" alt="Ingeniería eléctrica - foto 54" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181658.jpg" alt="Ingeniería eléctrica - foto 55" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250710_181659.jpg" alt="Ingeniería eléctrica - foto 56" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250714_151735.jpg" alt="Ingeniería eléctrica - foto 57" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250716_102805.jpg" alt="Ingeniería eléctrica - foto 58" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250716_102812.jpg" alt="Ingeniería eléctrica - foto 59" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250902_173553.jpg" alt="Ingeniería eléctrica - foto 60" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250916_153137.jpg" alt="Ingeniería eléctrica - foto 61" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20250916_155106.jpg" alt="Ingeniería eléctrica - foto 62" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20251202_150526.jpg" alt="Ingeniería eléctrica - foto 63" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20251202_150532.jpg" alt="Ingeniería eléctrica - foto 64" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260206_111108.jpg" alt="Ingeniería eléctrica - foto 65" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180113.jpg" alt="Ingeniería eléctrica - foto 66" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180116.jpg" alt="Ingeniería eléctrica - foto 67" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180122.jpg" alt="Ingeniería eléctrica - foto 68" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180128.jpg" alt="Ingeniería eléctrica - foto 69" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180154.jpg" alt="Ingeniería eléctrica - foto 70" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180210.jpg" alt="Ingeniería eléctrica - foto 71" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180217.jpg" alt="Ingeniería eléctrica - foto 72" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180221.jpg" alt="Ingeniería eléctrica - foto 73" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_180234.jpg" alt="Ingeniería eléctrica - foto 74" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_184939.jpg" alt="Ingeniería eléctrica - foto 75" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_190901.jpg" alt="Ingeniería eléctrica - foto 76" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_190906.jpg" alt="Ingeniería eléctrica - foto 77" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_190914.jpg" alt="Ingeniería eléctrica - foto 78" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_190925.jpg" alt="Ingeniería eléctrica - foto 79" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_190931.jpg" alt="Ingeniería eléctrica - foto 80" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260219_190933.jpg" alt="Ingeniería eléctrica - foto 81" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260320_115641.jpg" alt="Ingeniería eléctrica - foto 82" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260326_071536.jpg" alt="Ingeniería eléctrica - foto 83" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260423_165324.jpg" alt="Ingeniería eléctrica - foto 84" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260423_165334.jpg" alt="Ingeniería eléctrica - foto 85" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260423_165343.jpg" alt="Ingeniería eléctrica - foto 86" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260423_165348.jpg" alt="Ingeniería eléctrica - foto 87" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260506_150232.jpg" alt="Ingeniería eléctrica - foto 88" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260506_150242.jpg" alt="Ingeniería eléctrica - foto 89" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260506_172721.jpg" alt="Ingeniería eléctrica - foto 90" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260602_120439.jpg" alt="Ingeniería eléctrica - foto 91" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_170645.jpg" alt="Ingeniería eléctrica - foto 92" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_170702.jpg" alt="Ingeniería eléctrica - foto 93" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_170720.jpg" alt="Ingeniería eléctrica - foto 94" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_172419.jpg" alt="Ingeniería eléctrica - foto 95" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_172424.jpg" alt="Ingeniería eléctrica - foto 96" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_172449.jpg" alt="Ingeniería eléctrica - foto 97" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_172523.jpg" alt="Ingeniería eléctrica - foto 98" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_172647.jpg" alt="Ingeniería eléctrica - foto 99" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_173417.jpg" alt="Ingeniería eléctrica - foto 100" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_173447.jpg" alt="Ingeniería eléctrica - foto 101" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_174850.jpg" alt="Ingeniería eléctrica - foto 102" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_174854.jpg" alt="Ingeniería eléctrica - foto 103" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260603_174859.jpg" alt="Ingeniería eléctrica - foto 104" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_084941.jpg" alt="Ingeniería eléctrica - foto 105" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_084948.jpg" alt="Ingeniería eléctrica - foto 106" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_090336.jpg" alt="Ingeniería eléctrica - foto 107" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_090339.jpg" alt="Ingeniería eléctrica - foto 108" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_090340.jpg" alt="Ingeniería eléctrica - foto 109" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_090354.jpg" alt="Ingeniería eléctrica - foto 110" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_090419.jpg" alt="Ingeniería eléctrica - foto 111" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_090421.jpg" alt="Ingeniería eléctrica - foto 112" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_091908.jpg" alt="Ingeniería eléctrica - foto 113" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_091911.jpg" alt="Ingeniería eléctrica - foto 114" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_093645.jpg" alt="Ingeniería eléctrica - foto 115" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/IMG_20260609_100604.jpg" alt="Ingeniería eléctrica - foto 116" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.20%20PM%20%281%29.jpeg" alt="Ingeniería eléctrica - foto 117" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.21%20PM%20%281%29.jpeg" alt="Ingeniería eléctrica - foto 118" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.21%20PM%20%285%29.jpeg" alt="Ingeniería eléctrica - foto 119" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.40%20PM%20%281%29.jpeg" alt="Ingeniería eléctrica - foto 120" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.40%20PM%20%282%29.jpeg" alt="Ingeniería eléctrica - foto 121" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.40%20PM%20%283%29.jpeg" alt="Ingeniería eléctrica - foto 122" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.40%20PM.jpeg" alt="Ingeniería eléctrica - foto 123" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.53%20PM%20%281%29.jpeg" alt="Ingeniería eléctrica - foto 124" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.53%20PM%20%282%29.jpeg" alt="Ingeniería eléctrica - foto 125" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.53%20PM%20%283%29.jpeg" alt="Ingeniería eléctrica - foto 126" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.53%20PM.jpeg" alt="Ingeniería eléctrica - foto 127" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.54%20PM%20%281%29.jpeg" alt="Ingeniería eléctrica - foto 128" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.54%20PM%20%282%29.jpeg" alt="Ingeniería eléctrica - foto 129" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.54%20PM%20%283%29.jpeg" alt="Ingeniería eléctrica - foto 130" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.54%20PM%20%284%29.jpeg" alt="Ingeniería eléctrica - foto 131" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.54%20PM%20%285%29.jpeg" alt="Ingeniería eléctrica - foto 132" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.54%20PM.jpeg" alt="Ingeniería eléctrica - foto 133" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/WhatsApp%20Image%202026-07-19%20at%205.55.55%20PM.jpeg" alt="Ingeniería eléctrica - foto 134" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/plano-iluminacion.jpg" alt="Ingeniería eléctrica - foto 135" loading="lazy" />
+            <img src="assets/portafolio/lineas/01-ingenieria-electrica/plano-red-datos.jpg" alt="Ingeniería eléctrica - foto 136" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="cableado" hidden>
+            <img src="assets/portafolio/lineas/02-cableado-estructurado/IMG_20180704_210312315.jpg" alt="Cableado estructurado - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/02-cableado-estructurado/IMG_20250407_171330.jpg" alt="Cableado estructurado - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/02-cableado-estructurado/IMG_20250407_171334.jpg" alt="Cableado estructurado - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/02-cableado-estructurado/IMG_20250407_171335.jpg" alt="Cableado estructurado - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/02-cableado-estructurado/IMG_20260218_094358.jpg" alt="Cableado estructurado - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/02-cableado-estructurado/IMG_20260602_120443.jpg" alt="Cableado estructurado - foto 6" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="bms" hidden>
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200114-WA0031.jpeg" alt="Automatización y BMS - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200225-WA0004.jpg" alt="Automatización y BMS - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200225-WA0005.jpg" alt="Automatización y BMS - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200225-WA0006.jpg" alt="Automatización y BMS - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200225-WA0007.jpg" alt="Automatización y BMS - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200309-WA0010.jpg" alt="Automatización y BMS - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200309-WA0017.jpg" alt="Automatización y BMS - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200610-WA0014.jpg" alt="Automatización y BMS - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200610-WA0015.jpg" alt="Automatización y BMS - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG-20200709-WA0000.jpg" alt="Automatización y BMS - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20180704_210254435.jpg" alt="Automatización y BMS - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20180924_161604522.jpg" alt="Automatización y BMS - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20181120_141829750.jpg" alt="Automatización y BMS - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20181120_141835217.jpg" alt="Automatización y BMS - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190116_170604202.jpg" alt="Automatización y BMS - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190116_170618150.jpg" alt="Automatización y BMS - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190116_170627497.jpg" alt="Automatización y BMS - foto 17" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190116_170644973.jpg" alt="Automatización y BMS - foto 18" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190222_122336219.jpg" alt="Automatización y BMS - foto 19" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190222_144141028.jpg" alt="Automatización y BMS - foto 20" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190923_133456689.jpg" alt="Automatización y BMS - foto 21" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190923_133558301.jpg" alt="Automatización y BMS - foto 22" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20190923_133605978.jpg" alt="Automatización y BMS - foto 23" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200121_204551492.jpg" alt="Automatización y BMS - foto 24" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200121_204557216.jpg" alt="Automatización y BMS - foto 25" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200121_204601406.jpg" alt="Automatización y BMS - foto 26" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200121_204603971.jpg" alt="Automatización y BMS - foto 27" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200121_204610697.jpg" alt="Automatización y BMS - foto 28" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200205_143112669.jpg" alt="Automatización y BMS - foto 29" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200205_143115569.jpg" alt="Automatización y BMS - foto 30" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200212_073113624.jpg" alt="Automatización y BMS - foto 31" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_093358064.jpg" alt="Automatización y BMS - foto 32" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_093406240.jpg" alt="Automatización y BMS - foto 33" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_093414430.jpg" alt="Automatización y BMS - foto 34" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_093428139.jpg" alt="Automatización y BMS - foto 35" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_105013444.jpg" alt="Automatización y BMS - foto 36" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_105034517.jpg" alt="Automatización y BMS - foto 37" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_105045370.jpg" alt="Automatización y BMS - foto 38" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_105050553.jpg" alt="Automatización y BMS - foto 39" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_105055976.jpg" alt="Automatización y BMS - foto 40" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200220_105103168.jpg" alt="Automatización y BMS - foto 41" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200225_125136515.jpg" alt="Automatización y BMS - foto 42" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_133354716.jpg" alt="Automatización y BMS - foto 43" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_140613822.jpg" alt="Automatización y BMS - foto 44" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_143028138.jpg" alt="Automatización y BMS - foto 45" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_143037917.jpg" alt="Automatización y BMS - foto 46" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_143710808.jpg" alt="Automatización y BMS - foto 47" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_143723571.jpg" alt="Automatización y BMS - foto 48" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_145644936.jpg" alt="Automatización y BMS - foto 49" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_152818157.jpg" alt="Automatización y BMS - foto 50" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_152820236.jpg" alt="Automatización y BMS - foto 51" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200318_155809751.jpg" alt="Automatización y BMS - foto 52" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200731_121925280.jpg" alt="Automatización y BMS - foto 53" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20200731_122001685.jpg" alt="Automatización y BMS - foto 54" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220426_180435.jpg" alt="Automatización y BMS - foto 55" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220518_171234.jpg" alt="Automatización y BMS - foto 56" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220519_093655.jpg" alt="Automatización y BMS - foto 57" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220519_102932.jpg" alt="Automatización y BMS - foto 58" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220526_135625.jpg" alt="Automatización y BMS - foto 59" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220608_131916.jpg" alt="Automatización y BMS - foto 60" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220608_131920.jpg" alt="Automatización y BMS - foto 61" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220609_103221.jpg" alt="Automatización y BMS - foto 62" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220609_103639.jpg" alt="Automatización y BMS - foto 63" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220609_215212.jpg" alt="Automatización y BMS - foto 64" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220614_103437.jpg" alt="Automatización y BMS - foto 65" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220614_103440.jpg" alt="Automatización y BMS - foto 66" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220614_170851.jpg" alt="Automatización y BMS - foto 67" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220614_170857.jpg" alt="Automatización y BMS - foto 68" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220621_120218.jpg" alt="Automatización y BMS - foto 69" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220621_120227.jpg" alt="Automatización y BMS - foto 70" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20220930_152207.jpg" alt="Automatización y BMS - foto 71" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20221215_120129.jpg" alt="Automatización y BMS - foto 72" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20221215_120134.jpg" alt="Automatización y BMS - foto 73" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230118_192241.jpg" alt="Automatización y BMS - foto 74" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230119_122203.jpg" alt="Automatización y BMS - foto 75" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230314_143432.jpg" alt="Automatización y BMS - foto 76" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230314_143443.jpg" alt="Automatización y BMS - foto 77" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230314_143519.jpg" alt="Automatización y BMS - foto 78" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230424_152744.jpg" alt="Automatización y BMS - foto 79" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230424_152750.jpg" alt="Automatización y BMS - foto 80" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230424_165830.jpg" alt="Automatización y BMS - foto 81" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230429_101758.jpg" alt="Automatización y BMS - foto 82" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230508_141934.jpg" alt="Automatización y BMS - foto 83" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230508_141935.jpg" alt="Automatización y BMS - foto 84" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20230508_141945.jpg" alt="Automatización y BMS - foto 85" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20250117_155024.jpg" alt="Automatización y BMS - foto 86" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20250217_121207.jpg" alt="Automatización y BMS - foto 87" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20250607_104447.jpg" alt="Automatización y BMS - foto 88" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20251202_193826.jpg" alt="Automatización y BMS - foto 89" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260203_003412.jpg" alt="Automatización y BMS - foto 90" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260203_003910.jpg" alt="Automatización y BMS - foto 91" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260203_003913.jpg" alt="Automatización y BMS - foto 92" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260203_010430.jpg" alt="Automatización y BMS - foto 93" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260204_204224.jpg" alt="Automatización y BMS - foto 94" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260206_233006.jpg" alt="Automatización y BMS - foto 95" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260206_233008.jpg" alt="Automatización y BMS - foto 96" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260206_233148.jpg" alt="Automatización y BMS - foto 97" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/IMG_20260206_233149.jpg" alt="Automatización y BMS - foto 98" loading="lazy" />
+            <img src="assets/portafolio/lineas/03-automatizacion-bms/original_b219180a-4908-49e3-8144-f0e4e208c81b_IMG_20220526_135634.jpg" alt="Automatización y BMS - foto 99" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="hvac" hidden>
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200610-WA0018.jpg" alt="HVAC y climatización - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200611-WA0000.jpg" alt="HVAC y climatización - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200611-WA0006.jpg" alt="HVAC y climatización - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200611-WA0007.jpg" alt="HVAC y climatización - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200611-WA0014.jpg" alt="HVAC y climatización - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200616-WA0004.jpg" alt="HVAC y climatización - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200616-WA0005.jpg" alt="HVAC y climatización - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200616-WA0006.jpg" alt="HVAC y climatización - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200616-WA0007.jpg" alt="HVAC y climatización - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200616-WA0008.jpg" alt="HVAC y climatización - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200616-WA0009.jpg" alt="HVAC y climatización - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200618-WA0004.jpg" alt="HVAC y climatización - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200618-WA0008.jpg" alt="HVAC y climatización - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200618-WA0012.jpg" alt="HVAC y climatización - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG-20200618-WA0019.jpg" alt="HVAC y climatización - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20181116_114303328.jpg" alt="HVAC y climatización - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20181116_114456622.jpg" alt="HVAC y climatización - foto 17" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20181201_093344907.jpg" alt="HVAC y climatización - foto 18" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20181201_093348652.jpg" alt="HVAC y climatización - foto 19" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20181201_093353159.jpg" alt="HVAC y climatización - foto 20" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190304_165908755.jpg" alt="HVAC y climatización - foto 21" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190304_171926285.jpg" alt="HVAC y climatización - foto 22" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190304_171929789.jpg" alt="HVAC y climatización - foto 23" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190704_163354235.jpg" alt="HVAC y climatización - foto 24" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190704_163423054.jpg" alt="HVAC y climatización - foto 25" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190704_163445020.jpg" alt="HVAC y climatización - foto 26" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190704_163458307.jpg" alt="HVAC y climatización - foto 27" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190704_163621026.jpg" alt="HVAC y climatización - foto 28" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190704_163716098.jpg" alt="HVAC y climatización - foto 29" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190726_150424740.jpg" alt="HVAC y climatización - foto 30" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190726_155542243.jpg" alt="HVAC y climatización - foto 31" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20190923_133615472.jpg" alt="HVAC y climatización - foto 32" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20200618_120022324.jpg" alt="HVAC y climatización - foto 33" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20201119_112256174.jpg" alt="HVAC y climatización - foto 34" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150744.jpg" alt="HVAC y climatización - foto 35" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150758.jpg" alt="HVAC y climatización - foto 36" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150809.jpg" alt="HVAC y climatización - foto 37" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150837.jpg" alt="HVAC y climatización - foto 38" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150845.jpg" alt="HVAC y climatización - foto 39" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150909.jpg" alt="HVAC y climatización - foto 40" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150917.jpg" alt="HVAC y climatización - foto 41" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_150932.jpg" alt="HVAC y climatización - foto 42" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151113.jpg" alt="HVAC y climatización - foto 43" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151121.jpg" alt="HVAC y climatización - foto 44" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151135.jpg" alt="HVAC y climatización - foto 45" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151202.jpg" alt="HVAC y climatización - foto 46" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151214.jpg" alt="HVAC y climatización - foto 47" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151221.jpg" alt="HVAC y climatización - foto 48" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20220930_151249.jpg" alt="HVAC y climatización - foto 49" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20221022_155147.jpg" alt="HVAC y climatización - foto 50" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20221215_160731.jpg" alt="HVAC y climatización - foto 51" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20221215_160733.jpg" alt="HVAC y climatización - foto 52" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20221215_160752.jpg" alt="HVAC y climatización - foto 53" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230119_105055.jpg" alt="HVAC y climatización - foto 54" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230119_105114.jpg" alt="HVAC y climatización - foto 55" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230119_105116.jpg" alt="HVAC y climatización - foto 56" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230119_105122.jpg" alt="HVAC y climatización - foto 57" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230119_105129.jpg" alt="HVAC y climatización - foto 58" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230119_105138.jpg" alt="HVAC y climatización - foto 59" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230202_093228.jpg" alt="HVAC y climatización - foto 60" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230209_121103.jpg" alt="HVAC y climatización - foto 61" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230209_121111.jpg" alt="HVAC y climatización - foto 62" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20230210_120754.jpg" alt="HVAC y climatización - foto 63" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240928_161325.jpg" alt="HVAC y climatización - foto 64" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240928_161331.jpg" alt="HVAC y climatización - foto 65" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240928_161349.jpg" alt="HVAC y climatización - foto 66" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_171752.jpg" alt="HVAC y climatización - foto 67" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_171759.jpg" alt="HVAC y climatización - foto 68" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_172642.jpg" alt="HVAC y climatización - foto 69" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_172646.jpg" alt="HVAC y climatización - foto 70" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_174551.jpg" alt="HVAC y climatización - foto 71" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_174557.jpg" alt="HVAC y climatización - foto 72" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20240929_174604.jpg" alt="HVAC y climatización - foto 73" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20241219_183513.jpg" alt="HVAC y climatización - foto 74" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20241219_183517.jpg" alt="HVAC y climatización - foto 75" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20241219_183520.jpg" alt="HVAC y climatización - foto 76" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20241220_012210.jpg" alt="HVAC y climatización - foto 77" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150552.jpg" alt="HVAC y climatización - foto 78" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150612.jpg" alt="HVAC y climatización - foto 79" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150618.jpg" alt="HVAC y climatización - foto 80" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150620.jpg" alt="HVAC y climatización - foto 81" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150624.jpg" alt="HVAC y climatización - foto 82" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150639.jpg" alt="HVAC y climatización - foto 83" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150641.jpg" alt="HVAC y climatización - foto 84" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150655.jpg" alt="HVAC y climatización - foto 85" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251202_150658.jpg" alt="HVAC y climatización - foto 86" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_103713.jpg" alt="HVAC y climatización - foto 87" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_103720.jpg" alt="HVAC y climatización - foto 88" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_104119.jpg" alt="HVAC y climatización - foto 89" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_104123.jpg" alt="HVAC y climatización - foto 90" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_104327.jpg" alt="HVAC y climatización - foto 91" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_104330.jpg" alt="HVAC y climatización - foto 92" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_104332.jpg" alt="HVAC y climatización - foto 93" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20251204_104546.jpg" alt="HVAC y climatización - foto 94" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20260206_232940.jpg" alt="HVAC y climatización - foto 95" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20260206_232942.jpg" alt="HVAC y climatización - foto 96" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20260206_232944.jpg" alt="HVAC y climatización - foto 97" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/IMG_20260206_232946.jpg" alt="HVAC y climatización - foto 98" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/PANO_20230210_120805.jpg" alt="HVAC y climatización - foto 99" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.45%20PM%20%281%29.jpeg" alt="HVAC y climatización - foto 100" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.45%20PM.jpeg" alt="HVAC y climatización - foto 101" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.46%20PM%20%281%29.jpeg" alt="HVAC y climatización - foto 102" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.46%20PM%20%282%29.jpeg" alt="HVAC y climatización - foto 103" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.46%20PM%20%283%29.jpeg" alt="HVAC y climatización - foto 104" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.46%20PM%20%284%29.jpeg" alt="HVAC y climatización - foto 105" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.46%20PM%20%285%29.jpeg" alt="HVAC y climatización - foto 106" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.46%20PM.jpeg" alt="HVAC y climatización - foto 107" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.47%20PM.jpeg" alt="HVAC y climatización - foto 108" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%281%29.jpeg" alt="HVAC y climatización - foto 109" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%282%29.jpeg" alt="HVAC y climatización - foto 110" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%283%29.jpeg" alt="HVAC y climatización - foto 111" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%284%29.jpeg" alt="HVAC y climatización - foto 112" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%285%29.jpeg" alt="HVAC y climatización - foto 113" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%286%29.jpeg" alt="HVAC y climatización - foto 114" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%287%29.jpeg" alt="HVAC y climatización - foto 115" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%288%29.jpeg" alt="HVAC y climatización - foto 116" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM%20%289%29.jpeg" alt="HVAC y climatización - foto 117" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.48%20PM.jpeg" alt="HVAC y climatización - foto 118" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%281%29.jpeg" alt="HVAC y climatización - foto 119" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%282%29.jpeg" alt="HVAC y climatización - foto 120" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%283%29.jpeg" alt="HVAC y climatización - foto 121" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%284%29.jpeg" alt="HVAC y climatización - foto 122" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%285%29.jpeg" alt="HVAC y climatización - foto 123" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%286%29.jpeg" alt="HVAC y climatización - foto 124" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%287%29.jpeg" alt="HVAC y climatización - foto 125" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%288%29.jpeg" alt="HVAC y climatización - foto 126" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM%20%289%29.jpeg" alt="HVAC y climatización - foto 127" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.49%20PM.jpeg" alt="HVAC y climatización - foto 128" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.50%20PM%20%281%29.jpeg" alt="HVAC y climatización - foto 129" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.50%20PM%20%282%29.jpeg" alt="HVAC y climatización - foto 130" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.50%20PM%20%283%29.jpeg" alt="HVAC y climatización - foto 131" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.50%20PM%20%284%29.jpeg" alt="HVAC y climatización - foto 132" loading="lazy" />
+            <img src="assets/portafolio/lineas/04-hvac-climatizacion/WhatsApp%20Image%202026-07-19%20at%206.02.50%20PM.jpeg" alt="HVAC y climatización - foto 133" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="cctv" hidden>
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20200211_101300194.jpg" alt="CCTV y seguridad - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20200211_101302359.jpg" alt="CCTV y seguridad - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20200211_110425053.jpg" alt="CCTV y seguridad - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20220210_165431.jpg" alt="CCTV y seguridad - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20220210_165436.jpg" alt="CCTV y seguridad - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20220210_165437.jpg" alt="CCTV y seguridad - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20220210_165443.jpg" alt="CCTV y seguridad - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20220426_090543.jpg" alt="CCTV y seguridad - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20220618_111659.jpg" alt="CCTV y seguridad - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20221214_135413.jpg" alt="CCTV y seguridad - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20221215_105452.jpg" alt="CCTV y seguridad - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20230210_130017.jpg" alt="CCTV y seguridad - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20240916_105717.jpg" alt="CCTV y seguridad - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250110_120041.jpg" alt="CCTV y seguridad - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250110_120052.jpg" alt="CCTV y seguridad - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250110_120055.jpg" alt="CCTV y seguridad - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250310_155737.jpg" alt="CCTV y seguridad - foto 17" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250313_143354.jpg" alt="CCTV y seguridad - foto 18" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_164839.jpg" alt="CCTV y seguridad - foto 19" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_164901.jpg" alt="CCTV y seguridad - foto 20" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_165112.jpg" alt="CCTV y seguridad - foto 21" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_170031.jpg" alt="CCTV y seguridad - foto 22" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_170032.jpg" alt="CCTV y seguridad - foto 23" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_170033.jpg" alt="CCTV y seguridad - foto 24" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250718_170400.jpg" alt="CCTV y seguridad - foto 25" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250827_155735.jpg" alt="CCTV y seguridad - foto 26" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250827_155854.jpg" alt="CCTV y seguridad - foto 27" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250827_165327.jpg" alt="CCTV y seguridad - foto 28" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250902_124835.jpg" alt="CCTV y seguridad - foto 29" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250902_124850.jpg" alt="CCTV y seguridad - foto 30" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20250902_124904.jpg" alt="CCTV y seguridad - foto 31" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20260424_024918.jpg" alt="CCTV y seguridad - foto 32" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20260425_221558.jpg" alt="CCTV y seguridad - foto 33" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20260426_193547.jpg" alt="CCTV y seguridad - foto 34" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20260426_193553.jpg" alt="CCTV y seguridad - foto 35" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/IMG_20260609_093612.jpg" alt="CCTV y seguridad - foto 36" loading="lazy" />
+            <img src="assets/portafolio/lineas/05-cctv-seguridad/Screenshot_2026-04-27-18-18-51-269_com.whatsapp.jpg" alt="CCTV y seguridad - foto 37" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="interventoria" hidden>
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20220714_093657.jpg" alt="Interventoría y consultoría - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20220714_093702.jpg" alt="Interventoría y consultoría - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20220714_093718.jpg" alt="Interventoría y consultoría - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20220714_093732.jpg" alt="Interventoría y consultoría - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20220714_093741.jpg" alt="Interventoría y consultoría - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260219_100903.jpg" alt="Interventoría y consultoría - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_095955.jpg" alt="Interventoría y consultoría - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_095959.jpg" alt="Interventoría y consultoría - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_100346.jpg" alt="Interventoría y consultoría - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_100354.jpg" alt="Interventoría y consultoría - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_100400.jpg" alt="Interventoría y consultoría - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101017.jpg" alt="Interventoría y consultoría - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101026.jpg" alt="Interventoría y consultoría - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101037.jpg" alt="Interventoría y consultoría - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101057.jpg" alt="Interventoría y consultoría - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101111.jpg" alt="Interventoría y consultoría - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101205.jpg" alt="Interventoría y consultoría - foto 17" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101214.jpg" alt="Interventoría y consultoría - foto 18" loading="lazy" />
+            <img src="assets/portafolio/lineas/06-interventoria-consultoria/IMG_20260416_101216.jpg" alt="Interventoría y consultoría - foto 19" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="ia" hidden>
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/IMG_20260128_192543.jpg" alt="Automatización digital (IA) - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/IMG_20260128_211906.jpg" alt="Automatización digital (IA) - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/IMG_20260202_142223.jpg" alt="Automatización digital (IA) - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/IMG_20260203_010412.jpg" alt="Automatización digital (IA) - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2025-01-10-15-27-10-266_com.android.chrome.jpg" alt="Automatización digital (IA) - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2025-01-10-15-27-12-477_com.android.chrome.jpg" alt="Automatización digital (IA) - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-12-51-01-330_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-16-06-34-640_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-16-33-50-144_com.whatsapp.jpg" alt="Automatización digital (IA) - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-17-15-18-196_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-20-00-11-188_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-20-00-18-751_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-20-05-13-049_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-20-05-15-743_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-07-21-05-40-581_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-12-06-59-07-237_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/07-automatizacion-digital-ia/Screenshot_2026-02-12-07-00-01-432_com.teamviewer.teamviewer.market.mobile.jpg" alt="Automatización digital (IA) - foto 17" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="mantenimiento" hidden>
+            <img src="assets/portafolio/lineas/08-mantenimiento-soporte/IMG_20260206_233414.jpg" alt="Mantenimiento y soporte - foto 1" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="solar" hidden>
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260219_180341.jpg" alt="Energía solar y electromovilidad - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260219_190431.jpg" alt="Energía solar y electromovilidad - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260219_190433.jpg" alt="Energía solar y electromovilidad - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260219_191239.jpg" alt="Energía solar y electromovilidad - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260219_191241.jpg" alt="Energía solar y electromovilidad - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260320_190645.jpg" alt="Energía solar y electromovilidad - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260320_190715.jpg" alt="Energía solar y electromovilidad - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260320_190742.jpg" alt="Energía solar y electromovilidad - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260329_111645.jpg" alt="Energía solar y electromovilidad - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260423_181558.jpg" alt="Energía solar y electromovilidad - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260423_181602.jpg" alt="Energía solar y electromovilidad - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260429_140511.jpg" alt="Energía solar y electromovilidad - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/09-energia-solar-electromovilidad/IMG_20260429_140513.jpg" alt="Energía solar y electromovilidad - foto 13" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="rci" hidden>
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220721_125444.jpg" alt="Red contra incendios - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220824_100037.jpg" alt="Red contra incendios - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220824_100525.jpg" alt="Red contra incendios - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220824_100532.jpg" alt="Red contra incendios - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220930_102612.jpg" alt="Red contra incendios - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20220930_102617.jpg" alt="Red contra incendios - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_133947.jpg" alt="Red contra incendios - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134212.jpg" alt="Red contra incendios - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134230.jpg" alt="Red contra incendios - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134251.jpg" alt="Red contra incendios - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134254.jpg" alt="Red contra incendios - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134302.jpg" alt="Red contra incendios - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134407.jpg" alt="Red contra incendios - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134549.jpg" alt="Red contra incendios - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134611.jpg" alt="Red contra incendios - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20230420_134735.jpg" alt="Red contra incendios - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/10-red-contra-incendios/IMG_20250605_113216.jpg" alt="Red contra incendios - foto 17" loading="lazy" />
+          </div>
+          <div class="gal-strip" data-gal-panel="tableros" hidden>
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG-20200309-WA0003.jpg" alt="Elaboración de tableros - foto 1" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG-20200309-WA0004.jpg" alt="Elaboración de tableros - foto 2" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20180924_161611052.jpg" alt="Elaboración de tableros - foto 3" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20220609_103336.jpg" alt="Elaboración de tableros - foto 4" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20220930_152249.jpg" alt="Elaboración de tableros - foto 5" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20221219_180845.jpg" alt="Elaboración de tableros - foto 6" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20230228_115133.jpg" alt="Elaboración de tableros - foto 7" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20230228_115137.jpg" alt="Elaboración de tableros - foto 8" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20230306_090343.jpg" alt="Elaboración de tableros - foto 9" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_124912.jpg" alt="Elaboración de tableros - foto 10" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_124917.jpg" alt="Elaboración de tableros - foto 11" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_124924.jpg" alt="Elaboración de tableros - foto 12" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_124931.jpg" alt="Elaboración de tableros - foto 13" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_124935.jpg" alt="Elaboración de tableros - foto 14" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_124940.jpg" alt="Elaboración de tableros - foto 15" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125308.jpg" alt="Elaboración de tableros - foto 16" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125318.jpg" alt="Elaboración de tableros - foto 17" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125321.jpg" alt="Elaboración de tableros - foto 18" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125329.jpg" alt="Elaboración de tableros - foto 19" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125540.jpg" alt="Elaboración de tableros - foto 20" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125601.jpg" alt="Elaboración de tableros - foto 21" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125606.jpg" alt="Elaboración de tableros - foto 22" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125616.jpg" alt="Elaboración de tableros - foto 23" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125722.jpg" alt="Elaboración de tableros - foto 24" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125725.jpg" alt="Elaboración de tableros - foto 25" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125730.jpg" alt="Elaboración de tableros - foto 26" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125735.jpg" alt="Elaboración de tableros - foto 27" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125921.jpg" alt="Elaboración de tableros - foto 28" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125927.jpg" alt="Elaboración de tableros - foto 29" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125929.jpg" alt="Elaboración de tableros - foto 30" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250902_125931.jpg" alt="Elaboración de tableros - foto 31" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151234.jpg" alt="Elaboración de tableros - foto 32" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151237.jpg" alt="Elaboración de tableros - foto 33" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151241.jpg" alt="Elaboración de tableros - foto 34" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151244.jpg" alt="Elaboración de tableros - foto 35" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151247.jpg" alt="Elaboración de tableros - foto 36" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151249.jpg" alt="Elaboración de tableros - foto 37" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151251.jpg" alt="Elaboración de tableros - foto 38" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151352.jpg" alt="Elaboración de tableros - foto 39" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151356.jpg" alt="Elaboración de tableros - foto 40" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151359.jpg" alt="Elaboración de tableros - foto 41" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151402.jpg" alt="Elaboración de tableros - foto 42" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151613.jpg" alt="Elaboración de tableros - foto 43" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250912_151829.jpg" alt="Elaboración de tableros - foto 44" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250922_130935.jpg" alt="Elaboración de tableros - foto 45" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250922_131008.jpg" alt="Elaboración de tableros - foto 46" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20250922_132904.jpg" alt="Elaboración de tableros - foto 47" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103445.jpg" alt="Elaboración de tableros - foto 48" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103452.jpg" alt="Elaboración de tableros - foto 49" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103455.jpg" alt="Elaboración de tableros - foto 50" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103459.jpg" alt="Elaboración de tableros - foto 51" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103501.jpg" alt="Elaboración de tableros - foto 52" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103505.jpg" alt="Elaboración de tableros - foto 53" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103705.jpg" alt="Elaboración de tableros - foto 54" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103712.jpg" alt="Elaboración de tableros - foto 55" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103717.jpg" alt="Elaboración de tableros - foto 56" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103721.jpg" alt="Elaboración de tableros - foto 57" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103725.jpg" alt="Elaboración de tableros - foto 58" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103827.jpg" alt="Elaboración de tableros - foto 59" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103834.jpg" alt="Elaboración de tableros - foto 60" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103837.jpg" alt="Elaboración de tableros - foto 61" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103842.jpg" alt="Elaboración de tableros - foto 62" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103845.jpg" alt="Elaboración de tableros - foto 63" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103849.jpg" alt="Elaboración de tableros - foto 64" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103926.jpg" alt="Elaboración de tableros - foto 65" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20251001_103928.jpg" alt="Elaboración de tableros - foto 66" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20260326_071552.jpg" alt="Elaboración de tableros - foto 67" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20260326_071706.jpg" alt="Elaboración de tableros - foto 68" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20260416_123343.jpg" alt="Elaboración de tableros - foto 69" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/IMG_20260602_120303.jpg" alt="Elaboración de tableros - foto 70" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/WhatsApp%20Image%202026-07-19%20at%205.55.19%20PM.jpeg" alt="Elaboración de tableros - foto 71" loading="lazy" />
+            <img src="assets/portafolio/lineas/11-elaboracion-tableros-electricos/WhatsApp%20Image%202026-07-19%20at%205.55.53%20PM%20%284%29.jpeg" alt="Elaboración de tableros - foto 72" loading="lazy" />
+          </div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" type="button" aria-label="Cerrar">&times;</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
 
     <section class="section fade-in" id="sectores">
       <div class="wrap">
@@ -371,6 +1043,34 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    // Galeria de campo: tabs + lightbox
+    document.querySelectorAll(".gal-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".gal-tab").forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        const target = btn.dataset.gal;
+        document.querySelectorAll(".gal-strip").forEach(s => {
+          s.hidden = s.dataset.galPanel !== target;
+        });
+      });
+    });
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeLightbox = () => { lightbox.hidden = true; lightboxImg.src = ""; };
+    document.querySelectorAll(".gal-strip img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.hidden = false;
+      });
+    });
+    if(lightbox){
+      lightbox.addEventListener("click", closeLightbox);
+      document.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+      document.addEventListener("keydown", (e) => { if(e.key === "Escape"){ closeLightbox(); } });
+    }
+
+
     function sendWhatsApp(e){
       e.preventDefault();
       const name = document.getElementById("name").value.trim();
@@ -395,6 +1095,39 @@ ${msg}`;
       header.classList.toggle("scrolled", scrolled);
       nav.style.padding = scrolled ? "8px 0" : "14px 0";
     });
+
+    const navToggle = document.querySelector(".nav-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMobileMenu = () => {
+      if(!navToggle || !mobileMenu){return;}
+      navToggle.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      mobileMenu.classList.remove("is-open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+    };
+    if(navToggle && mobileMenu){
+      navToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = navToggle.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        mobileMenu.classList.toggle("is-open", isOpen);
+        mobileMenu.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      });
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+      document.addEventListener("click", (event) => {
+        if(!mobileMenu.contains(event.target) && !navToggle.contains(event.target)){
+          closeMobileMenu();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if(event.key === "Escape"){ closeMobileMenu(); }
+      });
+      window.addEventListener("resize", () => {
+        if(window.innerWidth > 900){ closeMobileMenu(); }
+      });
+    }
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if(!prefersReduced){

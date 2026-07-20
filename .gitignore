@@ -1,3 +1,7 @@
 desktop.ini
 Thumbs.db
 .DS_Store
+
+# Videos crudos de campo: no se usan en el sitio y varios superan
+# el limite de 100MB de GitHub. Se quedan solo en el equipo local.
+assets/portafolio/lineas/**/*.mp4

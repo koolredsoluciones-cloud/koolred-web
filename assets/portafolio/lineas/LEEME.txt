@@ -1,0 +1,27 @@
+COMO USAR ESTA CARPETA
+======================
+
+Arrastra minimo 3 fotos (idealmente 3-6) dentro de cada subcarpeta, segun la linea
+de servicio que muestren. No importa el nombre del archivo ni si son JPG o PNG.
+Formato horizontal se ve mejor en las tarjetas, pero no es obligatorio.
+
+Cuando tengas fotos cargadas, avisame y las integro al home y al portafolio.
+
+Que foto sirve en cada carpeta:
+--------------------------------
+01-ingenieria-electrica           -> canalizacion, montaje electrico, iluminacion, pruebas en campo
+02-cableado-estructurado          -> rack, patch panel, cableado de datos/voz organizado
+03-automatizacion-bms             -> PLC, HMI, tablero de control, pantallas SCADA/BMS
+04-hvac-climatizacion             -> unidades HVAC, ductos, equipos de climatizacion
+05-cctv-seguridad                 -> camaras instaladas, monitores de vigilancia, control de acceso
+06-interventoria-consultoria      -> visitas tecnicas, inspeccion en obra, actas/mediciones en campo
+07-automatizacion-digital-ia      -> pantallas de dashboards, flujos n8n, equipo trabajando en software
+08-mantenimiento-soporte          -> tecnico interviniendo equipos, mantenimiento preventivo
+09-energia-solar-electromovilidad -> paneles solares, cargadores EV instalados
+10-red-contra-incendios           -> bombas y gabinetes contra incendio, tuberia roja, rociadores
+11-elaboracion-tableros-electricos -> tableros/breakers en taller o en sitio, montaje de breakers,
+                                       DPX/EasyPact, terminales, puertas de gabinete cerradas
+
+Las 3 fotos que ya estan en assets/portafolio/*.jpg (tanque industrial, cargador EV,
+tuberia EMT) ya quedaron integradas en el sitio; puedes dejarlas o reemplazarlas
+cuando tengas mejores.
