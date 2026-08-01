@@ -151,7 +151,7 @@ body.service-page #contacto::after {
 }
 
 body.service-page .hero {
-  padding: 84px 0 56px;
+  padding: 76px 0 52px;
   background:
     radial-gradient(circle at 14% 18%, rgba(var(--fx-secondary-rgb), 0.16) 0, transparent 22%),
     radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.08) 0, transparent 20%),
@@ -177,13 +177,20 @@ body.service-page .hero::after {
 
 body.service-page .herogrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
-  gap: 34px;
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 42px;
+  align-items: start;
+}
+
+body.service-page .herogrid > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
 }
 
 body.service-page .hero .segment-toggle {
-  margin-bottom: 18px;
+  margin-bottom: 0;
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(14px);
@@ -220,27 +227,31 @@ body.service-page .hero .kicker {
 }
 
 body.service-page .hero h1 {
-  margin: 18px 0 14px;
-  max-width: 22ch;
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 1;
+  flex-basis: 100%;
+  margin: 24px 0 16px;
+  max-width: 1100px;
+  font-size: clamp(42px, 4.5vw, 68px);
+  line-height: 0.98;
   color: #fff;
 }
 
 body.service-page .hero .lead {
-  max-width: 62ch;
+  flex-basis: 100%;
+  max-width: 76ch;
   font-size: clamp(17px, 1.65vw, 21px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.74);
 }
 
 body.service-page .hero .hero-bullets {
+  flex-basis: 100%;
   margin: 22px 0 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0;
-  max-width: 760px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: none;
   color: rgba(255, 255, 255, 0.74);
 }
 
@@ -266,6 +277,7 @@ body.service-page .hero .hero-bullets li::before {
 }
 
 body.service-page .hero .cta {
+  flex-basis: 100%;
   margin-top: 28px;
   gap: 14px;
 }
@@ -286,9 +298,13 @@ body.service-page .hero .small {
   text-transform: uppercase;
 }
 
+body.service-page .herogrid > div:first-child > .small {
+  flex-basis: 100%;
+}
+
 body.service-page .hero .card.fade-in {
   position: relative;
-  min-height: 486px;
+  min-height: auto;
   padding: 24px;
   border-radius: 30px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
@@ -347,14 +363,14 @@ body.service-page .hero .dot {
 
 body.service-page .hero .stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-top: 22px;
 }
 
 body.service-page .hero .stat {
   position: relative;
-  min-height: 164px;
+  min-height: 144px;
   padding: 22px 18px 18px;
   border-radius: 22px;
   background: rgba(6, 12, 26, 0.34);
@@ -1085,11 +1101,15 @@ body.service-review .hero::before {
   }
 
   body.service-page .hero h1 {
-    max-width: 18ch;
+    max-width: 100%;
   }
 
   body.service-page .hero .card.fade-in {
     min-height: auto;
+  }
+
+  body.service-page .hero .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   body.service-page #beneficios .grid {
@@ -1142,6 +1162,16 @@ body.service-review .hero::before {
 
   body.service-page .section {
     padding: 72px 0;
+  }
+
+  body.service-page .hero h1 {
+    max-width: none;
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  body.service-page .hero .hero-bullets {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   body.service-page .hero .card.fade-in,
