@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cotizador preliminar de interventoría técnica por visitas, reuniones, revisiones, informes, periodicidad y desplazamientos." />
+  <title>Cotizador de interventoría | KoolRed Soluciones</title>
+  <link rel="icon" href="../assets/LOGO%20.png" />
+  <link rel="stylesheet" href="cotizador-interventoria.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html#inicio" aria-label="Ir al inicio de KoolRed">
+      <img src="../assets/LOGO%20.png" alt="KoolRed Soluciones" />
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="../index.html#servicios">Servicios</a>
+      <a href="../servicios/revision-tecnica.html">Consultoría técnica</a>
+      <a class="nav-cta" href="https://wa.me/573181634953">Hablar con un ingeniero</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Herramienta comercial preliminar</span>
+        <h1>Cotizador de interventoría por carga real</h1>
+        <p>Estime el precio a partir de las obligaciones que realmente asumirá el equipo: visitas, reuniones, revisión de memorias y cortes, aprobación de pagos, informes y cierre.</p>
+      </div>
+      <div class="hero-badge" aria-label="Metodología del cálculo">
+        <span>El precio responde al alcance</span>
+        <strong>Horas + periodicidad + desplazamientos</strong>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Cotizador de interventoría">
+      <div class="model-column">
+        <article class="panel project-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="step">01</span>
+              <h2>Datos del proyecto</h2>
+            </div>
+            <button class="text-button" id="resetExample" type="button">Cargar ejemplo de $72 millones</button>
+          </div>
+          <div class="field-grid">
+            <label class="field field-wide">
+              <span>Proyecto</span>
+              <input id="projectName" type="text" value="" placeholder="Nombre del proyecto" />
+            </label>
+            <label class="field">
+              <span>Valor estimado de la obra</span>
+              <div class="input-prefix"><span>$</span><input id="projectValue" type="number" min="0" step="1000000" value="" placeholder="0" /></div>
+            </label>
+            <label class="field">
+              <span>Duración</span>
+              <div class="input-suffix"><input id="duration" type="number" min="0.5" step="0.5" value="" placeholder="0" /><span>meses</span></div>
+            </label>
+            <label class="field">
+              <span>IVA pleno</span>
+              <div class="input-suffix"><input id="vat" type="number" min="0" step="1" value="" placeholder="19" /><span>%</span></div>
+            </label>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="step">02</span>
+              <h2>Obligaciones y carga</h2>
+            </div>
+            <button class="secondary-button" id="addActivity" type="button">+ Agregar actividad</button>
+          </div>
+          <p class="panel-intro">Active únicamente lo que se comprometerá en la propuesta. Si selecciona <strong>Mensual</strong>, la cantidad corresponde al número de veces por mes y se multiplica por la duración del proyecto.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="include-col">Incl.</th>
+                  <th>Actividad u obligación</th>
+                  <th>Periodicidad</th>
+                  <th>Cantidad</th>
+                  <th>Horas/u.</th>
+                  <th>Perfil</th>
+                  <th>Traslado/u.</th>
+                  <th class="amount-col">Costo</th>
+                  <th aria-label="Acciones"></th>
+                </tr>
+              </thead>
+              <tbody id="activityRows"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="step">03</span>
+              <h2>Otros gastos directos</h2>
+            </div>
+          </div>
+          <div class="expense-grid">
+            <label class="field"><span>Comunicaciones e informes / mes</span><div class="input-prefix"><span>$</span><input data-expense="monthly" id="communications" type="number" min="0" step="50000" value="" placeholder="0" /></div></label>
+            <label class="field"><span>Gestión documental / mes</span><div class="input-prefix"><span>$</span><input data-expense="monthly" id="documentManagement" type="number" min="0" step="50000" value="" placeholder="0" /></div></label>
+            <label class="field"><span>Ensayos o laboratorio</span><div class="input-prefix"><span>$</span><input data-expense="fixed" id="testing" type="number" min="0" step="100000" value="" placeholder="0" /></div></label>
+            <label class="field"><span>EPP o equipos de inspección</span><div class="input-prefix"><span>$</span><input data-expense="fixed" id="equipment" type="number" min="0" step="100000" value="" placeholder="0" /></div></label>
+            <label class="field"><span>Pólizas y trámites</span><div class="input-prefix"><span>$</span><input data-expense="fixed" id="policies" type="number" min="0" step="100000" value="" placeholder="0" /></div></label>
+            <label class="field"><span>Alojamiento y viáticos</span><div class="input-prefix"><span>$</span><input data-expense="fixed" id="lodging" type="number" min="0" step="100000" value="" placeholder="0" /></div></label>
+          </div>
+        </article>
+      </div>
+
+      <aside class="quote-panel" aria-live="polite">
+        <span class="quote-kicker">Valor recomendado</span>
+        <output id="grandTotal" class="grand-total">$0</output>
+        <div class="quote-metrics">
+          <div><span>Horas profesionales</span><strong id="totalHours">0</strong></div>
+          <div><span>Honorarios</span><strong id="feesTotal">$0</strong></div>
+          <div><span>Desplazamientos</span><strong id="travelTotal">$0</strong></div>
+          <div><span>Otros gastos</span><strong id="otherExpenses">$0</strong></div>
+          <div class="metric-emphasis"><span>Costo directo</span><strong id="directCost">$0</strong></div>
+        </div>
+        <div class="price-build">
+          <div><span>IVA pleno</span><strong id="vatValue">$0</strong></div>
+        </div>
+        <div class="quote-context">
+          <div><span>Participación sobre la obra</span><strong id="projectShare">0%</strong></div>
+          <div><span>Promedio mensual</span><strong id="monthlyValue">$0</strong></div>
+          <div><span>Piso de conversación</span><strong id="floorValue">$0</strong></div>
+          <div><span>Mayor exigencia</span><strong id="ceilingValue">$0</strong></div>
+        </div>
+        <div class="quote-actions">
+          <button class="primary-button" id="printQuote" type="button">Imprimir / guardar PDF</button>
+          <button class="secondary-button full" id="copySummary" type="button">Copiar resumen</button>
+          <button class="secondary-button full" id="saveQuote" type="button">Descargar avance</button>
+          <button class="secondary-button full" id="loadQuote" type="button">Cargar cotización guardada</button>
+          <input id="quoteFile" class="visually-hidden" type="file" accept="application/json,.json" />
+          <button class="text-button new-quote-button" id="newQuote" type="button">Crear nueva cotización en blanco</button>
+          <a class="whatsapp-button" id="whatsappShare" href="https://wa.me/573181634953" target="_blank" rel="noopener">Revisar con KoolRed</a>
+        </div>
+        <p class="file-status" id="fileStatus" role="status" aria-live="polite"></p>
+        <p class="quote-note">Estimación comercial preliminar. Confirme perfiles, entregables, autoridad para aprobar pagos, pólizas y tratamiento tributario antes de emitir una oferta formal.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>KOOLRED SOLUCIONES SAS · Ingeniería, automatización e interventoría</span>
+    <a href="../index.html">Volver al sitio principal</a>
+  </footer>
+
+  <script src="cotizador-interventoria.js" defer></script>
+</body>
+</html>
