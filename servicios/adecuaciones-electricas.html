@@ -36,7 +36,8 @@ header.is-scrolled{
   --hbg:.97;--hbl:14px;--hbd:.07;--hsh:.05;--hfg:var(--text);
 }
 nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:18px}
-.logo img{height:52px;filter:grayscale(1) brightness(0) invert(1) drop-shadow(0 4px 10px rgba(0,0,0,.28));transition:filter .25s ease}\nheader.is-scrolled .logo img{filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
+.logo img{height:52px;filter:grayscale(1) brightness(0) invert(1) drop-shadow(0 4px 10px rgba(0,0,0,.28));transition:filter .25s ease}
+header.is-scrolled .logo img{filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
 .links{display:flex;gap:18px;position:relative}
 .links a{color:currentColor;font-weight:700;font-size:14px;letter-spacing:.2px;transition:color .2s}
 .links a:hover{color:var(--brand)}
@@ -1562,7 +1563,11 @@ function sendWhatsApp(e){
   const phone   = document.getElementById('f-phone').value.trim();
   const msg     = document.getElementById('f-msg').value.trim();
   const to      = '573154940908';
-  const text    = `Hola, soy ${name}${company ? ' de '+company : ''}.\nMi contacto: ${phone}\n\nProyecto eléctrico:\n${msg}`;
+  const text    = `Hola, soy ${name}${company ? ' de '+company : ''}.
+Mi contacto: ${phone}
+
+Proyecto eléctrico:
+${msg}`;
   window.open('https://wa.me/'+to+'?text='+encodeURIComponent(text),'_blank');
 }
 
