@@ -119,3 +119,60 @@ td.c-cat{background:#f6f7fb}
   .print-only .sign div{border-top:1px solid #000;padding-top:4px;text-align:center}
   @page{size:landscape;margin:12mm}
 }
+
+/* ===================== RESPONSIVE ===================== */
+main{grid-template-columns:minmax(0,1fr)}
+.card,.grid>*,.cols>*,.col{min-width:0}
+.illus svg{max-width:440px;margin:auto}
+.tests-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;margin-bottom:12px}
+.tests-wrap .tests{margin:0;min-width:560px}
+#logTable{min-width:1100px}
+.row>div:first-child{min-width:0;overflow-wrap:anywhere}
+.row code{white-space:normal;overflow-wrap:anywhere}
+.notes li,.srcs li,.nearest{overflow-wrap:anywhere}
+
+@media (max-width:900px){
+  .top{gap:12px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  body{font-size:14px}
+  main{padding:14px 10px 40px;gap:14px}
+  .card{padding:16px 14px;border-radius:14px}
+  .card h2{font-size:16px}
+  .top{padding:8px 12px}
+  .logo{height:36px}
+  .top h1{font-size:17px;line-height:1.2}
+  .eyebrow{font-size:9.5px;letter-spacing:.08em}
+  .modes{grid-template-columns:1fr 1fr;gap:8px}
+  .mode{padding:10px;gap:8px;font-size:13px;flex-direction:column;text-align:center}
+  .mode svg{width:32px;height:32px}
+  .two,.reg{grid-template-columns:minmax(0,1fr)}
+  .fields input,.fields select,.fields textarea{font-size:16px} /* evita zoom en iOS */
+  .verdict strong{font-size:15px}
+  .row{flex-direction:column;gap:2px}
+  .val{font-size:18px}
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .actions .btn{justify-content:center;text-align:center;padding:11px 8px}
+  .actions .primary{grid-column:1/-1}
+  #tests .btn{margin-bottom:6px}
+}
+@media (max-width:360px){
+  .modes{grid-template-columns:minmax(0,1fr)}
+  .mode{flex-direction:row;text-align:left}
+}
+@media (max-width:640px){
+  .top{position:static}
+  /* Registro como tarjetas */
+  .tablewrap{border:0;overflow:visible}
+  #logTable{min-width:0}
+  #logTable thead{display:none}
+  #logTable,#logTable tbody,#logTable tr,#logTable td{display:block;width:100%}
+  #logTable tr{border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;background:#fff}
+  #logTable td{display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px;padding:5px 0;border-bottom:1px dashed var(--line);overflow-wrap:anywhere}
+  #logTable td::before{content:attr(data-l);font-weight:800;font-size:11px;color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
+  #logTable td.del{display:block;border:0;text-align:right}
+  #logTable td.c-calc,#logTable td.c-cat{background:none}
+  #logTable td>small,#logTable td>span{grid-column:2}
+  #logTable td>br{display:none}
+}

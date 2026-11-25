@@ -234,11 +234,11 @@
     const l = loadLog();
     $("logInfo").textContent = l.length ? `${l.length} registro(s) guardados en este navegador. Exporte el CSV o el JSON como respaldo.` : "Aún no hay registros.";
     $("logTable").querySelector("tbody").innerHTML = l.map((e, i) => `<tr>
-      <td>${i + 1}</td><td>${esc(e.fecha)}</td><td>${esc(e.proyecto)}<br><small>${esc(e.item)}</small></td><td>${esc(e.ubicacion)}<br><small>${esc(e.uso)}</small></td>
-      <td>${esc(e.modalidad)}<br><small>${esc(e.metodo)}</small></td><td>${esc(e.material)}</td><td>${esc(e.declarado)}</td><td>${esc(e.medicion)}</td>
-      <td class="c-calc">${esc(e.calculado)}</td><td class="c-cat">${esc(e.catalogo)}</td><td>${esc(e.mas_cercano)}</td>
-      <td><span class="pill ${statusClass(e.dictamen)}">${esc(e.dictamen)}</span></td><td>${esc(e.responsable)}</td>
-      <td><button class="x" data-del="${esc(e.id)}" title="Eliminar">✕</button></td></tr>`).join("");
+      <td data-l="#">${i + 1}</td><td data-l="Fecha">${esc(e.fecha)}</td><td data-l="Proyecto / ítem">${esc(e.proyecto)}<br><small>${esc(e.item)}</small></td><td data-l="Ubicación">${esc(e.ubicacion)}<br><small>${esc(e.uso)}</small></td>
+      <td data-l="Modalidad">${esc(e.modalidad)}<br><small>${esc(e.metodo)}</small></td><td data-l="Material">${esc(e.material)}</td><td data-l="Declarado">${esc(e.declarado)}</td><td data-l="Medición">${esc(e.medicion)}</td>
+      <td data-l="Calculado" class="c-calc">${esc(e.calculado)}</td><td data-l="Catálogo" class="c-cat">${esc(e.catalogo)}</td><td data-l="Más cercano">${esc(e.mas_cercano)}</td>
+      <td data-l="Dictamen"><span class="pill ${statusClass(e.dictamen)}">${esc(e.dictamen)}</span></td><td data-l="Responsable">${esc(e.responsable)}</td>
+      <td class="del"><button class="x" data-del="${esc(e.id)}" title="Eliminar">✕ Eliminar</button></td></tr>`).join("");
   }
   $("btnSave").addEventListener("click", () => {
     if (!last || last.status === STATUS.INVALID) { alert("Complete una medición válida antes de registrarla."); return; }
@@ -295,10 +295,10 @@
     const t = runTests();
     const ok = t.every((x) => x.pass);
     $("tests").innerHTML = `<p class="${ok ? "t-ok" : "t-fail"}"><b>${t.filter((x) => x.pass).length}/${t.length}</b> casos superados.</p>` +
-      `<table class="tests"><thead><tr><th></th><th>Caso</th><th>Esperado</th><th>Obtenido</th></tr></thead><tbody>` +
+      `<div class="tests-wrap"><table class="tests"><thead><tr><th></th><th>Caso</th><th>Esperado</th><th>Obtenido</th></tr></thead><tbody>` +
       t.map((x) => `<tr><td>${x.pass ? "✅" : "❌"}</td><td>${esc(x.name)}</td><td>${esc(x.expect)}</td>
         <td><b>${esc(x.result.status)}</b>${x.result.A ? ` · A = ${x.result.A.toFixed(2)} mm²` : ""}${x.result.nearest ? ` · ${esc(x.result.nearest.cal)}` : ""}<br><small>${esc(x.result.why)}</small></td></tr>`).join("") +
-      `</tbody></table><button class="btn" id="loadT1">Cargar caso 1</button> <button class="btn" id="loadT2">Cargar caso 2</button> <button class="btn" id="loadT3">Cargar caso 3</button>`;
+      `</tbody></table></div><button class="btn" id="loadT1">Cargar caso 1</button> <button class="btn" id="loadT2">Cargar caso 2</button> <button class="btn" id="loadT3">Cargar caso 3</button>`;
     [1, 2, 3].forEach((n) => $("loadT" + n).addEventListener("click", () => loadCase(TEST_CASES[n - 1].input)));
   }
   function loadCase(i) {
