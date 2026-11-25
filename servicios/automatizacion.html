@@ -94,6 +94,25 @@
   </style>
   <link rel="stylesheet" href="../frontend/segment-toggle.css" />
   <link rel="stylesheet" href="../frontend/service-fx.css" />
+  <style id="kr-hide-gt-banner">
+    /* Oculta la barra superior de Google Translate; el botón ES/EN sigue funcionando */
+    .goog-te-banner-frame, iframe.skiptranslate, .VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-ORHb,
+    #goog-gt-tt, .goog-te-balloon-frame, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf, .VIpgJd-yAWNEb-L7lbkb { display:none !important; visibility:hidden !important; }
+    html, body { top:0 !important; }
+    body { position:static !important; }
+    .goog-text-highlight { background:none !important; box-shadow:none !important; }
+    font[style] { background-color:transparent !important; box-shadow:none !important; }
+  </style>
+  <script id="kr-hide-gt-banner-js">
+    (function () {
+      function fix() {
+        if (document.body && document.body.style.top) document.body.style.top = "0px";
+        if (document.documentElement.style.top) document.documentElement.style.top = "0px";
+      }
+      new MutationObserver(fix).observe(document.documentElement, { attributes: true, subtree: true, attributeFilter: ["style", "class"] });
+      document.addEventListener("DOMContentLoaded", fix);
+    })();
+  </script>
 </head>
 <body class="service-page service-automation">
   <header>
