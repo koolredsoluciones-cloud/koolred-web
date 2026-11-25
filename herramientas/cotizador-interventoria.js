@@ -137,7 +137,7 @@ function buildSummary() {
 
 function updateWhatsAppLink() {
   const message = `Hola, quiero revisar esta estimación de interventoría:\n\n${buildSummary()}`;
-  $("whatsappShare").href = `https://wa.me/573181634953?text=${encodeURIComponent(message)}`;
+  $("whatsappShare").href = `https://wa.me/573176678037?text=${encodeURIComponent(message)}`;
 }
 
 async function copySummary() {

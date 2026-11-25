@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Verificador de calibre de conductores · uso interno KoolRed</title>
+  <link rel="icon" href="../../assets/LOGO%20.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <img src="../../assets/LOGO%20.png" alt="KoolRed Soluciones" class="logo" />
+    <div class="top-title">
+      <span class="eyebrow">Herramienta interna · interventoría</span>
+      <h1>Verificador de calibre de conductores</h1>
+    </div>
+    <span class="private">Enlace privado · no indexado</span>
+  </header>
+
+  <main>
+    <!-- 1. Modalidad -->
+    <section class="card">
+      <h2><span class="step">1</span> Modalidad de medición</h2>
+      <div class="modes" id="modes" role="radiogroup" aria-label="Modalidad de medición"></div>
+    </section>
+
+    <div class="grid">
+      <!-- 2. Datos -->
+      <section class="card">
+        <h2><span class="step">2</span> Datos del conductor</h2>
+        <div class="fields">
+          <label>Material / construcción
+            <select id="material"></select>
+          </label>
+          <label>Calibre declarado (marcación, plano o APU)
+            <select id="declared"></select>
+          </label>
+
+          <div id="methodBox" class="method" hidden>
+            <span class="lbl">Método para multifilar desnudo</span>
+            <label class="radio"><input type="radio" name="method" value="od" checked /> 1 · Diámetro exterior total (sin desarmar)</label>
+            <label class="radio"><input type="radio" name="method" value="geo" /> 2 · Geométrico: N hilos × diámetro de hilo</label>
+          </div>
+
+          <label id="DBox"><span id="DLabel">Diámetro medido D (mm)</span>
+            <input id="D" inputmode="decimal" placeholder="ej. 2,50 · varias lecturas: 2,50; 2,51; 2,49" />
+            <small>Se promedian las lecturas separadas por ; o espacio.</small>
+          </label>
+
+          <div id="geoBox" hidden>
+            <div class="two">
+              <label><span id="NLabel">Cantidad de hilos N</span><input id="N" type="number" min="2" step="1" placeholder="ej. 7" /></label>
+              <label><span id="dLabel">Diámetro de cada hilo d (mm)</span><input id="d" inputmode="decimal" placeholder="ej. 0,776" /></label>
+            </div>
+            <div class="two" id="steelBox" hidden>
+              <label>Hilos de acero del núcleo<input id="Nst" type="number" min="1" step="1" placeholder="ej. 1" /></label>
+              <label>Diámetro de hilo de acero (mm)<input id="dst" inputmode="decimal" placeholder="ej. 3,37" /></label>
+            </div>
+            <label class="check"><input type="checkbox" id="sameWires" /> Confirmo que los hilos son circulares y del mismo diámetro (por grupo)</label>
+          </div>
+
+          <details class="tol">
+            <summary>Tolerancias de aceptación (criterio de interventoría)</summary>
+            <div class="two">
+              <label>Diámetro exterior ± %<input id="tolOD" type="number" step="0.5" min="0" value="5" /></label>
+              <label>Sección ± %<input id="tolA" type="number" step="0.5" min="0" value="3" /></label>
+            </div>
+            <small>Estas tolerancias las fija el interventor. No son valores normativos.</small>
+          </details>
+        </div>
+      </section>
+
+      <!-- Ilustración -->
+      <section class="card illus">
+        <h2>Ilustración de la medición</h2>
+        <div id="svgWrap" class="svgwrap"></div>
+        <p class="formula" id="formula"></p>
+      </section>
+    </div>
+
+    <!-- 3. Resultado -->
+    <section class="card" id="resultCard">
+      <h2><span class="step">3</span> Resultado</h2>
+      <div id="verdict" class="verdict"></div>
+      <div class="cols">
+        <div class="col calc">
+          <h3><span class="tag tag-calc">CALCULADO</span> Valores geométricos a partir de la medición</h3>
+          <div id="calcList"></div>
+        </div>
+        <div class="col cat">
+          <h3><span class="tag tag-cat">CATÁLOGO</span> Valores nominales (ficha de fabricante o definición AWG)</h3>
+          <div id="catList"></div>
+        </div>
+      </div>
+      <div id="nearest" class="nearest"></div>
+      <ul id="notes" class="notes"></ul>
+    </section>
+
+    <!-- 4. Registro de interventoría -->
+    <section class="card">
+      <h2><span class="step">4</span> Registro de interventoría</h2>
+      <div class="fields reg">
+        <label>Proyecto / contrato<input id="rProyecto" placeholder="ej. KR-002 Catatumbo" /></label>
+        <label>Ítem / APU<input id="rItem" placeholder="ej. 8.8.3" /></label>
+        <label>Ubicación (tablero, circuito, tramo)<input id="rUbic" placeholder="ej. TD-2 · circuito 5" /></label>
+        <label>Uso del conductor<input id="rUso" placeholder="ej. fase, neutro, tierra, red aérea" /></label>
+        <label>Instrumento de medición<input id="rInstr" placeholder="ej. calibrador digital 0,01 mm" /></label>
+        <label>Responsable<input id="rResp" placeholder="Nombre del inspector" /></label>
+        <label>Fecha<input id="rFecha" type="date" /></label>
+        <label class="wide">Observaciones<textarea id="rObs" rows="2" placeholder="Marcación observada, estado del aislamiento, registro fotográfico…"></textarea></label>
+      </div>
+      <div class="actions">
+        <button id="btnSave" class="btn primary">Registrar medición</button>
+        <button id="btnCsv" class="btn">Exportar CSV</button>
+        <button id="btnJson" class="btn">Exportar JSON</button>
+        <label class="btn file">Importar JSON<input type="file" id="fileJson" accept="application/json" hidden /></label>
+        <button id="btnPrint" class="btn">Imprimir acta</button>
+        <button id="btnClear" class="btn danger">Vaciar registro</button>
+      </div>
+      <p class="small" id="logInfo"></p>
+      <div class="tablewrap">
+        <table id="logTable">
+          <thead><tr>
+            <th>#</th><th>Fecha</th><th>Proyecto / ítem</th><th>Ubicación</th><th>Modalidad</th><th>Material</th>
+            <th>Declarado</th><th>Medición</th><th>Calculado</th><th>Catálogo</th><th>Más cercano</th><th>Dictamen</th><th>Responsable</th><th></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. Pruebas -->
+    <section class="card">
+      <h2><span class="step">5</span> Casos de prueba del motor</h2>
+      <div id="tests"></div>
+    </section>
+
+    <!-- 6. Fuentes -->
+    <section class="card">
+      <h2>Fuentes y alcance de la base</h2>
+      <div id="sources"></div>
+      <ul class="notes">
+        <li>Los valores de catálogo se copiaron tal como aparecen en las fichas oficiales de Nexans Colombia (consulta 2026-11-25). No se completan ni interpolan diámetros que la fuente no publica.</li>
+        <li>Las mediciones de campo quedan en el registro de interventoría. Nunca se usan como referencia de catálogo.</li>
+        <li>Cobre desnudo 500 kcmil: la ficha publica 29,67 mm de diámetro exterior, valor incoherente con su sección. Queda excluido de la comparación hasta que Nexans lo confirme.</li>
+        <li>ACSR: solo se cargaron las referencias leídas textualmente (4 AWG Swan a 556,5 kcmil Dove). Los calibres mayores requieren verificar la ficha técnica antes de incluirlos.</li>
+        <li>Las secciones AWG/kcmil marcadas como «definición» se calculan con la fórmula del sistema AWG (ASTM B258). No son datos de un fabricante.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div id="printArea" class="print-only"></div>
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
